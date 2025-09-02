@@ -18,15 +18,16 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body className="antialiased">
-        <div className="fixed inset-0 z-0 bg-black/10">
+        <div className="fixed inset-0 z-0 bg-black">
           <Plasma
             color="#2F9A8A"
-            speed={1}
+            speed={0.2}
             direction="reverse"
-            scale={2}
-            opacity={0.5}
-            mouseInteractive={true}
+            scale={1.5}
+            opacity={2}
+            mouseInteractive={false}
           />
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-800/10 via-transparent to-gray-700/15 pointer-events-none" />
         </div>
         <div className="relative z-10">
           <ThemeProvider defaultTheme="dark" storageKey="site-theme">

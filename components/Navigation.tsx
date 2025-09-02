@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { MotionWrapper } from "@/components/EntranceProvider";
+import Image from "next/image";
 
 export function Navigation() {
   const pathname = usePathname();
@@ -47,8 +48,14 @@ export function Navigation() {
       <header className="sticky top-0 text-white px-6 py-4 z-50 shadow-lg backdrop-blur-md bg-black/20 border-b border-white/10">
         <MotionWrapper preset="fade" duration={0.8}>
           <div className="max-w-7xl mx-auto flex items-center justify-between">
-            <Link href="/" className="text-xl font-semibold">
-              Factora
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/logo.png"
+                alt="Factora Logo"
+                width={120}
+                height={40}
+                className="h-16 w-auto"
+              />
             </Link>
 
             {/* Desktop Navigation */}
@@ -76,7 +83,7 @@ export function Navigation() {
                       }
                     >
                       <button
-                        className={`text-sm transition-colors flex items-center gap-1 ${
+                        className={`text-base transition-colors flex items-center gap-1 ${
                           isActiveDropdown
                             ? "text-[#2F9A8A] font-medium"
                             : "hover:text-[#2F9A8A]"
@@ -84,7 +91,7 @@ export function Navigation() {
                       >
                         {item.label}
                         <ChevronDown
-                          className={`h-4 w-4 transition-transform duration-200 ${
+                          className={`h-5 w-5 transition-transform duration-200 ${
                             (isCompany && isCompanyDropdownOpen) ||
                             (isSolutions && isSolutionsDropdownOpen)
                               ? "rotate-180"
@@ -105,7 +112,7 @@ export function Navigation() {
                           <Link
                             key={subItem.href}
                             href={subItem.href}
-                            className={`block px-4 py-2 text-sm transition-colors hover:bg-white/10/50`}
+                            className={`block px-4 py-2 text-base transition-colors hover:bg-white/10/50`}
                           >
                             {subItem.label}
                           </Link>
@@ -122,7 +129,7 @@ export function Navigation() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`text-sm transition-colors ${
+                    className={`text-base transition-colors ${
                       pathname === item.href
                         ? "text-[#2F9A8A] font-medium"
                         : "hover:text-[#2F9A8A]"
@@ -135,7 +142,14 @@ export function Navigation() {
             </nav>
 
             {/* Desktop Action Buttons */}
-            <div className="hidden md:flex items-center gap-4" />
+            <div className="hidden md:flex items-center gap-4">
+              <Link
+                href="/contact"
+                className="bg-[#2F9A8A] hover:bg-[#2F9A8A]/90 text-white px-6 py-3 rounded-lg font-medium text-base transition-colors"
+              >
+                Book a demo
+              </Link>
+            </div>
 
             {/* Mobile Menu Button */}
             <button
@@ -180,7 +194,7 @@ export function Navigation() {
                 return (
                   <div key={item.label} className="space-y-2">
                     <div
-                      className={`text-lg font-medium ${
+                      className={`text-xl font-medium ${
                         isActiveDropdown ? "text-[#2F9A8A]" : "text-white"
                       }`}
                     >
@@ -191,7 +205,7 @@ export function Navigation() {
                         <Link
                           key={subItem.href}
                           href={subItem.href}
-                          className={`block text-base transition-colors text-white/80 hover:text-[#2F9A8A]`}
+                          className={`block text-lg transition-colors text-white/80 hover:text-[#2F9A8A]`}
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
                           {subItem.label}
@@ -209,7 +223,7 @@ export function Navigation() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`block text-lg transition-colors ${
+                  className={`block text-xl transition-colors ${
                     pathname === item.href
                       ? "text-[#2F9A8A] font-medium"
                       : "text-white hover:text-[#2F9A8A]"
@@ -223,7 +237,15 @@ export function Navigation() {
           </div>
 
           {/* Mobile Action Buttons */}
-          <div className="mt-6 pt-6 border-t border-white/10 space-y-4" />
+          <div className="mt-6 pt-6 border-t border-white/10 space-y-4">
+            <Link
+              href="/contact"
+              className="block w-full bg-[#2F9A8A] hover:bg-[#2F9A8A]/90 text-white px-6 py-3 rounded-lg font-medium text-lg text-center transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Book a demo
+            </Link>
+          </div>
         </nav>
       </div>
     </>
