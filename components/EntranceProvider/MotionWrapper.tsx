@@ -204,6 +204,11 @@ export const HeroEntrance = forwardRef<
   Omit<MotionWrapperProps, "preset">
 >((props, ref) => <MotionWrapper ref={ref} preset="hero" {...props} />);
 
+export const UnblurIn = forwardRef<
+  HTMLDivElement,
+  Omit<MotionWrapperProps, "preset">
+>((props, ref) => <MotionWrapper ref={ref} preset="unblur" {...props} />);
+
 // Stagger container for groups
 export const StaggerContainer = forwardRef<HTMLDivElement, MotionWrapperProps>(
   (props, ref) => <MotionWrapper ref={ref} staggerChildren {...props} />
@@ -214,3 +219,4 @@ SlideUp.displayName = "SlideUp";
 ScaleIn.displayName = "ScaleIn";
 HeroEntrance.displayName = "HeroEntrance";
 StaggerContainer.displayName = "StaggerContainer";
+UnblurIn.displayName = "UnblurIn";

@@ -13,6 +13,7 @@ export {
   SlideUp,
   ScaleIn,
   HeroEntrance,
+  UnblurIn,
   StaggerContainer,
 } from "./MotionWrapper";
 
@@ -35,6 +36,7 @@ export {
   createFadeUpVariant,
   createFadeInVariant,
   createScaleUpVariant,
+  createUnblurVariant,
   createStaggerContainer,
 } from "./variants";
 

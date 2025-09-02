@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -12,9 +11,9 @@ import {
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen text-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[#071A33] to-[#133B4F] text-white py-24">
+      <section className="px-6 py-24 text-white">
         <HeroEntrance className="max-w-4xl mx-auto text-center px-6">
           <h1 className="text-5xl font-bold mb-6 text-balance">
             Need To Talk?
@@ -30,7 +29,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 bg-muted/50">
+      <section className="py-20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact Information */}
@@ -93,11 +92,14 @@ export default function ContactPage() {
             </StaggerContainer>
 
             {/* Contact Form */}
-            <FadeIn delay={0.2} className="bg-card p-8 rounded-2xl shadow-lg">
-              <h3 className="text-2xl font-bold text-foreground mb-6">
+            <FadeIn
+              delay={0.2}
+              className="bg-card/10 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-white/20"
+            >
+              <h3 className="text-2xl font-bold text-white mb-6">
                 Connect With Factora
               </h3>
-              <p className="text-muted-foreground mb-8">
+              <p className="text-gray-300 mb-8">
                 Whether you have a question or just want to share your thoughts,
                 we&apos;d love to hear from you.
               </p>
@@ -233,115 +235,7 @@ export default function ContactPage() {
         </FadeIn>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-card py-16 border-t">
-        <div className="max-w-6xl mx-auto px-6">
-          <StaggerContainer className="grid md:grid-cols-4 gap-8">
-            <SlideUp delay={0.1}>
-              <div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">
-                  Factora
-                </h3>
-                <p className="text-muted-foreground mb-4">
-                  Factora Empowering Your Business
-                </p>
-                <p className="text-muted-foreground text-sm">
-                  Factora helps SME companies get paid faster.
-                </p>
-              </div>
-            </SlideUp>
-
-            <SlideUp delay={0.2}>
-              <div>
-                <h4 className="font-semibold text-foreground mb-4">Company</h4>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li>
-                    <Link href="/about" className="hover:text-[#2F9A8A]">
-                      About
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/contact" className="hover:text-[#2F9A8A]">
-                      Contact
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </SlideUp>
-
-            <SlideUp delay={0.3}>
-              <div>
-                <h4 className="font-semibold text-foreground mb-4">
-                  Resources
-                </h4>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li>
-                    <Link href="/pricing" className="hover:text-[#2F9A8A]">
-                      Pricing
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="hover:text-[#2F9A8A]">
-                      Integration
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="hover:text-[#2F9A8A]">
-                      Blog
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="hover:text-[#2F9A8A]">
-                      Ask for Demo
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </SlideUp>
-
-            <SlideUp delay={0.4}>
-              <div>
-                <h4 className="font-semibold text-foreground mb-4">Legals</h4>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li>
-                    <Link href="#" className="hover:text-[#2F9A8A]">
-                      Privacy & Policy
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="hover:text-[#2F9A8A]">
-                      Terms
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </SlideUp>
-          </StaggerContainer>
-
-          <SlideUp
-            delay={0.6}
-            className="border-t mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
-          >
-            <p className="text-muted-foreground text-sm">
-              © 2025 Factora. All rights reserved.
-              <br />
-              Factora B.V.
-              <br />
-              Prins Hendrikkade 25E, 1012TL
-              <br />
-              Chamber of Commerce: 95634-X
-            </p>
-            <div className="mt-4 md:mt-0">
-              <Link
-                href="#"
-                className="text-muted-foreground hover:text-[#2F9A8A]"
-              >
-                LinkedIn
-              </Link>
-            </div>
-          </SlideUp>
-        </div>
-      </footer>
+      {/* Footer is rendered from RootLayout */}
     </div>
   );
 }

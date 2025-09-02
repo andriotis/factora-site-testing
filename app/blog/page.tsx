@@ -19,9 +19,9 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen text-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[#071A33] via-[#133B4F] to-[#2F9A8A] text-white py-20">
+      <section className="px-6 py-20 text-white">
         <div className="max-w-4xl mx-auto text-center px-6">
           <HeroEntrance>
             <h1 className="text-5xl font-bold mb-6 text-balance">
@@ -36,12 +36,15 @@ export default function BlogPage() {
           </HeroEntrance>
           <HeroEntrance delay={0.4}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-[#2F9A8A] hover:bg-[#2F9A8A]/90 text-white px-8 py-3">
-                Join the waiting list
+              <Button
+                asChild
+                className="px-8 py-3 rounded-full font-medium transition-all bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] text-white shadow-lg shadow-[#2F9A8A]/20 hover:shadow-[#2F9A8A]/30 hover:brightness-110"
+              >
+                <Link href="/#early-access">Join the waiting list</Link>
               </Button>
               <Button
                 variant="outline"
-                className="border-white text-white hover:bg-card hover:text-foreground px-8 py-3 bg-transparent"
+                className="px-8 py-3 rounded-full font-medium transition-all backdrop-blur-md bg-white/10 text-white border border-white/20 hover:bg-white/15 hover:border-white/30 shadow-lg shadow-black/10"
               >
                 Visit Knowledge Hub
               </Button>
@@ -59,7 +62,7 @@ export default function BlogPage() {
               <StaggerContainer stagger={0.2} className="space-y-8">
                 {/* Blog Post 1 */}
                 <SlideUp>
-                  <article className="bg-card rounded-lg shadow-lg overflow-hidden">
+                  <article className="bg-card/10 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden border border-white/20">
                     <Image
                       src="/business-woman-working-on-laptop-in-modern-office.png"
                       alt="Small-business owner reviewing invoices while laptop shows a cashflow dashboard."
@@ -82,16 +85,16 @@ export default function BlogPage() {
                           finance
                         </span>
                       </div>
-                      <h2 className="text-2xl font-bold text-foreground mb-3">
+                      <h2 className="text-2xl font-bold text-white mb-3">
                         How invoice factoring unlocks growth for small
                         businesses
                       </h2>
-                      <p className="text-muted-foreground mb-4">
+                      <p className="text-gray-300 mb-4">
                         Invoice factoring converts receivables into working
                         capital — fast. Learn how it works, when it makes sense,
                         and how to pick the right partner.
                       </p>
-                      <div className="flex items-center text-sm text-muted-foreground mb-4">
+                      <div className="flex items-center text-sm text-gray-300 mb-4">
                         <span>Maria Georgiou, Head of Product Content</span>
                         <span className="mx-2">•</span>
                         <span>August 18, 2025</span>
@@ -169,7 +172,7 @@ export default function BlogPage() {
               <StaggerContainer stagger={0.15} className="space-y-6">
                 {/* Search */}
                 <FadeIn>
-                  <div className="bg-card rounded-lg shadow-lg p-6">
+                  <div className="backdrop-blur-xl bg-black/20 border border-white/10 rounded-2xl shadow-2xl p-6">
                     <Input
                       type="search"
                       placeholder="Search articles, tags, and authors"
@@ -231,7 +234,7 @@ export default function BlogPage() {
 
                 {/* Popular Tags */}
                 <FadeIn>
-                  <div className="bg-card rounded-lg shadow-lg p-6">
+                  <div className="bg-card/20 backdrop-blur-sm rounded-lg shadow-lg p-6">
                     <h3 className="text-lg font-semibold text-foreground mb-4">
                       Popular Tags
                     </h3>
@@ -271,7 +274,7 @@ export default function BlogPage() {
                         placeholder="Enter your email"
                         className="w-full"
                       />
-                      <Button className="w-full bg-[#2F9A8A] hover:bg-[#2F9A8A]/90 text-white">
+                      <Button className="w-full rounded-full font-medium transition-all bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] text-white shadow-lg shadow-[#2F9A8A]/20 hover:shadow-[#2F9A8A]/30 hover:brightness-110">
                         Subscribe
                       </Button>
                     </div>
@@ -280,7 +283,7 @@ export default function BlogPage() {
 
                 {/* CTA for Early Access */}
                 <FadeIn>
-                  <div className="bg-gradient-to-br from-[#071A33] to-[#133B4F] rounded-lg shadow-lg p-6 text-white">
+                  <div className="backdrop-blur-xl bg-black/20 border border-white/10 rounded-2xl shadow-2xl p-6 text-white">
                     <h3 className="text-lg font-semibold mb-2">
                       Get early access
                     </h3>
@@ -288,8 +291,11 @@ export default function BlogPage() {
                       Join the waiting list for Factora&apos;s invoice factoring
                       platform.
                     </p>
-                    <Button className="w-full bg-[#2F9A8A] hover:bg-[#2F9A8A]/90 text-white">
-                      Join the waiting list
+                    <Button
+                      asChild
+                      className="w-full rounded-full font-medium transition-all bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] text-white shadow-lg shadow-[#2F9A8A]/20 hover:shadow-[#2F9A8A]/30 hover:brightness-110"
+                    >
+                      <Link href="/#early-access">Join the waiting list</Link>
                     </Button>
                   </div>
                 </FadeIn>
@@ -300,7 +306,7 @@ export default function BlogPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-[#071A33] to-[#133B4F] text-white py-16">
+      <section className="text-white py-16">
         <div className="max-w-4xl mx-auto text-center px-6">
           <SlideUp>
             <h2 className="text-4xl font-bold mb-6">
@@ -316,12 +322,12 @@ export default function BlogPage() {
           </SlideUp>
           <SlideUp delay={0.4}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-[#2F9A8A] hover:bg-[#2F9A8A]/90 text-white px-8 py-3">
+              <Button className="px-8 py-3 rounded-full font-medium transition-all bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] text-white shadow-lg shadow-[#2F9A8A]/20 hover:shadow-[#2F9A8A]/30 hover:brightness-110">
                 Sign Up For Free Now
               </Button>
               <Button
                 variant="outline"
-                className="border-white text-white hover:bg-card hover:text-foreground px-8 py-3 bg-transparent"
+                className="px-8 py-3 rounded-full font-medium transition-all backdrop-blur-md bg-white/10 text-white border border-white/20 hover:bg-white/15 hover:border-white/30 shadow-lg shadow-black/10"
               >
                 Request Free Demo
               </Button>
@@ -331,7 +337,7 @@ export default function BlogPage() {
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-12 px-6 bg-muted/50">
+      <section className="py-12 px-6">
         <div className="max-w-4xl mx-auto">
           <SlideUp>
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
@@ -359,127 +365,7 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-card border-t py-12 px-6">
-        <div className="max-w-6xl mx-auto">
-          <StaggerContainer
-            stagger={0.1}
-            className="grid md:grid-cols-4 gap-8 mb-8"
-          >
-            <FadeIn>
-              <div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">
-                  Factora
-                </h3>
-                <p className="text-muted-foreground mb-4">
-                  Factora Empowering Your Business
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Factora helps B2B companies get paid faster.
-                </p>
-              </div>
-            </FadeIn>
-
-            <FadeIn>
-              <div>
-                <h4 className="font-semibold text-foreground mb-4">Company</h4>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li>
-                    <Link href="/about" className="hover:text-[#2F9A8A]">
-                      About
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/pricing" className="hover:text-[#2F9A8A]">
-                      Pricing
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/contact" className="hover:text-[#2F9A8A]">
-                      Contact
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </FadeIn>
-
-            <FadeIn>
-              <div>
-                <h4 className="font-semibold text-foreground mb-4">
-                  Resources
-                </h4>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li>
-                    <Link href="/pricing" className="hover:text-[#2F9A8A]">
-                      Pricing
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="hover:text-[#2F9A8A]">
-                      Integration
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/blog" className="hover:text-[#2F9A8A]">
-                      Blog
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="hover:text-[#2F9A8A]">
-                      Ask for Demo
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </FadeIn>
-
-            <FadeIn>
-              <div>
-                <h4 className="font-semibold text-foreground mb-4">Legals</h4>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li>
-                    <Link href="#" className="hover:text-[#2F9A8A]">
-                      Privacy & Policy
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="hover:text-[#2F9A8A]">
-                      Terms
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </FadeIn>
-          </StaggerContainer>
-
-          <FadeIn>
-            <div className="border-t pt-8 flex flex-col md:flex-row justify-between items-center">
-              <p className="text-sm text-muted-foreground mb-4 md:mb-0">
-                © 2024 Factora. All rights reserved.
-                <br />
-                Factora is
-                <br />
-                Chartered in California, United States
-              </p>
-              <div className="flex space-x-4">
-                <Link
-                  href="#"
-                  className="text-muted-foreground hover:text-[#2F9A8A]"
-                >
-                  <span className="sr-only">LinkedIn</span>
-                  <svg
-                    className="w-6 h-6"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
-          </FadeIn>
-        </div>
-      </footer>
+      {/* Footer is rendered from RootLayout */}
     </div>
   );
 }

@@ -1,10 +1,9 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import {
   MotionWrapper,
-  HeroEntrance,
   StaggerContainer,
   SlideUp,
-  FadeIn,
 } from "@/components/EntranceProvider";
 
 export const metadata: Metadata = {
@@ -15,136 +14,9 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[#071A33] via-[#133B4F] to-[#2F9A8A] text-white py-20">
-        <div className="max-w-4xl mx-auto text-center px-6">
-          <StaggerContainer stagger={0.12} delay={0.2}>
-            <HeroEntrance translateY={32}>
-              <div className="mb-4">
-                <span className="inline-block bg-card/10 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full border border-white/20">
-                  Product in development — early access & preferential
-                  onboarding
-                </span>
-              </div>
-            </HeroEntrance>
-            <HeroEntrance translateY={40} delay={0.1}>
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-balance">
-                Time to rethink how you manage your business finances
-              </h1>
-            </HeroEntrance>
-            <HeroEntrance translateY={32} delay={0.15}>
-              <p className="text-xl mb-8 text-gray-200 max-w-3xl mx-auto text-pretty">
-                Automated invoice financing, risk protection, and actionable
-                insights — all in one digital-first platform that gets you cash
-                faster and keeps your books healthy.
-              </p>
-            </HeroEntrance>
-            <HeroEntrance translateY={24} delay={0.2}>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-[#2F9A8A] text-white px-8 py-3 rounded-full font-medium hover:bg-[#2F9A8A]/90 transition-colors">
-                  Join the waiting list
-                </button>
-                <button className="border border-white text-white px-8 py-3 rounded-full font-medium hover:bg-card hover:text-[#071A33] transition-colors">
-                  Request a demo
-                </button>
-              </div>
-            </HeroEntrance>
-          </StaggerContainer>
-        </div>
-
-        {/* Dashboard Mockups */}
-        <div className="max-w-6xl mx-auto mt-16 px-6">
-          <StaggerContainer
-            className="grid md:grid-cols-3 gap-8 items-center"
-            stagger={0.15}
-            delay={0.4}
-          >
-            <MotionWrapper preset="vivid" scale={0.95}>
-              <div className="bg-card rounded-lg shadow-2xl p-4 transform md:-rotate-3">
-                <div
-                  className="w-full h-40 bg-gray-100 rounded mb-3"
-                  role="img"
-                  aria-label="Dashboard mockup showing cashflow, risk scores and insurance status"
-                ></div>
-                <p className="text-gray-800 text-sm font-medium text-center">
-                  Cashflow Snapshot — See incoming invoices, available
-                  liquidity, and funding status at a glance.
-                </p>
-              </div>
-            </MotionWrapper>
-            <MotionWrapper preset="vivid" scale={0.95}>
-              <div className="bg-card rounded-lg shadow-2xl p-4 z-10">
-                <div
-                  className="w-full h-48 bg-gray-100 rounded mb-3"
-                  role="img"
-                  aria-label="Dashboard mockup showing cashflow, risk scores and insurance status"
-                ></div>
-                <p className="text-gray-800 text-sm font-medium text-center">
-                  Risk & Scoring — Real-time buyer risk scores and suggested
-                  credit limits.
-                </p>
-              </div>
-            </MotionWrapper>
-            <MotionWrapper preset="vivid" scale={0.95}>
-              <div className="bg-card rounded-lg shadow-2xl p-4 transform md:rotate-3">
-                <div
-                  className="w-full h-40 bg-gray-100 rounded mb-3"
-                  role="img"
-                  aria-label="Dashboard mockup showing cashflow, risk scores and insurance status"
-                ></div>
-                <p className="text-gray-800 text-sm font-medium text-center">
-                  Claims & Insurance — Track insured invoices and claims
-                  progress in one place.
-                </p>
-              </div>
-            </MotionWrapper>
-          </StaggerContainer>
-        </div>
-      </section>
-
-      {/* Trusted By Section */}
-      <section className="py-16 bg-muted/50">
-        <div className="max-w-6xl mx-auto text-center px-6">
-          <SlideUp className="mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">
-              Trusted by forward-thinking teams
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Partners and customers who rely on faster cash flow and smarter
-              underwriting.
-            </p>
-          </SlideUp>
-          <FadeIn delay={0.3}>
-            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-60 mb-6">
-              <div className="text-xl font-bold text-muted-foreground">
-                Alpha Bank
-              </div>
-              <div className="text-xl font-bold text-muted-foreground">
-                FinBridge Capital
-              </div>
-              <div className="text-xl font-bold text-muted-foreground">
-                MarketFlow
-              </div>
-              <div className="text-xl font-bold text-muted-foreground">
-                MicroFund
-              </div>
-              <div className="text-xl font-bold text-muted-foreground">
-                TradeSwap
-              </div>
-            </div>
-          </FadeIn>
-          <SlideUp delay={0.4}>
-            <p className="text-sm text-muted-foreground italic">
-              These are illustrative customers and partners. Real logos will be
-              shown once integrations are live.
-            </p>
-          </SlideUp>
-        </div>
-      </section>
-
+    <div className="min-h-screen text-white">
       {/* Our Founding Story */}
-      <section className="py-20 bg-background">
+      <section className="py-20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <MotionWrapper preset="scale" scale={0.9} delay={0.2}>
@@ -192,7 +64,7 @@ export default function AboutPage() {
                 </p>
               </SlideUp>
               <SlideUp>
-                <div className="bg-muted/50 border-l-4 border-[#2F9A8A] pl-6 py-4">
+                <div className="border-l-4 border-[#2F9A8A] pl-6 py-4">
                   <blockquote className="text-muted-foreground italic mb-2">
                     &ldquo;Access to liquidity shouldn&apos;t depend on legacy
                     credit scores. We built a system that evaluates businesses
@@ -209,7 +81,7 @@ export default function AboutPage() {
       </section>
 
       {/* What We Believe In */}
-      <section className="py-20 bg-muted/50">
+      <section className="py-20">
         <div className="max-w-6xl mx-auto px-6">
           <SlideUp className="text-center mb-16">
             <h2 className="text-3xl font-bold text-[#071A33] mb-4">
@@ -309,9 +181,9 @@ export default function AboutPage() {
           <SlideUp className="text-center" delay={0.5}>
             <p className="text-sm text-gray-500">
               Want to learn more about our approach?{" "}
-              <a href="#" className="text-[#2F9A8A] hover:underline">
+              <Link href="#" className="text-[#2F9A8A] hover:underline">
                 Visit the Knowledge Hub
-              </a>
+              </Link>
               .
             </p>
           </SlideUp>
@@ -319,7 +191,7 @@ export default function AboutPage() {
       </section>
 
       {/* Platform Section */}
-      <section className="py-20 bg-background">
+      <section className="py-20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <StaggerContainer stagger={0.1}>
@@ -449,7 +321,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-[#071A33] via-[#133B4F] to-[#2F9A8A] text-white">
+      <section className="py-20">
         <div className="max-w-4xl mx-auto text-center px-6">
           <StaggerContainer stagger={0.12} delay={0.2}>
             <SlideUp>
@@ -465,10 +337,13 @@ export default function AboutPage() {
             </SlideUp>
             <SlideUp>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-                <button className="bg-[#2F9A8A] text-white px-8 py-4 rounded-full font-medium text-lg hover:bg-[#2F9A8A]/90 transition-colors">
+                <Link
+                  href="/#early-access"
+                  className="px-8 py-4 rounded-full font-medium text-lg transition-all bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] text-white shadow-lg shadow-[#2F9A8A]/20 hover:shadow-[#2F9A8A]/30 hover:brightness-110"
+                >
                   Join the waiting list
-                </button>
-                <button className="border border-white text-white px-8 py-4 rounded-full font-medium text-lg hover:bg-card hover:text-[#071A33] transition-colors">
+                </Link>
+                <button className="px-8 py-4 rounded-full font-medium text-lg transition-all backdrop-blur-md bg-white/10 text-white border border-white/20 hover:bg-white/15 hover:border-white/30 shadow-lg shadow-black/10">
                   Contact sales
                 </button>
               </div>
@@ -476,9 +351,9 @@ export default function AboutPage() {
             <SlideUp>
               <p className="text-sm text-gray-300">
                 No spam — only product updates and priority access invitations.{" "}
-                <a href="#" className="underline hover:text-white">
+                <Link href="#" className="underline hover:text-white">
                   See our privacy policy
-                </a>
+                </Link>
                 .
               </p>
             </SlideUp>
@@ -486,70 +361,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-[#071A33] text-white py-12">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="text-2xl font-bold mb-4">Factora</div>
-              <p className="text-gray-400 text-sm">
-                Digital financing solutions for your business growth.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Product</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Invoice Factoring
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Invoice Financing
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Insurance
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Company</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li>
-                  <a href="/about" className="hover:text-white">
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a href="/pricing" className="hover:text-white">
-                    Pricing
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Contact
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Contact</h3>
-              <p className="text-sm text-gray-400">
-                hello@factora.com
-                <br />
-                +1 (555) 123-4567
-              </p>
-            </div>
-          </div>
-          <div className="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
-            © 2024 Factora. All rights reserved.
-          </div>
-        </div>
-      </footer>
+      {/* Footer is rendered from RootLayout */}
     </div>
   );
 }

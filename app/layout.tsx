@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 import { EntranceProvider } from "@/components/EntranceProvider";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Navigation } from "@/components/Navigation";
-
+import { Plasma } from "@/components/plasma";
+import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Your App",
   description: "A clean Next.js application",
@@ -16,24 +16,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning>
       <body className="antialiased">
-        <ThemeProvider defaultTheme="system" storageKey="site-theme">
-          <SmoothScrollProvider
-            config={{
-              lerp: 0.035, // Ultra smooth - very slow interpolation
-              maxDelta: 60, // Gentle acceleration limit
-              touchMultiplier: 1.0, // Smooth touch response
-              disableOnMobileWidth: 0, // Enable on all devices including mobile
-              lenisOptions: {
-                duration: 2.2, // Long duration for ultra buttery feel
-                wheelMultiplier: 0.6, // Very gentle wheel response
-                normalizeWheel: true,
-                smoothWheel: true,
-                smoothTouch: true, // Enable smooth touch on mobile
-              },
-            }}
-          >
+        <div className="fixed inset-0 z-0 bg-black/10">
+          <Plasma
+            color="#2F9A8A"
+            speed={1}
+            direction="reverse"
+            scale={2}
+            opacity={0.5}
+            mouseInteractive={true}
+          />
+        </div>
+        <div className="relative z-10">
+          <ThemeProvider defaultTheme="dark" storageKey="site-theme">
             <EntranceProvider
               config={{
                 preset: "subtle",
@@ -45,9 +41,10 @@ export default function RootLayout({
             >
               <Navigation />
               {children}
+              <Footer />
             </EntranceProvider>
-          </SmoothScrollProvider>
-        </ThemeProvider>
+          </ThemeProvider>
+        </div>
       </body>
     </html>
   );

@@ -75,6 +75,26 @@ export const createScaleUpVariant = (
   },
 });
 
+// Unblur variant using CSS filter for an "unblur" entrance
+export const createUnblurVariant = (
+  startBlurPx = 10,
+  duration = 1.0,
+  easing: number[] = [...EASINGS.easeOut]
+): Variants => ({
+  hidden: {
+    opacity: 0,
+    filter: `blur(${startBlurPx}px)`,
+  },
+  visible: {
+    opacity: 1,
+    filter: "blur(0px)",
+    transition: {
+      duration,
+      ease: easing as [number, number, number, number],
+    },
+  },
+});
+
 // Stagger container variants for groups of elements
 export const createStaggerContainer = (
   staggerChildren = 0.06,
@@ -110,6 +130,10 @@ export const ANIMATION_PRESETS = {
   scale: {
     variants: createScaleUpVariant(0.9, 1.2, [...EASINGS.easeOut]), // Doubled from 0.6 to 1.2
     stagger: 0.2, // Doubled from 0.1 to 0.2
+  },
+  unblur: {
+    variants: createUnblurVariant(10, 1.0, [...EASINGS.easeOut]),
+    stagger: 0.12,
   },
 } as const;
 

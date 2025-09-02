@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 import {
@@ -9,9 +10,9 @@ import {
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen text-white">
       {/* Hero Section */}
-      <section className="px-6 py-16 bg-gradient-to-br from-[#071A33] to-[#133B4F] text-white">
+      <section className="px-6 py-16 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <StaggerContainer stagger={0.15} delay={0.2}>
             <HeroEntrance translateY={32}>
@@ -28,12 +29,15 @@ export default function PricingPage() {
 
             <HeroEntrance translateY={20} delay={0.15}>
               <div className="flex justify-center space-x-4 mb-8">
-                <Button className="bg-[#2F9A8A] hover:bg-[#2F9A8A]/90 text-white px-8 py-3 rounded-full">
-                  Join the Waiting List
+                <Button
+                  asChild
+                  className="px-8 py-3 rounded-full font-medium transition-all bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] text-white shadow-lg shadow-[#2F9A8A]/20 hover:shadow-[#2F9A8A]/30 hover:brightness-110"
+                >
+                  <Link href="/#early-access">Join the Waiting List</Link>
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-white text-white hover:bg-background hover:text-[#071A33] px-8 py-3 rounded-full bg-transparent"
+                  className="px-8 py-3 rounded-full font-medium transition-all backdrop-blur-md bg-white/10 text-white border border-white/20 hover:bg-white/15 hover:border-white/30 shadow-lg shadow-black/10"
                 >
                   Contact Sales
                 </Button>
@@ -44,7 +48,7 @@ export default function PricingPage() {
       </section>
 
       {/* Pricing Cards */}
-      <section className="px-6 py-16 bg-background">
+      <section className="px-6 py-16">
         <div className="max-w-6xl mx-auto">
           <StaggerContainer
             className="grid lg:grid-cols-3 gap-8"
@@ -53,21 +57,19 @@ export default function PricingPage() {
           >
             {/* Starter Plan */}
             <MotionWrapper preset="vivid" scale={0.95}>
-              <div className="bg-background rounded-2xl border-2 border-border p-8 relative">
+              <div className="bg-black/20 backdrop-blur-md rounded-2xl border border-white/20 p-8 relative transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-black/20 group">
                 <div className="text-center mb-8">
                   <div className="bg-[#2F9A8A] text-white px-3 py-1 rounded-full text-sm font-medium inline-block mb-6">
                     Starter
                   </div>
-                  <div className="text-lg font-bold text-foreground mb-4">
+                  <div className="text-lg font-bold text-white mb-4">
                     Best for small businesses taking the first step into digital
                     financing
                   </div>
-                  <div className="text-3xl font-bold text-foreground mb-2">
+                  <div className="text-3xl font-bold text-white mb-2">
                     From 2%
                   </div>
-                  <div className="text-sm text-muted-foreground mb-4">
-                    per invoice
-                  </div>
+                  <div className="text-sm text-gray-300 mb-4">per invoice</div>
                 </div>
 
                 <div className="space-y-4 mb-8">
@@ -99,7 +101,7 @@ export default function PricingPage() {
 
                 <Button
                   variant="outline"
-                  className="w-full border-[#133B4F] text-[#133B4F] hover:bg-[#133B4F] hover:text-white bg-transparent"
+                  className="w-full border-[#133B4F] text-[#133B4F] hover:bg-[#133B4F] hover:text-white transition-all duration-300 group-hover:shadow-lg"
                 >
                   Join early access
                 </Button>
@@ -108,9 +110,9 @@ export default function PricingPage() {
 
             {/* Growth Plan */}
             <MotionWrapper preset="vivid" scale={0.95}>
-              <div className="bg-background rounded-2xl border-2 border-[#2F9A8A] p-8 relative transform scale-105 shadow-xl">
+              <div className="bg-black/20 backdrop-blur-md rounded-2xl border-2 border-[#2F9A8A] p-8 relative transform scale-105 shadow-xl transition-all duration-300 hover:transform hover:scale-110 hover:shadow-2xl hover:shadow-[#2F9A8A]/30 group">
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-[#2F9A8A] text-white px-4 py-2 rounded-full text-sm font-medium">
+                  <div className="bg-[#2F9A8A] text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg">
                     For scaling businesses
                   </div>
                 </div>
@@ -163,7 +165,7 @@ export default function PricingPage() {
                   </div>
                 </div>
 
-                <Button className="w-full bg-[#133B4F] hover:bg-[#071A33] text-white">
+                <Button className="w-full rounded-full font-medium transition-all bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] text-white shadow-lg shadow-[#2F9A8A]/20 hover:shadow-[#2F9A8A]/30 hover:brightness-110">
                   Request demo
                 </Button>
               </div>
@@ -171,7 +173,7 @@ export default function PricingPage() {
 
             {/* Enterprise Plan */}
             <MotionWrapper preset="vivid" scale={0.95}>
-              <div className="bg-background rounded-2xl border-2 border-border p-8 relative">
+              <div className="bg-black/20 backdrop-blur-md rounded-2xl border-2 border-border p-8 relative transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-black/20 group">
                 <div className="text-center mb-8">
                   <div className="bg-[#071A33] text-white px-3 py-1 rounded-full text-sm font-medium inline-block mb-6">
                     Enterprise
@@ -222,7 +224,7 @@ export default function PricingPage() {
 
                 <Button
                   variant="outline"
-                  className="w-full border-[#133B4F] text-[#133B4F] hover:bg-[#133B4F] hover:text-white bg-transparent"
+                  className="w-full rounded-full font-medium transition-all backdrop-blur-md bg-white/10 text-white border border-white/20 hover:bg-white/15 hover:border-white/30 shadow-lg shadow-black/10"
                 >
                   Contact sales
                 </Button>
@@ -233,7 +235,7 @@ export default function PricingPage() {
       </section>
 
       {/* Add-ons Section */}
-      <section className="px-6 py-16 bg-muted/50">
+      <section className="px-6 py-16">
         <div className="max-w-6xl mx-auto">
           <SlideUp className="text-center mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">
@@ -246,7 +248,7 @@ export default function PricingPage() {
             stagger={0.1}
           >
             <SlideUp>
-              <div className="bg-background rounded-xl p-6 shadow-sm border border-border">
+              <div className="rounded-xl p-6 shadow-sm border border-border">
                 <div className="text-center">
                   <div className="w-12 h-12 bg-[#2F9A8A] rounded-full flex items-center justify-center mx-auto mb-4">
                     <Check className="w-6 h-6 text-white" />
@@ -259,7 +261,7 @@ export default function PricingPage() {
             </SlideUp>
 
             <SlideUp>
-              <div className="bg-background rounded-xl p-6 shadow-sm border border-border">
+              <div className="rounded-xl p-6 shadow-sm border border-border">
                 <div className="text-center">
                   <div className="w-12 h-12 bg-[#133B4F] rounded-full flex items-center justify-center mx-auto mb-4">
                     <Check className="w-6 h-6 text-white" />
@@ -272,7 +274,7 @@ export default function PricingPage() {
             </SlideUp>
 
             <SlideUp>
-              <div className="bg-background rounded-xl p-6 shadow-sm border border-border">
+              <div className="rounded-xl p-6 shadow-sm border border-border">
                 <div className="text-center">
                   <div className="w-12 h-12 bg-[#071A33] rounded-full flex items-center justify-center mx-auto mb-4">
                     <Check className="w-6 h-6 text-white" />
@@ -285,7 +287,7 @@ export default function PricingPage() {
             </SlideUp>
 
             <SlideUp>
-              <div className="bg-background rounded-xl p-6 shadow-sm border border-border">
+              <div className="rounded-xl p-6 shadow-sm border border-border">
                 <div className="text-center">
                   <div className="w-12 h-12 bg-[#2F9A8A] rounded-full flex items-center justify-center mx-auto mb-4">
                     <Check className="w-6 h-6 text-white" />
@@ -301,7 +303,7 @@ export default function PricingPage() {
           <SlideUp className="text-center mt-8">
             <Button
               variant="outline"
-              className="border-[#133B4F] text-[#133B4F] hover:bg-[#133B4F] hover:text-white bg-transparent px-8 py-3"
+              className="px-8 py-3 rounded-full font-medium transition-all backdrop-blur-md bg-white/10 text-white border border-white/20 hover:bg-white/15 hover:border-white/30 shadow-lg shadow-black/10"
             >
               Explore add-ons
             </Button>
@@ -310,7 +312,7 @@ export default function PricingPage() {
       </section>
 
       {/* Trust Section */}
-      <section className="px-6 py-16 bg-background">
+      <section className="px-6 py-16">
         <div className="max-w-4xl mx-auto text-center">
           <SlideUp>
             <h2 className="text-3xl font-bold text-foreground mb-8">
@@ -356,7 +358,7 @@ export default function PricingPage() {
       </section>
 
       {/* Early Access Section */}
-      <section className="px-6 py-16 bg-gradient-to-br from-[#071A33] to-[#133B4F] text-white">
+      <section className="px-6 py-16 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <StaggerContainer stagger={0.15} delay={0.2}>
             <SlideUp>
@@ -373,12 +375,15 @@ export default function PricingPage() {
 
             <SlideUp>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button className="bg-[#2F9A8A] hover:bg-[#2F9A8A]/90 text-white px-8 py-3 rounded-full">
-                  Join the Waiting List
+                <Button
+                  asChild
+                  className="px-8 py-3 rounded-full font-medium transition-all bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] text-white shadow-lg shadow-[#2F9A8A]/20 hover:shadow-[#2F9A8A]/30 hover:brightness-110"
+                >
+                  <Link href="/#early-access">Join the Waiting List</Link>
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-white text-white hover:bg-background hover:text-[#071A33] px-8 py-3 rounded-full bg-transparent"
+                  className="px-8 py-3 rounded-full font-medium transition-all backdrop-blur-md bg-white/10 text-white border border-white/20 hover:bg-white/15 hover:border-white/30 shadow-lg shadow-black/10"
                 >
                   Contact Us
                 </Button>
@@ -389,7 +394,7 @@ export default function PricingPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="px-6 py-16 bg-background">
+      <section className="px-6 py-16">
         <div className="max-w-4xl mx-auto">
           <SlideUp className="text-center mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">
@@ -449,7 +454,7 @@ export default function PricingPage() {
       </section>
 
       {/* Newsletter */}
-      <section className="px-6 py-12 bg-background">
+      <section className="px-6 py-12">
         <div className="max-w-4xl mx-auto">
           <SlideUp>
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
@@ -473,86 +478,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-[#071A33] text-white px-6 py-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <div className="text-xl font-semibold mb-4">Factora</div>
-              <p className="text-sm text-gray-300 mb-4">
-                Factora Empowering Your Business
-              </p>
-              <p className="text-sm text-gray-300">
-                Delfyn helps B2B companies get paid faster.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Company</h4>
-              <div className="space-y-2 text-sm text-gray-300">
-                <div>
-                  <a href="#" className="hover:text-white">
-                    About
-                  </a>
-                </div>
-                <div>
-                  <a href="#" className="hover:text-white">
-                    Contact
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Resources</h4>
-              <div className="space-y-2 text-sm text-gray-300">
-                <div>
-                  <a href="#" className="hover:text-white">
-                    Pricing
-                  </a>
-                </div>
-                <div>
-                  <a href="#" className="hover:text-white">
-                    Integrations
-                  </a>
-                </div>
-                <div>
-                  <a href="#" className="hover:text-white">
-                    Blog
-                  </a>
-                </div>
-                <div>
-                  <a href="#" className="hover:text-white">
-                    Ask for Demo
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Legals</h4>
-              <div className="space-y-2 text-sm text-gray-300">
-                <div>
-                  <a href="#" className="hover:text-white">
-                    Privacy Policy
-                  </a>
-                </div>
-                <div>
-                  <a href="#" className="hover:text-white">
-                    Terms
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-700 pt-8 text-center">
-            <p className="text-xs text-gray-400">
-              © 2024 Factora. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      {/* Footer is rendered from RootLayout */}
     </div>
   );
 }

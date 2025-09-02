@@ -22,74 +22,39 @@ type ThemeProviderProps = {
 
 export function ThemeProvider({
   children,
-  defaultTheme = "system",
-  storageKey = "theme",
-}: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(defaultTheme);
-  const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">("light");
+}: // defaultTheme: _defaultTheme = "dark",
+// storageKey: _storageKey = "theme",
+ThemeProviderProps) {
+  const [theme, _setTheme] = useState<Theme>("dark");
+  const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">("dark");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Get theme from localStorage on mount
-    try {
-      const storedTheme = localStorage.getItem(storageKey) as Theme;
-      if (storedTheme && ["light", "dark", "system"].includes(storedTheme)) {
-        setTheme(storedTheme);
-      }
-    } catch (error) {
-      console.error("Failed to get theme from localStorage:", error);
-    }
-  }, [storageKey]);
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
+    if (!mounted) return;
+
     const root = window.document.documentElement;
-
-    // Remove existing theme classes
     root.classList.remove("light", "dark");
+    root.classList.add("dark");
+    setResolvedTheme("dark");
+  }, [mounted]);
 
-    let effectiveTheme: "light" | "dark";
-
-    if (theme === "system") {
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-        .matches
-        ? "dark"
-        : "light";
-      effectiveTheme = systemTheme;
-    } else {
-      effectiveTheme = theme;
+  const setTheme = () => {
+    // Intentionally force dark mode regardless of input
+    _setTheme("dark");
+    if (typeof window !== "undefined") {
+      const root = window.document.documentElement;
+      root.classList.remove("light", "dark");
+      root.classList.add("dark");
     }
-
-    setResolvedTheme(effectiveTheme);
-    root.classList.add(effectiveTheme);
-
-    // Store theme in localStorage
-    try {
-      localStorage.setItem(storageKey, theme);
-    } catch (error) {
-      console.error("Failed to save theme to localStorage:", error);
-    }
-  }, [theme, storageKey]);
-
-  useEffect(() => {
-    // Listen for system theme changes
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
-    const handleChange = () => {
-      if (theme === "system") {
-        const systemTheme = mediaQuery.matches ? "dark" : "light";
-        setResolvedTheme(systemTheme);
-
-        const root = window.document.documentElement;
-        root.classList.remove("light", "dark");
-        root.classList.add(systemTheme);
-      }
-    };
-
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
-  }, [theme]);
+    setResolvedTheme("dark");
+  };
 
   const value = {
-    theme,
+    theme: theme,
     setTheme,
     resolvedTheme,
   };
