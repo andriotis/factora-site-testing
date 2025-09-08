@@ -265,7 +265,7 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       form_company: "Company",
       form_company_placeholder: "Company name",
       form_role: "Role",
-      form_role_placeholder: "CEO / CFO / Ops manager",
+      form_role_placeholder: "CEO / CTO / Ops manager",
       form_cta: "Book a demo",
       form_disclaimer:
         "We'll only use your email for product updates. We won't share your data.",
@@ -469,9 +469,9 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
     },
     nav: {
       solutions: "Λύσεις",
-      solutions_core: "Πυρήνας",
+      solutions_core: "Πλατφόρμα",
       solutions_smes: "Μικρομεσαίες Επιχειρήσεις",
-      solutions_banking: "Χρηματοπιστωτικοί Φορείς",
+      solutions_banking: "Χρηματοπιστωτικά Ιδρύματα",
       about: "Σχετικά",
       careers: "Καριέρα",
       contact: "Επικοινωνία",
@@ -533,7 +533,7 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       form_company: "Εταιρεία",
       form_company_placeholder: "Όνομα εταιρείας",
       form_role: "Ρόλος",
-      form_role_placeholder: "CEO / CFO / Υπεύθυνος λειτουργιών",
+      form_role_placeholder: "CEO / CTO / Γενικός υπεύθυνος",
       form_cta: "Κλείστε demo",
       form_disclaimer:
         "Θα χρησιμοποιήσουμε το email μόνο για ενημερώσεις προϊόντος. Δεν θα μοιραστούμε τα δεδομένα σας.",
