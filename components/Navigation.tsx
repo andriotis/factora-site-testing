@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { MotionWrapper } from "@/components/EntranceProvider";
 import Image from "next/image";
@@ -14,6 +14,112 @@ export function Navigation() {
   const [isSolutionsDropdownOpen, setIsSolutionsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { t } = useI18n();
+  const [isOverLightBackground, setIsOverLightBackground] = useState(false);
+  const rafIdRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const header = document.querySelector(
+      "header[data-site-header]"
+    ) as HTMLElement | null;
+    if (!header) return;
+
+    const parseRgbString = (rgbString: string) => {
+      const match = rgbString.match(/rgba?\(([^)]+)\)/i);
+      if (!match) return null;
+      const parts = match[1].split(",").map((p) => p.trim());
+      const [r, g, b, a] = [
+        Number(parts[0]),
+        Number(parts[1]),
+        Number(parts[2]),
+        parts[3] !== undefined ? Number(parts[3]) : 1,
+      ];
+      if ([r, g, b].some((n) => Number.isNaN(n))) return null;
+      return { r, g, b, a: Number.isNaN(a) ? 1 : a };
+    };
+
+    const isColorPerceptuallyLight = (r: number, g: number, b: number) => {
+      const toLinear = (c: number) => {
+        const cs = c / 255;
+        return cs <= 0.03928 ? cs / 12.92 : Math.pow((cs + 0.055) / 1.055, 2.4);
+      };
+      const L =
+        0.2126 * toLinear(r) + 0.7152 * toLinear(g) + 0.0722 * toLinear(b);
+      return L > 0.5;
+    };
+
+    const compute = () => {
+      const headerRect = header.getBoundingClientRect();
+      const testY = headerRect.top + headerRect.height / 2;
+
+      // Sample the element under the header midpoint (works on mobile too)
+      const sampleX = Math.min(
+        Math.max(16, window.innerWidth / 2),
+        window.innerWidth - 16
+      );
+      let node = document.elementFromPoint(
+        sampleX,
+        testY
+      ) as HTMLElement | null;
+      let foundLightFromComputed = false;
+      const maxHops = 10;
+      let hops = 0;
+      while (node && hops < maxHops) {
+        const style = getComputedStyle(node);
+        const bg = style.backgroundColor;
+        const parsed = bg ? parseRgbString(bg) : null;
+        if (parsed && parsed.a > 0) {
+          foundLightFromComputed = isColorPerceptuallyLight(
+            parsed.r,
+            parsed.g,
+            parsed.b
+          );
+          break;
+        }
+        node = node.parentElement;
+        hops += 1;
+      }
+
+      if (!foundLightFromComputed) {
+        const lightSelectors = [
+          ".bg-white",
+          ".bg-gray-50",
+          ".bg-gray-100",
+          "[data-light-bg]",
+        ].join(",");
+
+        const candidates = Array.from(
+          document.querySelectorAll(lightSelectors)
+        ) as HTMLElement[];
+
+        const overLightByHeuristics = candidates.some((el) => {
+          const r = el.getBoundingClientRect();
+          const verticallyInside = r.top <= testY && r.bottom >= testY;
+          const horizontallyOverlaps = r.left <= 0 && r.right >= 0;
+          return verticallyInside && horizontallyOverlaps;
+        });
+
+        setIsOverLightBackground(overLightByHeuristics);
+      } else {
+        setIsOverLightBackground(true);
+      }
+    };
+
+    const onScrollOrResize = () => {
+      if (rafIdRef.current != null) cancelAnimationFrame(rafIdRef.current);
+      rafIdRef.current = requestAnimationFrame(compute);
+    };
+
+    // Initial compute and listeners
+    compute();
+    window.addEventListener("scroll", onScrollOrResize, { passive: true });
+    window.addEventListener("resize", onScrollOrResize);
+
+    return () => {
+      if (rafIdRef.current != null) cancelAnimationFrame(rafIdRef.current);
+      window.removeEventListener("scroll", onScrollOrResize);
+      window.removeEventListener("resize", onScrollOrResize);
+    };
+  }, [pathname]);
 
   type NavItem = {
     href?: string;
@@ -38,19 +144,25 @@ export function Navigation() {
     { href: "/contact", label: t.nav.contact },
   ];
 
+  const effectiveOverLight = isOverLightBackground && !isMobileMenuOpen;
+
   return (
     <>
       {/* Sticky Navigation Header */}
-      <header className="fixed top-0 left-0 right-0 text-white px-6 py-4 z-50 shadow-lg backdrop-blur-md bg-black/20 border-b border-white/10">
+      <header
+        data-site-header
+        className="fixed top-0 left-0 right-0 text-white px-6 py-4 z-50 shadow-lg backdrop-blur-md bg-black/20 border-b border-white/10"
+      >
         <MotionWrapper preset="fade" duration={0.8}>
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             <Link href="/" className="flex items-center">
               <Image
-                src="/logo.png"
+                src={effectiveOverLight ? "/logo-dark.svg" : "/logo-light.svg"}
                 alt="Factora Logo"
                 width={357}
                 height={249}
-                className="h-16 w-auto"
+                className="h-16 w-auto transition-opacity duration-200"
+                priority
               />
             </Link>
 

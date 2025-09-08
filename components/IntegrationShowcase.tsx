@@ -98,9 +98,12 @@ export default function IntegrationShowcase() {
     useState<Integration | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isUserInteracting, setIsUserInteracting] = useState(false);
+  const [revealedBubbles, setRevealedBubbles] = useState<Set<string>>(
+    new Set()
+  );
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  const CYCLE_DURATION = 2000; // 2 seconds per integration
+  const CYCLE_DURATION = 1000; // 2 seconds per integration
 
   // Auto-cycling effect
   useEffect(() => {
@@ -128,6 +131,17 @@ export default function IntegrationShowcase() {
       setSelectedIntegration(integrations[currentIndex]);
     }
   }, [currentIndex, isUserInteracting, integrations]);
+
+  // Mark the currently selected integration as revealed so its bubble stays visible
+  useEffect(() => {
+    if (selectedIntegration) {
+      setRevealedBubbles((prev) => {
+        const next = new Set(prev);
+        next.add(selectedIntegration.id);
+        return next;
+      });
+    }
+  }, [selectedIntegration]);
 
   // Handle user interaction
   const handleIntegrationHover = (integration: Integration) => {
@@ -163,7 +177,7 @@ export default function IntegrationShowcase() {
             )}
           >
             <Image
-              src="/logo.png"
+              src="/logo-dark.svg"
               alt="Factora"
               width={80}
               height={80}
@@ -215,7 +229,7 @@ export default function IntegrationShowcase() {
                   )}
                 >
                   <Image
-                    src="/logo.png"
+                    src="/logo-dark.svg"
                     alt="Factora"
                     width={80}
                     height={80}
@@ -271,8 +285,12 @@ export default function IntegrationShowcase() {
           <div className="hidden sm:block overflow-visible">
             {/* Left side icons */}
             <div className="absolute left-0 top-1/2 -translate-y-1/2 flex flex-col space-y-4 sm:space-y-6 overflow-visible">
-              {integrations.slice(0, 2).map((integration) => {
+              {integrations.slice(0, 2).map((integration, index) => {
                 const isActive = selectedIntegration?.id === integration.id;
+                const verticalOffsetClass =
+                  index === 0
+                    ? "top-1/2 -translate-y-[85%]"
+                    : "top-1/2 -translate-y-[15%]";
                 return (
                   <div
                     key={integration.id}
@@ -284,9 +302,22 @@ export default function IntegrationShowcase() {
                       onMouseLeave={handleMouseLeave}
                       isHovered={isActive}
                     />
-                    {isActive && (
-                      <div className="absolute right-[125%] sm:right-[135%] lg:right-[145%] top-1/2 -translate-y-1/2 w-64 sm:w-72 text-center bg-gray-50 p-6 rounded-lg shadow-xl border border-gray-200 transition-all duration-300 ease-in-out hover:scale-105 hover:bg-white hover:shadow-2xl hover:border-[#2F9A8A]/30 hover:-translate-y-1 animate-in fade-in zoom-in-95">
-                        <h3 className="text-xl font-semibold text-gray-900 mb-3 transition-colors duration-300 hover:text-[#2F9A8A]">
+                    {revealedBubbles.has(integration.id) && (
+                      <div
+                        className={cn(
+                          "absolute w-64 sm:w-72 text-center bg-gray-50 p-6 rounded-lg shadow-xl border border-gray-200 transition-all duration-300 ease-in-out hover:scale-105 hover:bg-white hover:shadow-2xl hover:border-[#2F9A8A]/30 animate-in fade-in zoom-in-95",
+                          "right-[155%] sm:right-[165%] lg:right-[175%]",
+                          verticalOffsetClass,
+                          isActive &&
+                            "scale-105 bg-white shadow-2xl border-[#2F9A8A]/30"
+                        )}
+                      >
+                        <h3
+                          className={cn(
+                            "text-xl font-semibold text-gray-900 mb-3 transition-colors duration-300 hover:text-[#2F9A8A]",
+                            isActive && "text-[#2F9A8A]"
+                          )}
+                        >
                           {integration.name}
                         </h3>
                         <p className="text-gray-600 leading-relaxed text-sm">
@@ -301,8 +332,12 @@ export default function IntegrationShowcase() {
 
             {/* Right side icons */}
             <div className="absolute right-0 top-1/2 -translate-y-1/2 flex flex-col space-y-4 sm:space-y-6 overflow-visible">
-              {integrations.slice(2, 4).map((integration) => {
+              {integrations.slice(2, 4).map((integration, index) => {
                 const isActive = selectedIntegration?.id === integration.id;
+                const verticalOffsetClass =
+                  index === 0
+                    ? "top-1/2 -translate-y-[85%]"
+                    : "top-1/2 -translate-y-[15%]";
                 return (
                   <div
                     key={integration.id}
@@ -314,9 +349,22 @@ export default function IntegrationShowcase() {
                       onMouseLeave={handleMouseLeave}
                       isHovered={isActive}
                     />
-                    {isActive && (
-                      <div className="absolute left-[125%] sm:left-[135%] lg:left-[145%] top-1/2 -translate-y-1/2 w-64 sm:w-72 text-center bg-gray-50 p-6 rounded-lg shadow-xl border border-gray-200 transition-all duration-300 ease-in-out hover:scale-105 hover:bg-white hover:shadow-2xl hover:border-[#2F9A8A]/30 hover:-translate-y-1 animate-in fade-in zoom-in-95">
-                        <h3 className="text-xl font-semibold text-gray-900 mb-3 transition-colors duration-300 hover:text-[#2F9A8A]">
+                    {revealedBubbles.has(integration.id) && (
+                      <div
+                        className={cn(
+                          "absolute w-64 sm:w-72 text-center bg-gray-50 p-6 rounded-lg shadow-xl border border-gray-200 transition-all duration-300 ease-in-out hover:scale-105 hover:bg-white hover:shadow-2xl hover:border-[#2F9A8A]/30 animate-in fade-in zoom-in-95",
+                          "left-[155%] sm:left-[165%] lg:left-[175%]",
+                          verticalOffsetClass,
+                          isActive &&
+                            "scale-105 bg-white shadow-2xl border-[#2F9A8A]/30"
+                        )}
+                      >
+                        <h3
+                          className={cn(
+                            "text-xl font-semibold text-gray-900 mb-3 transition-colors duration-300 hover:text-[#2F9A8A]",
+                            isActive && "text-[#2F9A8A]"
+                          )}
+                        >
                           {integration.name}
                         </h3>
                         <p className="text-gray-600 leading-relaxed text-sm">

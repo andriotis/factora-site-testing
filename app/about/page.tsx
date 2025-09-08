@@ -23,41 +23,30 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen text-white">
       {/* Our Founding Story */}
-      <section className="px-6 py-16 md:py-20 md:min-h-[700px] flex items-start md:items-center w-full">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start md:items-center">
-            <div className="space-y-4">
-              <StaggerContainer stagger={0.1}>
-                <HeroEntrance translateY={24}>
-                  <h2 className="text-3xl font-bold text-foreground mb-6">
-                    {t.about.why_started_title}
-                  </h2>
-                </HeroEntrance>
-                <HeroEntrance translateY={20} delay={0.12}>
-                  <p className="text-gray-300 mb-6 leading-relaxed">
-                    {t.about.why_started_para1}
-                  </p>
-                </HeroEntrance>
-                <HeroEntrance translateY={20} delay={0.24}>
-                  <p className="text-gray-300 mb-8 leading-relaxed">
-                    {t.about.why_started_para2}
-                  </p>
-                </HeroEntrance>
-              </StaggerContainer>
-            </div>
-            <div className="mt-6 md:mt-0">
-              <HeroEntrance translateY={20} delay={0.36}>
-                <div className="border-l-4 border-[#2F9A8A] pl-6 py-4">
-                  <blockquote className="text-muted-foreground italic mb-2">
-                    &ldquo;{t.about.quote}&rdquo;
-                  </blockquote>
-                  <cite className="text-sm text-muted-foreground font-medium">
-                    {t.about.quote_author}
-                  </cite>
-                </div>
-              </HeroEntrance>
-            </div>
-          </div>
+      <section className="px-6 py-16 md:py-24 w-full">
+        <div className="max-w-3xl mx-auto text-center">
+          <StaggerContainer stagger={0.1}>
+            <HeroEntrance translateY={24}>
+              <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+                {t.about.why_started_title}
+              </h1>
+            </HeroEntrance>
+            <HeroEntrance translateY={20} delay={0.12}>
+              <p className="text-gray-300 mb-6 leading-relaxed">
+                {t.about.why_started_para1}
+              </p>
+            </HeroEntrance>
+            <HeroEntrance translateY={20} delay={0.2}>
+              <p className="text-gray-300 mb-6 leading-relaxed">
+                {t.about.why_started_para2}
+              </p>
+            </HeroEntrance>
+            <HeroEntrance translateY={20} delay={0.28}>
+              <p className="text-gray-300 leading-relaxed">
+                {t.about.why_started_para3}
+              </p>
+            </HeroEntrance>
+          </StaggerContainer>
         </div>
       </section>
 

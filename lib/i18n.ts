@@ -80,8 +80,7 @@ export type TranslationDictionary = {
     why_started_title: string;
     why_started_para1: string;
     why_started_para2: string;
-    quote: string;
-    quote_author: string;
+    why_started_para3: string;
     values_title: string;
     values_subtitle: string;
     fair_access_title: string;
@@ -168,8 +167,7 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
   en: {
     meta: {
       title: "Factora",
-      description:
-        "Your Trusted AI Financial Assistant for Smarter B2B Payments",
+      description: "Your Trusted AI Financial Copilot for Smarter B2B Payments",
     },
     nav: {
       solutions: "Solutions",
@@ -187,13 +185,15 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
         "<strong>Prevent</strong> risky buyers. <strong>Get paid</strong> faster. Increase <strong>conversion rates</strong> with safer credit.",
       hero_cta: "Book a demo",
       trusted_by: "SUPPORTED BY",
-      integrations_title: "Connect Factora to the Tools You Use Every Day",
+      integrations_title:
+        "The Plug-and-Play Working-Capital Management & Financing Platform",
       integrations_subtitle:
-        "Plug-and-play integrations with your ERP, accounting, banking, and payment systems for real-time sync—no manual uploads, no complex setup.",
+        "Factora integrates into the finance and accounting stack you use every day.",
       smes_chip: "For SMEs",
-      smes_title: "We help SMEs offer safer credit terms and get paid earlier",
+      smes_title:
+        "We help businesses offer safer credit terms and get paid earlier",
       smes_subtitle:
-        "Transform your cash flow with instant financing, smart credit decisions, and seamless integrations.",
+        "Optimize your cash flow with instant financing, smart credit decisions, and seamless integrations.",
       smes_problem_title: "Problem we solve:",
       smes_problem_text: "Late B2B payments choke growth and burn ops time.",
       smes_point_1_title: "Get paid faster",
@@ -204,18 +204,18 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
         "Identify reliable customers, extend credit terms with confidence, boost sales.",
       smes_point_3_title: "Seamless integrations",
       smes_point_3_desc:
-        "Built into your existing tools. Embedded directly in your ERP and accounting software for effortless workflows.",
+        "Built into your existing tools. Embedded directly in your accounting and finance stack for effortless workflows.",
       bankers_chip: "For Financial Institutions",
       bankers_title: "Launch SME Financing, Fast",
       bankers_subtitle:
-        "White-label-ready, fully automated, digital invoice-financing platform with direct integration into your systems.",
+        "White label-ready, fully automated, digital invoice-financing platform with direct integration into your systems.",
       bankers_problem_title: "Problem we solve:",
       bankers_problem_text:
         "Low‑ticket SME deals are unprofitable on legacy stacks.",
       bankers_point_1_title:
         "Finance qualified transactions, not blind credit risk",
       bankers_point_1_desc:
-        "White-label-ready, fully automated, digital invoice-financing platform with direct integration into your systems.",
+        "Protect against defaults with invoice-level underwriting and validated buyer–seller status.",
       bankers_point_2_title: "Generate leads",
       bankers_point_2_desc: "Unlock high-quality, finance-seeking businesses.",
       bankers_point_3_title: "Document collection",
@@ -274,26 +274,25 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
         "About Factora — Our mission, values & platform for SME financing",
       meta_description:
         "Learn how Factora builds plug-and-play digital infrastructure for invoice factoring, financing and insurance — so banks and marketplaces can reliably fund small businesses.",
-      why_started_title: "Why we started Factora",
+      why_started_title:
+        "Built by creators for merchants & Financial Institutions",
       why_started_para1:
-        "Small and medium-sized enterprises (SMEs) are the backbone of every economy and a fundamental pillar of global GDP, yet cash-flow fragility is their constant enemy. Across the world, the same pattern repeats: teams doing everything right, building products, winning customers, running tight operations, and yet, they get knocked down by a domino effect of late customer payments and write-offs. Denied by viable bank financing and excluded from specialty working-capital funds, many businesses lose momentum, customers, and in many cases are forced to shut their doors or even file for bankruptcy.",
+        "Founded in 2025 in Greece, Factora was born with a clear vision: fix the liquidity gap European SMEs face due to B2B credit and late customer payments. For too long, flexible terms and fast funding have been reserved for large enterprises. Smaller firms carry the risk without the tools. Across markets the pattern repeats—strong operators held back by a domino effect of late invoices, write-offs, and scarce credit.",
       why_started_para2:
-        "Factora was built to help businesses do what they love and grow as they deserve. Our platform brings together automated underwriting, safer data-driven credit terms, dynamic invoice discounting, and one-click financing to accelerate time to cash. Smart reminders and auto-reconciliation cut DSO, while an AI copilot surfaces early warnings and practical cash flow management advice. Our mission is to prevent bad buyers from damaging the P&L and to democratize access to bank working-capital finance.",
-      quote:
-        "Every SME deserves respect for its contribution to society and the economy, and a more democratic financial system should support it. Our vision is to bridge the liquidity gap European SMEs face—caused by late payments and defaults—and to offer a tailored, trusted AI financial assistant to help them navigate this strenuous environment. We believe in the strength and importance of every business and we stand by their side with solutions that foster resilience and growth.",
-      quote_author: "— Co-founder & CEO",
+        "By removing the barriers of manual underwriting, time-consuming credit checks, paper-based processes, and old-fashioned collections, Factora makes it possible for businesses of every size to trade on fair terms.",
+      why_started_para3:
+        "Our team builds with a simple ethos: fair access, trust by design, and radical simplicity. We’re here to change how B2B payments flow across the supply chain and to democratize SME access to bank-grade working-capital finance",
       values_title: "Our values — how we build and serve",
-      values_subtitle:
-        "Values that guide every product decision and partnership.",
+      values_subtitle: "What guides our work and relationships",
       fair_access_title: "Fair Access",
       fair_access_desc:
         "Every viable SME deserves bank-backed working capital. We use transparent, data-driven underwriting based on reality—not bureaucracy or outdated methods—so every business is assessed fairly.",
-      trust_title: "Trust by Design",
+      trust_title: "Trust",
       trust_desc:
         "Security, privacy, and compliance are priorities. Your business financial data are handled with rigorous protection and responsibility. Credit decisions are explainable and auditable, so owners, accountants, and banking partners can rely on them.",
       simplicity_title: "Simplicity",
       simplicity_desc:
-        "Less manual processes, bureaucracy and stakeholders for working capital management and financing. Our solution integrates seamlessly with your existing tools, ERP and accounting software, offering our services with no friction.",
+        "Less manual processes, bureaucracy and stakeholders for working capital management and financing. Our solution integrates seamlessly with your existing tools, accounting and finance stack, offering our services with no friction.",
     },
     careers: {
       meta_title: "Careers at Factora — Build the Future of B2B Credit",
@@ -383,7 +382,7 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
     meta: {
       title: "Factora",
       description:
-        "Ο αξιόπιστος AI οικονομικός βοηθός για πιο έξυπνες B2B πληρωμές",
+        "Ο Έμπιστος AI Οικονομικός Βοηθός σας για Έξυπνες B2B Πληρωμές",
     },
     nav: {
       solutions: "Λύσεις",
@@ -397,46 +396,46 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
     },
     landing: {
       hero_title:
-        "Ο έμπιστος AI Οικονομικός Βοηθός σας για έξυπνες B2B πληρωμές για την επιχείρησή σας",
+        "Ο έμπιστος AI Οικονομικός Βοηθός σας για έξυπνες B2B πληρωμές",
       hero_subtitle:
-        "<strong>Προστατευτείτε</strong> από κακοπληρωτές. <strong>Εισπράξτε</strong> τα ανοιχτά τιμολόγια πιο γρήγορα. Αυξήστε τις <strong>εμπορικές συμφωνίες</strong> σας με ασφαλέστερη πίστωση.",
+        "Προστατευτείτε από <strong>κακοπληρωτές</strong>. <strong>Εισπράξτε</strong> πιο γρήγορα. Αυξήστε τις εμπορικές <strong>συμφωνίες</strong> σας με ασφαλή πίστωση.",
       hero_cta: "Κλείστε demo",
       trusted_by: "ΜΕ ΤΗΝ ΥΠΟΣΤΗΡΙΞΗ ΤΩΝ",
       integrations_title:
-        "Συνδέστε το Factora με τα εργαλεία που χρησιμοποιείτε καθημερινά",
+        "Η «όλα-σε-ένα» πλατφόρμα για διαχείριση & χρηματοδότηση κεφαλαίου κίνησης",
       integrations_subtitle:
-        "Έτοιμες ενσωματώσεις με ERP, λογιστική, τραπεζικά και συστήματα πληρωμών για συγχρονισμό σε πραγματικό χρόνο — χωρίς χειροκίνητες εισαγωγές, χωρίς πολύπλοκη ρύθμιση.",
+        "Η Factora ενσωματώνεται εύκολα στα υφιστάμενα λογιστικά και συναλλακτικά εργαλεία που χρησιμοποιείτε καθημερινά.",
       smes_chip: "Για Μικρομεσαίες Επιχειρήσεις",
       smes_title:
-        "Βοηθάμε τις ΜΜΕ να προσφέρουν ασφαλέστερους όρους πίστωσης και να εισπράττουν νωρίτερα",
+        "Βοηθάμε τις επιχειρήσεις να προσφέρουν ασφαλέστερους όρους πίστωσης και να εισπράττουν νωρίτερα",
       smes_subtitle:
-        "Μεταμορφώστε το κεφάλαιο κίνησής σας με άμεση χρηματοδότηση, έξυπνες πιστοληπτικές αποφάσεις και απρόσκοπτες ενσωματώσεις.",
+        "Βελτιστοποιήστε τη ρευστότητά σας με άμεση χρηματοδότηση, έξυπνες αποφάσεις παροχής πίστωσης στους πελάτες σας και εύκολες διασυνδέσεις με τα υφιστάμενα συστήματά σας.",
       smes_problem_title: "Το πρόβλημα που λύνουμε:",
       smes_problem_text:
         "Οι καθυστερημένες B2B πληρωμές πνίγουν την ανάπτυξη και καίνε χρόνο λειτουργιών.",
       smes_point_1_title: "Εισπράξτε πιο γρήγορα",
       smes_point_1_desc:
-        "Μειώστε τον χρόνο είσπραξης των ανοικτών τιμολογίων με ελκυστικές εκπτώσεις έγκαιρης πληρωμής προς τους πελάτες σας. Πρόσβαση σε άμεση χρηματοδότηση κεφαλαίου κίνησης με προεξόφληση τιμολογίων (factoring) «με ένα κλικ» μέσω των συνεργατών μας.",
+        "Επιταχύνετε τον χρόνο είσπραξης των ανοικτών τιμολογίων με ελκυστικές εκπτώσεις για έγκαιρη πληρωμή. Πρόσβαση σε άμεση χρηματοδότηση κεφαλαίου κίνησης με προεξόφληση τιμολογίων  «με ένα κλικ».",
       smes_point_2_title: "Αυτόματη πιστοληπτική αξιολόγηση αγοραστών",
       smes_point_2_desc:
         "Αναγνωρίστε τους αξιόπιστους πελάτες, επεκτείνετε τους όρους πίστωσης με ασφάλεια, αυξήστε τις πωλήσεις.",
       smes_point_3_title: "Εύκολη διασύνδεση",
       smes_point_3_desc:
-        "Προσαρμοσμένο στα υπάρχοντα εργαλεία σας. Ενσωμάτωση απευθείας στο ERP/λογιστικό λογισμικό της επιχείρησής σας για αυτοματοποιημένες και απλές ροές εργασίας.",
+        "Προσαρμοσμένο στα υφιστάμενα λογιστικά και συναλλακτικά εργαλείας σας για αυτοματοποιημένη και ομαλή πρόσβαση στις υπηρεσίες μας.",
       bankers_chip: "Για Χρηματοπιστωτικά Ιδρύματα",
-      bankers_title: "Λανσάρετε χρηματοδότηση ΜΜΕ, γρήγορα",
+      bankers_title: "Λανσάρετε χρηματοδότηση επιχειρήσεων, γρήγορα",
       bankers_subtitle:
         "White-label, πλήρως ψηφιακή και αυτοματοποιημένη πλατφόρμα προεξόφλησης τιμολογίων με διαφανή/ελέγξιμα μοντέλα, δικλείδες επιπέδου τράπεζας και άμεση διασύνδεση με τα συστήματά σας.",
       bankers_problem_title: "Το πρόβλημα που λύνουμε:",
       bankers_problem_text:
         "Οι μικρές συναλλαγές ΜΜΕ είναι ασύμφορες σε παλαιά συστήματα.",
       bankers_point_1_title:
-        "Χρηματοδοτήστε ποιοτικές συναλλαγές, χωρίς τυφλές πιστώσεις",
+        "Χρηματοδοτήστε πιστοποιημένες συναλλαγές, δίχως τυφλό πιστωτικό ρίσκο",
       bankers_point_1_desc:
-        "White-label, πλήρως ψηφιακή και αυτοματοποιημένη πλατφόρμα προεξόφλησης τιμολογίων με διαφανή/ελέγξιμα μοντέλα, δικλείδες επιπέδου τράπεζας και άμεση διασύνδεση με τα συστήματά σας.",
+        "Προστατευτείτε από καθυστερήσεις  και αθετήσεις δόσεων με αξιολόγηση πίστωσης σε επίπεδο τιμολογίου και επαληθευμένη σχέση αγοραστή–πωλητή.",
       bankers_point_2_title: "Δημιουργήστε leads",
       bankers_point_2_desc:
-        "Αποκτήστε πρόσβαση σε μία βάση αξιολογημένων και υγιών μικρομεσαίων επιχειρήσεων που αναζητούν χρηματοδότηση.",
+        "Αποκτήστε πρόσβαση σε μία βάση αξιολογημένων και υγιών μικρομεσαίων επιχειρήσεων  που αναζητούν χρηματοδότηση.",
       bankers_point_3_title: "Αυτόματη συλλογή όλων των απαραίτητων εγγράφων",
       bankers_point_3_desc:
         "Αυτόματη συγκέντρωση οικονομικών στοιχείων, ενδείξεων κινδύνου, πιστοληπτικής ικανότητας και τεκμηρίωσης KYC.",
@@ -467,14 +466,14 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       ],
       get_paid_name: "Εισπράξτε πιο γρήγορα",
       get_paid_desc:
-        "Δυναμικές εκπτώσεις ανοικτών τιμολογίων για έγκαιρη πληρωμή (dynamic invoice discounting) από τους πελάτες σας και άμεσης προεξόφλησης τιμολογίων (factoring) με ένα κλικ.",
+        "Δυναμικές εκπτώσεις ανοικτών τιμολογίων για έγκαιρη πληρωμή (dynamic invoice discounting) και άμεση προεξόφλησης τιμολογίων με ένα κλικ.",
       get_paid_benefits: [
         "Δυναμικές εκπτώσεις τιμολογίων",
         "Προεξόφληση τιμολογίων με ένα κλικ",
       ],
       copilot_name: "AI Copilot",
       copilot_desc:
-        "Ο έμπιστος καθημερινός βοηθός σας για πιο έξυπνες συναλλαγές, συμφωνίες και διαχείρισης του κεφαλαίου κίνησης σας",
+        "Ο έμπιστος καθημερινός βοηθός σας για  πιο έξυπνες συναλλαγές, εμπορικές συμφωνίες και διαχείριση του κεφαλαίου κίνησης σας.",
       copilot_benefits: [
         "Έξυπνες συναλλαγές",
         "Καλύτερες συμφωνίες πελατών",
@@ -482,7 +481,7 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       ],
       collections_name: "Έξυπνες υπενθυμίσεις & εισπράξεις",
       collections_desc:
-        "Ευγενικές υπενθυμίσεις (dunning) που μειώνουν την καθυστέρηση εκκρεμών πληρωμών (DSO), με αυτόματη αντιστοίχιση πληρωμών/τιμολογίων.",
+        "Ευγενικές υπενθυμίσεις (dunning) που μειώνουν την καθυστέρηση εκκρεμών πληρωμών (DSO), με αυτόματη αντιστοίχιση πληρωμών - τιμολογίων.",
       collections_benefits: [
         "Μείωση DSO με ευγενικές υπενθυμίσεις",
         "Αυτόματη αντιστοίχιση πληρωμών/τιμολογίων",
@@ -493,26 +492,25 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
         "Σχετικά με το Factora — Η αποστολή, οι αξίες και η πλατφόρμα χρηματοδότησης ΜΜΕ",
       meta_description:
         "Μάθετε πώς το Factora δημιουργεί έτοιμη ψηφιακή υποδομή για factoring τιμολογίων, χρηματοδότηση και ασφάλιση — ώστε τράπεζες και marketplaces να μπορούν να χρηματοδοτούν αξιόπιστα μικρές επιχειρήσεις.",
-      why_started_title: "Γιατί ξεκινήσαμε την Factora",
+      why_started_title:
+        "Στελεχωμένη από δημιουργούς, για επιχειρήσεις και χρηματοπιστωτικά ιδρύματα.",
       why_started_para1:
-        "Οι μικρομεσαίες επιχειρήσεις στην Ευρώπη αποτελούν θεμέλιο λίθο κάθε οικονομίας και βασικό πυλώνα του παγκόσμιου ΑΕΠ. Ωστόσο, η έντονη μεταβλητότητα του βραχυπρόθεσμου κεφαλαίου κίνησης αποτελεί τον καταλυτικό παράγοντα που απειλεί την επιβίωση και την ανάπτυξή τους. Σε ολόκληρη την υφήλιο επαναλαμβάνεται το ίδιο μοτίβο: ικανές εταιρείες που εκτελούν σωστά το επιχειρηματικό τους μοντέλο- δημιουργώντας αξία για τους πελάτες, την εταιρεία και την οικονομία, καταρρέουν. Βασική αιτία αποτελεί το ντόμινο καθυστερημένων πληρωμών, των αυξανόμενων αθετήσεων και της περιορισμένης πρόσβασης σε κατάλληλη χρηματοδότηση από το παραδοσιακό τραπεζικό σύστημα. Με αποτέλεσμα ένας σημαντικός αριθμός παραγωγικών και υγιών επιχειρήσεων οδηγείται σε παύση εργασιών ή ακόμη και πτώχευση, λόγω της αδυναμίας κάλυψης των υποχρεώσεων, της ζήτησης από την αγορά και την περιορισμένη δυναμικής για ανάπτυξη.",
+        "Ιδρυμένη το 2025 στην Ελλάδα, η Factora δημιουργήθηκε με ένα ξεκάθαρο όραμα: να αντιμετωπίσει το πρόβλημα ρευστότητας που βιώνουν οι μικρομεσαίες επιχειρήσεις στην Ευρώπη λόγω τιμολογίων επί πιστώσει, καθυστερημένων πληρωμών και αθετήσεων. Για πολλά χρόνια, οι ευέλικτοι όροι πληρωμής και η γρήγορη χρηματοδότηση κεφαλαίου κίνησης ήταν προνόμιο μόνο των μεγάλων επιχειρήσεων, ενώ οι μικρότερες εταιρείες επωμίζονταν τον πιστωτικό κίνδυνο χωρίς τα κατάλληλα εργαλεία. Σε όλες τις αγορές κατά μήκος της Ευρώπης επαναλαμβάνεται το ίδιο μοτίβο: παραγωγικές εταιρείες πλήττονται από το ντόμινο καθυστερημένων εισπράξεων, διαγραφών και περιορισμένης πρόσβασης σε τραπεζική χρηματοδότηση.",
       why_started_para2:
-        "Η Factora δημιουργήθηκε για να ανατρέψει αυτό το καθεστώς και να βοηθήσει τις επιχειρήσεις να επιβιώσουν και να αναπτυχθούν με υγιή τρόπο. Η πλατφόρμα μας συνδυάζει την αυτοματοποιημένη αξιολόγηση της πιστοληπτικής ικανότητας των πελατών με απώτερο σκοπό να προσφέρονται ασφαλέστεροι όροι πίστωσης, δυναμικές εκπτώσεις τιμολογίων έγκαιρης πληρωμής που μειώνουν τον χρόνο είσπραξης και την άμεση χρηματοδότηση ανοικτών τιμολογίων με ένα κλικ όταν εμφανίζονται κενά ρευστότητας. Ταυτόχρονα οι έξυπνες εισπράξεις με ευγενικές υπενθυμίσεις και αυτόματη αντιστοίχιση πληρωμών/τιμολογίων απλοποιούν την πολυπλοκότητα και τον χρόνο που απαιτείται, ενώ ο AI Οικονομικός βοηθός έχει σχεδιαστεί για να παρέχει έγκαιρες προειδοποιήσεις και πρακτικές συστάσεις για τη διαχείριση και τη βελτιστοποίηση του κεφαλαίου κίνησης. Αποστολή μας είναι να προλαμβάνουμε τις καθυστερημένες πληρωμές που πυροδοτούν έλλειμμα ρευστότητας, τους κακοπληρωτές που διαβρώνουν την κερδοφορία, και να εκδημοκρατίσουμε την πρόσβαση στη χρηματοδότηση μέσω του τραπεζικού συστήματος.",
-      quote:
-        "Κάθε μικρομεσαία επιχείρηση αξίζει δέοντα σεβασμό για τη συμβολή της στην κοινωνία και την οικονομία, και θα πρέπει να υποστηρίζεται από ένα πιο δίκαιο χρηματοπιστωτικό σύστημα που τη στηρίζει έμπρακτα. Το όραμά μας είναι να γεφυρώσουμε την έλλειψη ρευστότητας που βιώνουν αυτές οι επιχειρήσεις, λόγω των καθυστερημένων πληρωμών και αθετήσεων, προσφέροντας έναν εξατομικευμένο, έμπιστο AI Οικονομικό Σύμβουλο που βοηθά τις επιχειρήσεις να πλοηγηθούν με ασφάλεια σε αυτό το απαιτητικό περιβάλλον. Πιστεύουμε στη δύναμη κάθε επιχείρησης και στεκόμαστε δίπλα στους ανθρώπους της, ώστε να επικεντρώνονται σε αυτό που πραγματικά έχει σημασία για την επιχείρηση τους: να δημιουργούν αξία και να αναπτύσσονται.",
-      quote_author: "— Συνιδρυτής & CEO",
-      values_title: "Οι αξίες μας — πώς χτίζουμε και εξυπηρετούμε",
-      values_subtitle:
-        "Αξίες που καθοδηγούν κάθε απόφαση προϊόντος και συνεργασία.",
-      fair_access_title: "Δίκαιη πρόσβαση",
+        "Παρακάμπτοντας τα εμπόδια της χειροκίνητης πιστοληπτικής αξιολόγησης από αναλυτές, των χρονοβόρων πιστωτικών ελέγχων, της γραφειοκρατίας και των παρωχημένων πρακτικών εισπράξεων, η Factora καθιστά εφικτό οι επιχειρήσεις κάθε μεγέθους να συναλλάσσονται με δίκαιους όρους.",
+      why_started_para3:
+        "Η ομάδα μας δημιουργεί με μια απλή αρχή: δίκαιη πρόσβαση, εμπιστοσύνη από σχεδιασμό και ριζική απλότητα. Είμαστε εδώ για να επανασχεδιάσουμε τον τρόπο που λειτουργούν οι B2B πληρωμές κατά μήκος της εφοδιαστικής αλυσίδας και να εκδημοκρατίσουμε την πρόσβαση των ΜμΕ σε τραπεζική χρηματοδότηση κεφαλαίου κίνησης.",
+      values_title: "Οι αξίες μας",
+      values_subtitle: "Οι αρχές που καθοδηγούν τη δουλειά μας",
+      fair_access_title: "Δίκαιη πρόσβαση σε χρηματοδότηση",
       fair_access_desc:
-        "Κάθε βιώσιμη μικρομεσαία επιχείρηση αξίζει πρόσβαση σε χρηματοδότηση. Χρησιμοποιούμε διαφανή αξιολόγηση με βάση την επιχειρησιακή πραγματικότητα, και όχι στη γραφειοκρατία και σε ξεπερασμένες μεθόδους αξιολόγησης, ώστε κάθε επιχείρηση να αντιμετωπίζεται δίκαια.",
+        "Κάθε βιώσιμη μικρομεσαία επιχείρηση δικαιούνται  πρόσβαση σε χρηματοδότηση. Χρησιμοποιούμε διαφανή αξιολόγηση με τη βοήθεια της τεχνητής νοημοσύνης ώστε με  βάση την επιχειρησιακή πραγματικότητα, και όχι ξεπερασμένες μεθόδους αξιολόγησης και γραφειοκρατίας, για την πιστοληπτική αξιολόγηση των επιχειρήσεων.",
       trust_title: "Θεμελιώδης Αξιοπιστία",
       trust_desc:
-        "Η ασφάλεια, η ιδιωτικότητα και η συμμόρφωση στα διεθνή πρότυπα αποτελούν ύψιστες προτεραιότητες. Τα οικονομικά δεδομένα κάθε επιχείρησής αντιμετωπίζονται με αυστηρή προστασία και υπευθυνότητα. Οι αποφάσεις πίστωσης συνοδεύονται από αιτιολόγηση και ελεγξιμότητα, ώστε οι ιδιοκτήτες, οι λογιστές και οι συνεργαζόμενες τράπεζες να μπορούν να βασίζονται σε αυτές.",
+        "Η ασφάλεια, η ιδιωτικότητα και η συμμόρφωση στα διεθνή πρότυπα  για τη διαχείριση των δεδομένων σας αποτελούν ύψιστες προτεραιότητες για εμάς. Τα δεδομένα κάθε επιχείρησής αντιμετωπίζονται με αυστηρή προστασία και υπευθυνότητα. Οι αποφάσεις πίστωσης συνοδεύονται από αιτιολόγηση και ελεγξιμότητα, ώστε οι ιδιοκτήτες, οι λογιστές και οι συνεργαζόμενες τράπεζες να μπορούν να βασίζονται σε αυτές.",
       simplicity_title: "Απλότητα",
       simplicity_desc:
-        "Στόχο αποτελεί η μείωση των χειροκίνητων ενεργειών, της γραφειοκρατίας που απαιτείται και των εμπλεκόμενων μερών για ευκολη πρόσωαση σε χρηματοδότηση και στη βελτιστοποίηση της διαχείρησης του κεφαλαίου κίνησης . Η λύση μας ενσωματώνεται στα υπάρχοντα εργαλεία όπως το ERP και τα λογιστισκά λογισμικά, για εύκολη παροχή των υπηρεσιών μας",
+        "Στόχο αποτελεί η μείωση των χειροκίνητων ενεργειών, της γραφειοκρατίας  που απαιτείται και των εμπλεκόμενων μερών για εύκολη πρόσβαση σε χρηματοδότηση και στη βελτιστοποίηση της διαχείρισης του κεφαλαίου κίνησης . Η λύση μας ενσωματώνεται εύκολα στα υφιστάμενα λογιστικά και συναλλακτικά εργαλεία που επιχειρήσεις χρησιμοποιούν καθημερινά.",
     },
     careers: {
       meta_title: "Καριέρα στο Factora — Χτίστε το Μέλλον της B2B Πίστωσης",
@@ -523,7 +521,7 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       send_cv_button: "Στείλε το βιογραφικό σου",
       join_team_title: "Γίνε μέλος της ομάδας μας",
       join_team_desc:
-        "Είμαστε πάντα ανοιχτοί να συνεργαστούμε και να ακούσουμε παθιασμένους ανθώπους για την καινοτομία, σκληρά εργαζόμενους και ταλαντούχους. Αν σου αρέσει η δημιουργική σκέψη, η εργασία σε ένα ταχέως εξελισσόμενο περιβάλλον, η επίτευξη δύσκολων στόχων και η δημιουργία λύσεων τεχνολογίας για την αναδιαμόρφωση των B2B πληρωμών και προϊότνων πίστωσης, θα χαρούμε να ακούσουμε από σένα.",
+        "Είμαστε πάντα ανοιχτοί να συνεργαστούμε και να ακούσουμε  παθιασμένους για την καινοτομία, σκληρά εργαζόμενους και ταλαντούχους ανθρώπους. Αν σου αρέσει η δημιουργική σκέψη, η εργασία σε ένα ταχέως εξελισσόμενο περιβάλλον, η επίτευξη δύσκολων στόχων και η δημιουργία λύσεων τεχνολογίας για την αναδιαμόρφωση των B2B πληρωμών και προϊότνων πίστωσης, θα χαρούμε να ακούσουμε από σένα.",
       ml_engineer_title: "Machine Learning Engineer",
       ml_engineer_desc:
         "Σχεδίασε μοντέλα αιχμής που τροφοδοτούν πιο έξυπνες αποφάσεις πίστωσης.",
@@ -609,6 +607,5 @@ export function getInitialLocale(): SupportedLocale {
   if (typeof window === "undefined") return "en";
   const stored = window.localStorage.getItem("locale");
   if (stored === "en" || stored === "el") return stored;
-  const browser = navigator.language?.toLowerCase() || "en";
-  return browser.startsWith("el") ? "el" : "en";
+  return "en";
 }

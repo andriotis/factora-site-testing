@@ -131,7 +131,7 @@ export default function FactoraPage() {
   return (
     <div className="min-h-screen text-white">
       {/* Hero Section */}
-      <section className="h-[950px] px-6 py-20 text-white overflow-hidden">
+      <section className=" px-6 py-20 text-white overflow-hidden">
         <div className="max-w-4xl mx-auto text-center px-6">
           <StaggerContainer stagger={0.25} delay={0.2}>
             <AnimatedHeadline />
@@ -157,7 +157,7 @@ export default function FactoraPage() {
         {/* Hero Mockup: Video Player with BorderBeam */}
         <div className="max-w-6xl mx-auto mt-16 px-6">
           <MotionWrapper preset="vivid" scale={0.98} delay={0.5}>
-            <div className="relative bg-card/10 backdrop-blur-sm rounded-2xl shadow-2xl border border-white/20 overflow-hidden will-change-transform transform-gpu">
+            <div className="relative backdrop-blur-sm rounded-2xl shadow-2xl border border-white/20 overflow-hidden will-change-transform transform-gpu [mask-image:linear-gradient(to_bottom,black_60%,transparent_90%)] [-webkit-mask-image:linear-gradient(to_bottom,black_60%,transparent_90%)]">
               <video
                 src="/hero-dashboard.mp4"
                 autoPlay
@@ -183,14 +183,14 @@ export default function FactoraPage() {
         </div>
       </section>
       {/* Trusted By Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 mb-20 md:mb-28">
         <div className="max-w-6xl mx-auto text-center px-6">
           <SlideUp className="mb-12">
-            <h4 className="text-xl font-bold text-gray-900 mb-4">
+            <h4 className="text-xl font-bold text-white mb-4">
               {t.landing.trusted_by}
             </h4>
           </SlideUp>
-          <ScrollVelocityContainer className="text-4xl md:text-7xl font-bold">
+          <ScrollVelocityContainer className="text-4xl md:text-7xl font-bold [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
             <ScrollVelocityRow baseVelocity={10} direction={1}>
               <div className="flex items-center">
                 {/* Logo Pair 1 */}
@@ -200,7 +200,7 @@ export default function FactoraPage() {
                     alt="Piraeus Bank"
                     width={120}
                     height={48}
-                    className="w-48 h-auto object-contain opacity-70 group-hover:opacity-100 transition-all duration-300 grayscale group-hover:grayscale-0"
+                    className="w-48 h-auto object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 invert brightness-0"
                     priority={false}
                     placeholder="blur"
                     blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjQ4IiB2aWV3Qm94PSIwIDAgMTIwIDQ4IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iNDgiIGZpbGw9IiNmM2Y0ZjYiLz48L3N2Zz4="
@@ -212,7 +212,7 @@ export default function FactoraPage() {
                     alt="POS4Work"
                     width={120}
                     height={48}
-                    className="w-48 h-auto object-contain opacity-70 group-hover:opacity-100 transition-all duration-300 grayscale group-hover:grayscale-0"
+                    className="w-48 h-auto object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 invert brightness-0"
                     priority={false}
                     placeholder="blur"
                     blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
@@ -225,20 +225,6 @@ export default function FactoraPage() {
       </section>
 
       {/* Section Divider */}
-      {/* <div className="relative py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="flex items-center justify-center space-x-8">
-            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
-            <div className="flex items-center space-x-3">
-              <div className="w-2 h-2 bg-[#2F9A8A] rounded-full"></div>
-              <div className="w-2 h-2 bg-[#2F9A8A] rounded-full"></div>
-              <div className="w-2 h-2 bg-[#2F9A8A] rounded-full"></div>
-            </div>
-            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
-          </div>
-        </div>
-      </div> */}
-
       {/* Integrations Beam Section (before Banking) */}
       <div id="core" className="relative -top-24 h-0" aria-hidden="true" />
       <section className="px-6 py-20 bg-white">
@@ -254,12 +240,6 @@ export default function FactoraPage() {
           <IntegrationShowcase />
         </div>
       </section>
-      <div className="relative py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="flex items-center justify-center space-x-8"></div>
-        </div>
-      </div>
-
       {/* SMEs Section */}
       <div id="smes" className="relative -top-24 h-0" aria-hidden="true" />
       <section className="px-6 py-20 text-white">

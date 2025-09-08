@@ -142,7 +142,7 @@ const Icons = {
   ),
   openai: () => (
     <Image
-      src="/logo.png"
+      src="/logo-dark.svg"
       alt="Logo"
       width={200}
       height={200}
