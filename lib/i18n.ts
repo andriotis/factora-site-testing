@@ -360,7 +360,7 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       security_engineer_desc:
         "Protect infrastructure and data with threat modeling, hardening, monitoring, and best-practice frameworks",
       how_to_apply_title: "How to apply",
-      how_to_apply_subtitle: "Simple email application. No forms, no ATS.",
+      how_to_apply_subtitle: "",
       apply_step1: "Send an email to:",
       apply_step2: "Subject:",
       apply_step3:
@@ -470,8 +470,8 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
     nav: {
       solutions: "Λύσεις",
       solutions_core: "Πυρήνας",
-      solutions_smes: "Για ΜΜΕ",
-      solutions_banking: "Για Χρηματοπιστωτικούς Φορείς",
+      solutions_smes: "Μικρομεσαίες Επιχειρήσεις",
+      solutions_banking: "Χρηματοπιστωτικοί Φορείς",
       about: "Σχετικά",
       careers: "Καριέρα",
       contact: "Επικοινωνία",
@@ -588,7 +588,7 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       why_started_para3:
         "Η ομάδα μας χτίζει πάνω σε μια απλή αρχή: δίκαιη πρόσβαση, εμπιστοσύνη και απλότητα. Είμαστε εδώ για να επαναπροσδιορίσουμε τον τρόπο που λειτουργούν οι B2B πληρωμές κατά μήκος της εφοδιαστικής αλυσίδας και να εκδημοκρατίσουμε την πρόσβαση των επιχειρήσεων σε τραπεζική χρηματοδότηση κεφαλαίου κίνησης.",
       values_title: "Οι αξίες μας",
-      values_subtitle: "Οι αρχές που καθοδηγούν τη δουλειά μας",
+      values_subtitle: "",
       fair_access_title: "Δίκαιη πρόσβαση σε χρηματοδότηση για όλους",
       fair_access_desc:
         "Χρησιμοποιούμε διαφανή αξιολόγηση με τη βοήθεια της τεχνητής νοημοσύνης με βάση την επιχειρησιακή πραγματικότητα, και όχι ξεπερασμένες μεθόδους αξιολόγησης, για την πιστοληπτική αξιολόγηση επιχειρήσεων.",
@@ -628,17 +628,17 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       security_engineer_desc:
         "Προστάτευσε την υποδομή και τα δεδομένα με μοντελοποίηση απειλών, ενίσχυση, παρακολούθηση και βέλτιστες πρακτικές.",
       how_to_apply_title: "Πώς να υποβάλετε αίτηση",
-      how_to_apply_subtitle: "Απλή αίτηση email. Χωρίς φόρμες, χωρίς ATS.",
+      how_to_apply_subtitle: "",
       apply_step1: "Στείλτε email στο:",
       apply_step2: "Θέμα:",
       apply_step3:
-        "Επισυνάψτε: CV/βιογραφικό ως PDF (συν portfolio/GitHub/LinkedIn αν είναι σχετικό)",
+        "Επισυνάψτε: CV/βιογραφικό ως PDF",
       apply_step4: "Συμπεριλάβετε στο σώμα του email:",
-      apply_step4_1: "3–5 προτάσεις γιατί το Factora και αυτός ο ρόλος",
+      apply_step4_1: "3–5 προτάσεις γιατί την Factora και αυτός ο ρόλος",
       apply_step4_2:
-        "Την τοποθεσία/ζώνη ώρας σας και την πιο πρόσφατη ημερομηνία έναρξης",
+        "Την ζώνη ώρας σας και την επιθυμητή ημερομηνία έναρξης",
       apply_step4_3:
-        "Οποιεσδήποτε συνδέσμους (portfolio, GitHub, LinkedIn, μελέτες περιπτώσεων)",
+        "Οποιουσδήποτε συνδέσμους (portfolio, GitHub, LinkedIn, μελέτες)",
       email_cv_button: "Email το CV σας",
     },
     contact: {
