@@ -4,7 +4,7 @@
  * EntranceContext - React Context for entrance animation configuration
  *
  * Provides global animation settings and state management
- * Integrates with existing smooth scroll system
+ * Optimized for performance without smooth scroll dependencies
  * Respects user motion preferences
  */
 

@@ -31,16 +31,12 @@ ThemeProviderProps) {
 
   useEffect(() => {
     setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!mounted) return;
-
+    // Only apply theme after hydration
     const root = window.document.documentElement;
     root.classList.remove("light", "dark");
     root.classList.add("dark");
     setResolvedTheme("dark");
-  }, [mounted]);
+  }, []);
 
   const setTheme = () => {
     // Intentionally force dark mode regardless of input
@@ -58,6 +54,11 @@ ThemeProviderProps) {
     setTheme,
     resolvedTheme,
   };
+
+  // Prevent flash by not rendering until mounted
+  if (!mounted) {
+    return <div className="dark">{children}</div>;
+  }
 
   return (
     <ThemeProviderContext.Provider value={value}>

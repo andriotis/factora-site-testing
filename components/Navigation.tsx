@@ -6,12 +6,14 @@ import { useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { MotionWrapper } from "@/components/EntranceProvider";
 import Image from "next/image";
+import { useI18n } from "@/components/I18nProvider";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export function Navigation() {
   const pathname = usePathname();
-  const [isCompanyDropdownOpen, setIsCompanyDropdownOpen] = useState(false);
   const [isSolutionsDropdownOpen, setIsSolutionsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useI18n();
 
   type NavItem = {
     href?: string;
@@ -22,38 +24,32 @@ export function Navigation() {
 
   const navItems: NavItem[] = [
     {
-      label: "Solutions",
+      label: t.nav.solutions,
       isDropdown: true,
       items: [
-        { href: "/#bankers", label: "For Bankers" },
-        { href: "/#smes", label: "For SMEs" },
-        { href: "/#insurers", label: "For Insurance Firms" },
+        { href: "/#core", label: t.nav.solutions_core },
+        { href: "/#smes", label: t.nav.solutions_smes },
+        { href: "/#banking", label: t.nav.solutions_banking },
       ],
     },
-    {
-      label: "Company",
-      isDropdown: true,
-      items: [
-        { href: "/about", label: "About" },
-        { href: "/contact", label: "Contact" },
-      ],
-    },
-    { href: "/pricing", label: "Pricing" },
-    { href: "/blog", label: "Blog" },
+    { href: "/about", label: t.nav.about },
+    { href: "/careers", label: t.nav.careers },
+    // { href: "/pricing", label: "Pricing" },
+    { href: "/contact", label: t.nav.contact },
   ];
 
   return (
     <>
       {/* Sticky Navigation Header */}
-      <header className="sticky top-0 text-white px-6 py-4 z-50 shadow-lg backdrop-blur-md bg-black/20 border-b border-white/10">
+      <header className="fixed top-0 left-0 right-0 text-white px-6 py-4 z-50 shadow-lg backdrop-blur-md bg-black/20 border-b border-white/10">
         <MotionWrapper preset="fade" duration={0.8}>
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             <Link href="/" className="flex items-center">
               <Image
                 src="/logo.png"
                 alt="Factora Logo"
-                width={120}
-                height={40}
+                width={357}
+                height={249}
                 className="h-16 w-auto"
               />
             </Link>
@@ -62,28 +58,23 @@ export function Navigation() {
             <nav className="hidden md:flex items-center space-x-8">
               {navItems.map((item) => {
                 if (item.isDropdown) {
-                  const isCompany = item.label === "Company";
-                  const isSolutions = item.label === "Solutions";
-                  const isActiveDropdown = isCompany
-                    ? item.items?.some((subItem) => pathname === subItem.href)
-                    : pathname === "/"; // Mark Solutions active on homepage
+                  const isSolutions = item.label === t.nav.solutions;
+                  const isActiveDropdown = isSolutions
+                    ? pathname === "/"
+                    : false; // Mark Solutions active on homepage
                   return (
                     <div
                       key={item.label}
                       className="relative group"
                       onMouseEnter={() =>
-                        isCompany
-                          ? setIsCompanyDropdownOpen(true)
-                          : setIsSolutionsDropdownOpen(true)
+                        isSolutions && setIsSolutionsDropdownOpen(true)
                       }
                       onMouseLeave={() =>
-                        isCompany
-                          ? setIsCompanyDropdownOpen(false)
-                          : setIsSolutionsDropdownOpen(false)
+                        isSolutions && setIsSolutionsDropdownOpen(false)
                       }
                     >
                       <button
-                        className={`text-base transition-colors flex items-center gap-1 ${
+                        className={`text-base font-medium transition-colors flex items-center gap-1 ${
                           isActiveDropdown
                             ? "text-[#2F9A8A] font-medium"
                             : "hover:text-[#2F9A8A]"
@@ -92,8 +83,7 @@ export function Navigation() {
                         {item.label}
                         <ChevronDown
                           className={`h-5 w-5 transition-transform duration-200 ${
-                            (isCompany && isCompanyDropdownOpen) ||
-                            (isSolutions && isSolutionsDropdownOpen)
+                            isSolutions && isSolutionsDropdownOpen
                               ? "rotate-180"
                               : ""
                           }`}
@@ -102,8 +92,7 @@ export function Navigation() {
 
                       <div
                         className={`absolute top-full left-0 mt-2 w-64 backdrop-blur-xl bg-black/40 text-white rounded-xl shadow-xl ring-1 ring-white/10 py-2 z-50 transition-all duration-200 overflow-hidden bg-clip-padding ${
-                          (isCompany && isCompanyDropdownOpen) ||
-                          (isSolutions && isSolutionsDropdownOpen)
+                          isSolutions && isSolutionsDropdownOpen
                             ? "opacity-100 translate-y-0 visible"
                             : "opacity-0 -translate-y-2 invisible"
                         }`}
@@ -144,11 +133,12 @@ export function Navigation() {
             {/* Desktop Action Buttons */}
             <div className="hidden md:flex items-center gap-4">
               <Link
-                href="/contact"
-                className="bg-[#2F9A8A] hover:bg-[#2F9A8A]/90 text-white px-6 py-3 rounded-lg font-medium text-base transition-colors"
+                href="#early-access"
+                className="bg-white text-black hover:brightness-95 px-6 py-3 rounded-lg font-medium text-base transition-all shadow-md"
               >
-                Book a demo
+                {t.nav.book_demo}
               </Link>
+              <LanguageSwitcher />
             </div>
 
             {/* Mobile Menu Button */}
@@ -167,6 +157,9 @@ export function Navigation() {
         </MotionWrapper>
       </header>
 
+      {/* Spacer to offset fixed header height */}
+      <div className="h-24" />
+
       {/* Mobile Navigation Overlay */}
       <div
         className={`md:hidden fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 ${
@@ -177,7 +170,7 @@ export function Navigation() {
 
       {/* Mobile Navigation Menu */}
       <div
-        className={`md:hidden fixed top-20 left-0 right-0 backdrop-blur-md bg-black/20 border-b border-white/10  z-40 transition-all duration-300 ease-in-out ${
+        className={`md:hidden fixed top-24 left-0 right-0 backdrop-blur-md bg-black/20 border-b border-white/10  z-40 transition-all duration-300 ease-in-out ${
           isMobileMenuOpen
             ? "translate-y-0 opacity-100 visible"
             : "-translate-y-full opacity-0 invisible"
@@ -187,10 +180,8 @@ export function Navigation() {
           <div className="space-y-4">
             {navItems.map((item) => {
               if (item.isDropdown) {
-                const isCompany = item.label === "Company";
-                const isActiveDropdown = isCompany
-                  ? item.items?.some((subItem) => pathname === subItem.href)
-                  : pathname === "/";
+                const isSolutions = item.label === t.nav.solutions;
+                const isActiveDropdown = isSolutions ? pathname === "/" : false;
                 return (
                   <div key={item.label} className="space-y-2">
                     <div
@@ -239,12 +230,15 @@ export function Navigation() {
           {/* Mobile Action Buttons */}
           <div className="mt-6 pt-6 border-t border-white/10 space-y-4">
             <Link
-              href="/contact"
-              className="block w-full bg-[#2F9A8A] hover:bg-[#2F9A8A]/90 text-white px-6 py-3 rounded-lg font-medium text-lg text-center transition-colors"
+              href="#early-access"
+              className="block w-full bg-white text-black hover:brightness-95 px-6 py-3 rounded-lg font-medium text-lg text-center transition-all shadow-md"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Book a demo
+              {t.nav.book_demo}
             </Link>
+            <div className="flex justify-center">
+              <LanguageSwitcher />
+            </div>
           </div>
         </nav>
       </div>

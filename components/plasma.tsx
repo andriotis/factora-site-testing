@@ -3,6 +3,7 @@
 import type React from "react";
 import { useEffect, useRef } from "react";
 import { Renderer, Program, Mesh, Triangle } from "ogl";
+import { useResizeObserver } from "@/lib/hooks/useResizeObserver";
 import "./Plasma.css";
 
 interface PlasmaProps {
@@ -106,6 +107,24 @@ export const Plasma: React.FC<PlasmaProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mousePos = useRef({ x: 0, y: 0 });
+  const rendererRef = useRef<Renderer | null>(null);
+  const programRef = useRef<Program | null>(null);
+  const glRef = useRef<WebGLRenderingContext | null>(null);
+
+  const { observe, unobserve } = useResizeObserver((entry) => {
+    const rect = entry.contentRect;
+    const width = Math.max(1, Math.floor(rect.width));
+    const height = Math.max(1, Math.floor(rect.height));
+    if (rendererRef.current) {
+      rendererRef.current.setSize(width, height);
+      const res = programRef.current?.uniforms.iResolution
+        .value as Float32Array;
+      if (res && glRef.current) {
+        res[0] = glRef.current.drawingBufferWidth;
+        res[1] = glRef.current.drawingBufferHeight;
+      }
+    }
+  });
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -136,6 +155,10 @@ export const Plasma: React.FC<PlasmaProps> = ({
     canvas.style.height = "100%";
     containerElement.appendChild(canvas);
 
+    // Store refs for shared ResizeObserver
+    rendererRef.current = renderer;
+    glRef.current = gl;
+
     const geometry = new Triangle(gl);
 
     const program = new Program(gl, {
@@ -156,6 +179,9 @@ export const Plasma: React.FC<PlasmaProps> = ({
         },
       },
     });
+
+    // Store program ref for shared ResizeObserver
+    programRef.current = program;
 
     const mesh = new Mesh(gl, { geometry, program });
 
@@ -183,18 +209,27 @@ export const Plasma: React.FC<PlasmaProps> = ({
       res[0] = gl.drawingBufferWidth;
       res[1] = gl.drawingBufferHeight;
     };
-    const ro = new ResizeObserver(setSize);
-    ro.observe(containerElement);
+
+    // Use shared ResizeObserver
+    observe(containerElement);
     setSize();
 
     // --- Animation loop ---
     let raf = 0;
-    let lastTime = 0;
+    const fps = 12; // Reduced from 20 to 12 for better performance
+    const frameIntervalMs = 1000 / fps; // ~83ms per frame
+    let lastFrameTs = 0;
     const t0 = performance.now();
+    let isVisible = true;
+
     const loop = (t: number) => {
-      const delta = t - lastTime;
-      if (!isIOS || delta > 33) {
-        // 60fps desktop, ~30fps iOS
+      if (!isVisible) {
+        raf = requestAnimationFrame(loop);
+        return;
+      }
+
+      const elapsedSinceLast = t - lastFrameTs;
+      if (elapsedSinceLast >= frameIntervalMs) {
         const timeValue = (t - t0) * 0.001;
         if (direction === "pingpong") {
           const cycle = Math.sin(timeValue * 0.5) * directionMultiplier;
@@ -202,15 +237,26 @@ export const Plasma: React.FC<PlasmaProps> = ({
         }
         (program.uniforms.iTime.value as number) = timeValue;
         renderer.render({ scene: mesh });
-        lastTime = t;
+        // account for drift
+        lastFrameTs = t - (elapsedSinceLast % frameIntervalMs);
       }
       raf = requestAnimationFrame(loop);
     };
     raf = requestAnimationFrame(loop);
 
+    // --- Visibility-based pausing ---
+    const handleVisibility = () => {
+      isVisible = document.visibilityState === "visible";
+      if (isVisible && !raf) {
+        raf = requestAnimationFrame(loop);
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibility);
+
     return () => {
       cancelAnimationFrame(raf);
-      ro.disconnect();
+      unobserve(containerElement);
+      document.removeEventListener("visibilitychange", handleVisibility);
       if (!isIOS && mouseInteractive) {
         containerElement.removeEventListener("mousemove", handleMouseMove);
       }
@@ -218,7 +264,16 @@ export const Plasma: React.FC<PlasmaProps> = ({
         containerElement?.removeChild(canvas);
       } catch {}
     };
-  }, [color, speed, direction, scale, opacity, mouseInteractive]);
+  }, [
+    color,
+    speed,
+    direction,
+    scale,
+    opacity,
+    mouseInteractive,
+    observe,
+    unobserve,
+  ]);
 
   return (
     <div

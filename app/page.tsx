@@ -1,6 +1,21 @@
+"use client";
+
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Check, Shield, Zap, TrendingUp } from "lucide-react";
+import {
+  ShieldCheck,
+  Zap,
+  Plug,
+  BadgeDollarSign,
+  Target,
+  FileCheck2,
+} from "lucide-react";
+import { BorderBeam } from "@/components/magicui/border-beam";
+import IntegrationShowcase from "@/components/IntegrationShowcase";
+import {
+  ScrollVelocityContainer,
+  ScrollVelocityRow,
+} from "@/components/magicui/scroll-based-velocity";
 import {
   MotionWrapper,
   HeroEntrance,
@@ -9,10 +24,90 @@ import {
   ScaleIn,
   UnblurIn,
 } from "@/components/EntranceProvider";
+import { useI18n } from "@/components/I18nProvider";
+import { useState } from "react";
 
 export default function FactoraPage() {
+  const { t } = useI18n();
+
+  // Form state management
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    role: "",
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const validateForm = () => {
+    if (!formData.name.trim()) return "Name is required";
+    if (!formData.email.trim()) return "Email is required";
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) return "Invalid email format";
+
+    return null;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const validationError = validateForm();
+    if (validationError) {
+      setSubmitStatus({ type: "error", message: validationError });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+
+    try {
+      const response = await fetch("/api/early-access", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          to: "info@factora.eu",
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: "success",
+          message: "Thank you! We'll be in touch soon.",
+        });
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          role: "",
+        });
+      } else {
+        throw new Error("Failed to submit request");
+      }
+    } catch {
+      setSubmitStatus({
+        type: "error",
+        message: "Something went wrong. Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   const AnimatedHeadline = () => {
-    const text = "Powering Smarter B2B Credit for Everyone";
+    const text = t.landing.hero_title;
     const words = text.split(" ");
     return (
       <h1
@@ -23,8 +118,8 @@ export default function FactoraPage() {
           <HeroEntrance
             as="span"
             key={`${word}-${index}`}
-            delay={0.12 + index * 0.08}
-            translateY={48}
+            delay={0.1 + Math.floor(index / 3) * 0.15} // Group words in threes
+            translateY={32} // Reduced from 48
             className="inline-block will-change-transform"
           >
             {word}&nbsp;
@@ -36,162 +131,254 @@ export default function FactoraPage() {
   return (
     <div className="min-h-screen text-white">
       {/* Hero Section */}
-      <section className="px-6 py-20 text-white">
+      <section className="h-[950px] px-6 py-20 text-white overflow-hidden">
         <div className="max-w-4xl mx-auto text-center px-6">
           <StaggerContainer stagger={0.25} delay={0.2}>
-            <HeroEntrance translateY={24}>
-              <div className="mb-4">
-                <span className="inline-block bg-card/10 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full border border-white/20">
-                  Product in development — early access & preferential
-                  onboarding
-                </span>
-              </div>
-            </HeroEntrance>
             <AnimatedHeadline />
             <HeroEntrance translateY={20} delay={0.4}>
-              <p className="text-xl mb-8 text-gray-200 max-w-3xl mx-auto text-pretty">
-                One plug‑and‑play platform to underwrite SBEs, finance invoices,
-                and automate payments—built for banks, SMEs, and insurers.
-              </p>
+              <p
+                className="text-xl mb-8 text-gray-200 max-w-3xl mx-auto text-pretty"
+                dangerouslySetInnerHTML={{ __html: t.landing.hero_subtitle }}
+              />
             </HeroEntrance>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <ScaleIn delay={0.55} scale={0.92}>
                 <a
                   href="#early-access"
-                  className="px-8 py-3 rounded-full font-medium transition-all bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] text-white shadow-lg shadow-[#2F9A8A]/20 hover:shadow-[#2F9A8A]/30 hover:brightness-110"
+                  className="px-8 py-3 rounded-full font-medium transition-all bg-white text-black hover:brightness-95 shadow-lg"
                 >
-                  Book a demo
+                  {t.landing.hero_cta}
                 </a>
               </ScaleIn>
             </div>
           </StaggerContainer>
         </div>
 
-        {/* Dashboard Mockups */}
+        {/* Hero Mockup: Video Player with BorderBeam */}
         <div className="max-w-6xl mx-auto mt-16 px-6">
-          <StaggerContainer
-            className="grid md:grid-cols-3 gap-8 items-center"
-            stagger={0.15}
-            delay={0.4}
-          >
-            <MotionWrapper preset="vivid" scale={0.95} delay={0.5}>
-              <div className="bg-card/10 backdrop-blur-sm rounded-lg shadow-2xl p-4 transform md:-rotate-3 border border-white/20">
-                <Image
-                  src="/dashboard.png"
-                  alt="Banking dashboard showing portfolio performance with total advances, revenue, invoices, DSO tracking, and default rate monitoring"
-                  width={800}
-                  height={600}
-                  className="w-full h-40 object-cover rounded mb-3"
-                />
-                <p className="text-white text-sm font-medium text-center">
-                  Banks: Plug in capital. Scale SME credit.
-                </p>
-              </div>
-            </MotionWrapper>
-            <MotionWrapper preset="vivid" scale={0.95} delay={0.75}>
-              <div className="bg-card/10 backdrop-blur-sm rounded-lg shadow-2xl p-4 z-10 border border-white/20">
-                <Image
-                  src="/customer-invoices.png"
-                  alt="Invoice management dashboard for SMEs showing one-click funding, status tracking, and filtering options"
-                  width={800}
-                  height={600}
-                  className="w-full h-48 object-cover rounded mb-3"
-                />
-                <p className="text-white text-sm font-medium text-center">
-                  SMEs: Turn invoices into cash—offer terms with confidence.
-                </p>
-              </div>
-            </MotionWrapper>
-            <MotionWrapper preset="vivid" scale={0.95} delay={1}>
-              <div className="bg-card/10 backdrop-blur-sm rounded-lg shadow-2xl p-4 transform md:rotate-3 border border-white/20">
-                <Image
-                  src="/customer-overview.png"
-                  alt="Customer overview dashboard for insurers showing core KPIs, exposure tracking, and trend analysis"
-                  width={800}
-                  height={600}
-                  className="w-full h-40 object-cover rounded mb-3"
-                />
-                <p className="text-white text-sm font-medium text-center">
-                  Insurance Firms: See risk early. Price cover precisely.
-                </p>
-              </div>
-            </MotionWrapper>
-          </StaggerContainer>
+          <MotionWrapper preset="vivid" scale={0.98} delay={0.5}>
+            <div className="relative bg-card/10 backdrop-blur-sm rounded-2xl shadow-2xl border border-white/20 overflow-hidden will-change-transform transform-gpu">
+              <video
+                src="/hero-dashboard.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-auto object-cover"
+              />
+              <BorderBeam
+                duration={8}
+                size={400}
+                className="from-transparent via-[#2F9A8A] to-transparent"
+              />
+              <BorderBeam
+                duration={8}
+                delay={3}
+                size={400}
+                borderWidth={3}
+                className="from-transparent via-[#1a5d57] to-transparent"
+              />
+            </div>
+          </MotionWrapper>
         </div>
       </section>
       {/* Trusted By Section */}
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto text-center px-6">
           <SlideUp className="mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Trusted by forward-thinking teams
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Partners and customers who rely on faster cash flow and smarter
-              underwriting.
-            </p>
+            <h4 className="text-xl font-bold text-gray-900 mb-4">
+              {t.landing.trusted_by}
+            </h4>
           </SlideUp>
-          <StaggerContainer delay={1} stagger={0.12}>
-            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 mb-6">
-              <SlideUp>
-                <div className="flex items-center justify-center">
+          <ScrollVelocityContainer className="text-4xl md:text-7xl font-bold">
+            <ScrollVelocityRow baseVelocity={10} direction={1}>
+              <div className="flex items-center">
+                {/* Logo Pair 1 */}
+                <div className="flex px-12 items-center justify-center group flex-shrink-0">
                   <Image
-                    src="/piraeus.avif"
+                    src="/piraeus.svg"
                     alt="Piraeus Bank"
-                    width={96}
-                    height={96}
-                    className="h-24 w-auto object-contain hover:opacity-80 transition-opacity duration-300"
+                    width={120}
+                    height={48}
+                    className="w-48 h-auto object-contain opacity-70 group-hover:opacity-100 transition-all duration-300 grayscale group-hover:grayscale-0"
+                    priority={false}
+                    placeholder="blur"
+                    blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjQ4IiB2aWV3Qm94PSIwIDAgMTIwIDQ4IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iNDgiIGZpbGw9IiNmM2Y0ZjYiLz48L3N2Zz4="
                   />
                 </div>
-              </SlideUp>
-
-              <ScaleIn>
-                <div className="flex items-center justify-center">
+                <div className="flex px-12 items-center justify-center group flex-shrink-0">
                   <Image
-                    src="/pos4work.avif"
+                    src="/pos4work.png"
                     alt="POS4Work"
-                    width={96}
-                    height={96}
-                    className="h-24 w-auto object-contain hover:opacity-80 transition-opacity duration-300"
+                    width={120}
+                    height={48}
+                    className="w-48 h-auto object-contain opacity-70 group-hover:opacity-100 transition-all duration-300 grayscale group-hover:grayscale-0"
+                    priority={false}
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                   />
                 </div>
-              </ScaleIn>
-            </div>
-          </StaggerContainer>
+              </div>
+            </ScrollVelocityRow>
+          </ScrollVelocityContainer>
         </div>
       </section>
 
-      {/* Banking Section */}
+      {/* Section Divider */}
+      {/* <div className="relative py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="flex items-center justify-center space-x-8">
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+            <div className="flex items-center space-x-3">
+              <div className="w-2 h-2 bg-[#2F9A8A] rounded-full"></div>
+              <div className="w-2 h-2 bg-[#2F9A8A] rounded-full"></div>
+              <div className="w-2 h-2 bg-[#2F9A8A] rounded-full"></div>
+            </div>
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+          </div>
+        </div>
+      </div> */}
+
+      {/* Integrations Beam Section (before Banking) */}
+      <div id="core" className="relative -top-24 h-0" aria-hidden="true" />
       <section className="px-6 py-20 bg-white">
+        <div className="max-w-5xl mx-auto text-center">
+          <SlideUp className="mb-10">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-gray-900">
+              {t.landing.integrations_title}
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              {t.landing.integrations_subtitle}
+            </p>
+          </SlideUp>
+          <IntegrationShowcase />
+        </div>
+      </section>
+      <div className="relative py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="flex items-center justify-center space-x-8"></div>
+        </div>
+      </div>
+
+      {/* SMEs Section */}
+      <div id="smes" className="relative -top-24 h-0" aria-hidden="true" />
+      <section className="px-6 py-20 text-white">
+        <div className="max-w-7xl mx-auto">
+          {/* SMEs Section Header */}
+          <div className="mb-16">
+            <UnblurIn className="text-center">
+              <div className="inline-block bg-[#2F9A8A]/20 text-[#2F9A8A] px-4 py-2 rounded-full text-sm font-semibold mb-6 uppercase tracking-wide">
+                {t.landing.smes_chip}
+              </div>
+              <h2 className="text-3xl lg:text-4xl font-bold mb-6">
+                {t.landing.smes_title}
+              </h2>
+              <p className="text-xl text-gray-300 mb-6 max-w-4xl mx-auto leading-relaxed">
+                {t.landing.smes_subtitle}
+              </p>
+            </UnblurIn>
+          </div>
+
+          {/* SME Solutions Section 1 - Turn Invoices Into Cash */}
+          <div className="mb-20">
+            <StaggerContainer
+              className="grid lg:grid-cols-2 gap-12 items-center"
+              stagger={0.18}
+            >
+              <MotionWrapper translateX={-48} duration={1.2} delay={0.3}>
+                <div className="relative will-change-transform transform-gpu">
+                  <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+                    <Image
+                      src="/sme-section.png"
+                      alt="Invoice management dashboard showing one-click funding, status tracking, filtering options, and automated factoring guidance"
+                      width={800}
+                      height={600}
+                      className="w-full h-auto"
+                      priority={false}
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                    />
+                  </div>
+                </div>
+              </MotionWrapper>
+
+              <div className="space-y-8">
+                <div className="space-y-6">
+                  <HeroEntrance translateY={20} delay={0.24}>
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] rounded-full flex items-center justify-center flex-shrink-0">
+                        <Zap className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <h4 className="text-xl font-bold mb-2 text-white">
+                          {t.landing.smes_point_1_title}
+                        </h4>
+                        <p className="text-lg font-medium text-gray-300">
+                          {t.landing.smes_point_1_desc}
+                        </p>
+                      </div>
+                    </div>
+                  </HeroEntrance>
+
+                  <HeroEntrance translateY={20} delay={0.36}>
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] rounded-full flex items-center justify-center flex-shrink-0">
+                        <ShieldCheck className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <h4 className="text-xl font-bold mb-2 text-white">
+                          {t.landing.smes_point_2_title}
+                        </h4>
+                        <p className="text-lg font-medium text-gray-300">
+                          {t.landing.smes_point_2_desc}
+                        </p>
+                      </div>
+                    </div>
+                  </HeroEntrance>
+
+                  <HeroEntrance translateY={20} delay={0.48}>
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] rounded-full flex items-center justify-center flex-shrink-0">
+                        <Plug className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <h4 className="text-xl font-bold mb-2 text-white">
+                          {t.landing.smes_point_3_title}
+                        </h4>
+                        <p className="text-lg font-medium text-gray-300">
+                          {t.landing.smes_point_3_desc}
+                        </p>
+                      </div>
+                    </div>
+                  </HeroEntrance>
+                </div>
+              </div>
+            </StaggerContainer>
+          </div>
+
+          {/* SME Solutions Section 2 - Business Financial Snapshot */}
+        </div>
+      </section>
+      {/* <div className="relative my-28">
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      </div> */}
+
+      {/* Banking Section */}
+      <div id="banking" className="relative -top-24 h-0" aria-hidden="true" />
+      <section className="px-6 py-20 text-white">
         <div className="max-w-7xl mx-auto">
           {/* Banking Section Header */}
           <div className="mb-16">
             <UnblurIn className="text-center">
               <div className="inline-block bg-[#2F9A8A]/20 text-[#2F9A8A] px-4 py-2 rounded-full text-sm font-semibold mb-6 uppercase tracking-wide">
-                BANKERS (Banks, MFIs, Factors)
+                {t.landing.bankers_chip}
               </div>
-              <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-gray-900">
-                Launch SME Financing, Fast
+              <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
+                {t.landing.bankers_title}
               </h2>
-              <p className="text-xl text-gray-600 mb-6 max-w-4xl mx-auto leading-relaxed">
-                Plug‑and‑play, fully automated factoring and invoice‑financing
-                with AI underwriting, servicing, and collections.
+              <p className="text-xl text-gray-300 mb-6 max-w-4xl mx-auto leading-relaxed">
+                {t.landing.bankers_subtitle}
               </p>
-              <div className="bg-gradient-to-r from-[#2F9A8A]/20 to-[#133B4F]/20 rounded-xl p-6 max-w-3xl mx-auto border border-[#2F9A8A]/30">
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <TrendingUp className="w-4 h-4 text-white" />
-                  </div>
-                  <div className="text-left">
-                    <h4 className="text-lg font-bold text-gray-900 mb-2">
-                      Problem we solve:
-                    </h4>
-                    <p className="text-gray-600 text-base leading-relaxed">
-                      Low‑ticket SME deals are unprofitable on legacy stacks.
-                    </p>
-                  </div>
-                </div>
-              </div>
             </UnblurIn>
           </div>
 
@@ -206,13 +393,15 @@ export default function FactoraPage() {
                   <HeroEntrance translateY={20} delay={0.24}>
                     <div className="flex items-start space-x-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] rounded-full flex items-center justify-center flex-shrink-0">
-                        <TrendingUp className="w-6 h-6 text-white" />
+                        <BadgeDollarSign className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold mb-2 text-gray-900">
-                          Know your portfolio: sectors, growth, acquisition and
-                          repeat rates—spot concentration and customer mix fast.
+                        <h4 className="text-xl font-bold mb-2 text-white">
+                          {t.landing.bankers_point_1_title}
                         </h4>
+                        <p className="text-lg font-medium text-gray-300">
+                          {t.landing.bankers_point_1_desc}
+                        </p>
                       </div>
                     </div>
                   </HeroEntrance>
@@ -220,13 +409,15 @@ export default function FactoraPage() {
                   <HeroEntrance translateY={20} delay={0.36}>
                     <div className="flex items-start space-x-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] rounded-full flex items-center justify-center flex-shrink-0">
-                        <Shield className="w-6 h-6 text-white" />
+                        <Target className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold mb-2 text-gray-900">
-                          Know your portfolio: sectors, growth, acquisition and
-                          repeat rates—spot concentration and customer mix fast.
+                        <h4 className="text-xl font-bold mb-2 text-white">
+                          {t.landing.bankers_point_2_title}
                         </h4>
+                        <p className="text-lg font-medium text-gray-300">
+                          {t.landing.bankers_point_2_desc}
+                        </p>
                       </div>
                     </div>
                   </HeroEntrance>
@@ -234,14 +425,15 @@ export default function FactoraPage() {
                   <HeroEntrance translateY={20} delay={0.48}>
                     <div className="flex items-start space-x-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] rounded-full flex items-center justify-center flex-shrink-0">
-                        <Check className="w-6 h-6 text-white" />
+                        <FileCheck2 className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold mb-2 text-gray-900">
-                          Act with confidence: end-to-end invoice control,
-                          verified data + audit trail, and banker-grade exposure
-                          & pricing (incl. virtual IBANs).
+                        <h4 className="text-xl font-bold mb-2 text-white">
+                          {t.landing.bankers_point_3_title}
                         </h4>
+                        <p className="text-lg font-medium text-gray-300">
+                          {t.landing.bankers_point_3_desc}
+                        </p>
                       </div>
                     </div>
                   </HeroEntrance>
@@ -249,112 +441,23 @@ export default function FactoraPage() {
               </div>
 
               <MotionWrapper translateX={48} duration={1.2} delay={0.3}>
-                <div className="relative">
-                  <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+                <div className="relative will-change-transform transform-gpu">
+                  <div className="bg-card/10 backdrop-blur-sm rounded-2xl shadow-2xl border border-white/20 overflow-hidden">
                     <Image
-                      src="/dashboard.png"
+                      src="/financials-section.png"
                       alt="Banking dashboard showing portfolio performance with total advances, net revenue, invoices, DSO tracking, and default rate monitoring"
                       width={800}
                       height={600}
                       className="w-full h-auto"
+                      priority={false}
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                     />
                   </div>
                 </div>
               </MotionWrapper>
             </StaggerContainer>
           </div>
-        </div>
-      </section>
-
-      {/* SMEs Section */}
-      <section className="px-6 py-20 text-white">
-        <div className="max-w-7xl mx-auto">
-          {/* SMEs Section Header */}
-          <div className="mb-16">
-            <UnblurIn className="text-center">
-              <div className="inline-block bg-[#2F9A8A]/20 text-[#2F9A8A] px-4 py-2 rounded-full text-sm font-semibold mb-6 uppercase tracking-wide">
-                SMEs (Suppliers, Marketplaces, B2B merchants)
-              </div>
-              <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-                Get Paid Now. Offer Terms Safely.
-              </h2>
-              <p className="text-xl text-gray-300 mb-6 max-w-4xl mx-auto leading-relaxed">
-                Instant invoice financing and buyer risk checks to reduce late
-                payments and boost cash flow.
-              </p>
-              <div className="bg-gradient-to-r from-[#2F9A8A]/20 to-[#133B4F]/20 rounded-xl p-6 max-w-3xl mx-auto border border-[#2F9A8A]/30">
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <TrendingUp className="w-4 h-4 text-white" />
-                  </div>
-                  <div className="text-left">
-                    <h4 className="text-lg font-bold text-white mb-2">
-                      Problem we solve:
-                    </h4>
-                    <p className="text-gray-300 text-base leading-relaxed">
-                      Late B2B payments choke growth and burn ops time.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </UnblurIn>
-          </div>
-
-          {/* SME Solutions Section 1 - Turn Invoices Into Cash */}
-          <div className="mb-20">
-            <StaggerContainer
-              className="grid lg:grid-cols-2 gap-12 items-center"
-              stagger={0.18}
-            >
-              <div className="space-y-8">
-                <div className="space-y-6">
-                  <HeroEntrance translateY={20} delay={0.24}>
-                    <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] rounded-full flex items-center justify-center flex-shrink-0">
-                        <Zap className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <h4 className="text-xl font-bold mb-2">
-                          Click to cash: instant funding and automated factoring
-                          with transparent limits.
-                        </h4>
-                      </div>
-                    </div>
-                  </HeroEntrance>
-
-                  <HeroEntrance translateY={20} delay={0.36}>
-                    <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] rounded-full flex items-center justify-center flex-shrink-0">
-                        <Shield className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <h4 className="text-xl font-bold mb-2">
-                          Every invoice, at a glance: powerful search/filters
-                          across pending, paid, and defaulted.
-                        </h4>
-                      </div>
-                    </div>
-                  </HeroEntrance>
-                </div>
-              </div>
-
-              <MotionWrapper translateX={48} duration={1.2} delay={0.3}>
-                <div className="relative">
-                  <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
-                    <Image
-                      src="/customer-invoices.png"
-                      alt="Invoice management dashboard showing one-click funding, status tracking, filtering options, and automated factoring guidance"
-                      width={800}
-                      height={600}
-                      className="w-full h-auto"
-                    />
-                  </div>
-                </div>
-              </MotionWrapper>
-            </StaggerContainer>
-          </div>
-
-          {/* SME Solutions Section 2 - Business Financial Snapshot */}
         </div>
       </section>
 
@@ -363,39 +466,52 @@ export default function FactoraPage() {
         <div className="max-w-3xl mx-auto">
           <SlideUp className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Be among the first to use Factora
+              {t.landing.early_title}
             </h2>
-            <p className="text-lg text-gray-600 mb-4">
-              Product in development — sign up for early access and exclusive
-              benefits.
-            </p>
-            <div className="inline-block bg-[#2F9A8A]/10 text-[#2F9A8A] px-3 py-1 rounded-full text-sm font-medium">
-              Early access users get priority support and onboarding credits
-            </div>
           </SlideUp>
 
           <MotionWrapper preset="scale" scale={0.95} delay={0.2}>
-            <div className="rounded-2xl p-8 bg-gray-50 border border-gray-200 shadow-2xl shadow-gray-200/50">
-              <form className="space-y-6">
+            <div className="rounded-2xl p-8 bg-gray-50 border border-gray-200 shadow-2xl shadow-gray-200/50 will-change-transform transform-gpu">
+              {submitStatus.type && (
+                <div
+                  className={`p-4 rounded-lg mb-6 ${
+                    submitStatus.type === "success"
+                      ? "bg-green-100 border border-green-300 text-green-800"
+                      : "bg-red-100 border border-red-300 text-red-800"
+                  }`}
+                >
+                  {submitStatus.message}
+                </div>
+              )}
+
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-900 mb-2">
-                      Name
+                      {t.landing.form_name}
                     </label>
                     <input
                       type="text"
-                      placeholder="e.g. Maria Johnson"
-                      className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#2F9A8A]/30 focus:border-[#2F9A8A]"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      placeholder={t.landing.form_name_placeholder}
+                      className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#2F9A8A]/30 focus:border-[#2F9A8A] text-gray-900"
+                      required
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-900 mb-2">
-                      Email
+                      {t.landing.form_email}
                     </label>
                     <input
                       type="email"
-                      placeholder="you@company.com"
-                      className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#2F9A8A]/30 focus:border-[#2F9A8A]"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder={t.landing.form_email_placeholder}
+                      className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#2F9A8A]/30 focus:border-[#2F9A8A] text-gray-900"
+                      required
                     />
                   </div>
                 </div>
@@ -403,33 +519,42 @@ export default function FactoraPage() {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-900 mb-2">
-                      Company
+                      {t.landing.form_company}
                     </label>
                     <input
                       type="text"
-                      placeholder="Company name"
-                      className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#2F9A8A]/30 focus:border-[#2F9A8A]"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleInputChange}
+                      placeholder={t.landing.form_company_placeholder}
+                      className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#2F9A8A]/30 focus:border-[#2F9A8A] text-gray-900"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-900 mb-2">
-                      Role
+                      {t.landing.form_role}
                     </label>
                     <input
                       type="text"
-                      placeholder="CEO / CFO / Ops manager"
-                      className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#2F9A8A]/30 focus:border-[#2F9A8A]"
+                      name="role"
+                      value={formData.role}
+                      onChange={handleInputChange}
+                      placeholder={t.landing.form_role_placeholder}
+                      className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#2F9A8A]/30 focus:border-[#2F9A8A] text-gray-900"
                     />
                   </div>
                 </div>
 
-                <Button className="w-full px-8 py-3 rounded-full font-medium transition-all bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] text-white shadow-lg shadow-[#2F9A8A]/20 hover:shadow-[#2F9A8A]/30 hover:brightness-110">
-                  Join the waiting list
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full px-8 py-3 rounded-full font-medium transition-all bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] text-white shadow-lg shadow-[#2F9A8A]/20 hover:shadow-[#2F9A8A]/30 hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? "Submitting..." : t.landing.form_cta}
                 </Button>
 
                 <p className="text-xs text-gray-500 text-center">
-                  We&apos;ll only use your email for product updates. We
-                  won&apos;t share your data.
+                  {t.landing.form_disclaimer}
                 </p>
               </form>
             </div>
@@ -437,9 +562,6 @@ export default function FactoraPage() {
         </div>
       </section>
       {/* Section Divider: Early Access → Footer */}
-      {/* <div className="relative my-28">
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-      </div> */}
       {/* Footer is rendered from RootLayout - we don't need to render it here */}
     </div>
   );

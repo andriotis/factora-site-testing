@@ -4,7 +4,7 @@
  * EntranceProvider - Main provider component for entrance animations
  *
  * Features:
- * - Integrates with existing Lenis smooth scroll system
+ * - Optimized for performance without smooth scroll dependencies
  * - Respects prefers-reduced-motion
  * - Provides runtime animation toggles
  * - Handles mobile/touch device detection
@@ -42,8 +42,7 @@ export function EntranceProvider({
   // Local state
   const [animationsEnabled, setAnimationsEnabledState] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
-  const [smoothScrollContainer, setSmoothScrollContainer] =
-    useState<Element | null>(null);
+  // Removed smooth scroll integration
   const [isClient, setIsClient] = useState(false);
 
   // Initialize client-side detection
@@ -54,26 +53,7 @@ export function EntranceProvider({
       // Detect mobile
       setIsMobile(window.innerWidth <= config.disableOnMobileWidth);
 
-      // Detect smooth scroll container
-      // Integration with existing Lenis smooth scroll system
-      const detectSmoothScrollContainer = () => {
-        // Check for global smooth scroll instance
-        if (window.__smoothScroll?.state?.instance) {
-          // Lenis typically uses the root element
-          return document.documentElement;
-        }
-
-        // Look for common smooth scroll containers
-        const containers = [
-          document.querySelector("[data-lenis-root]"),
-          document.querySelector(".smooth-scroll-container"),
-          document.querySelector("#smooth-scroll-container"),
-        ].filter(Boolean);
-
-        return containers[0] || null;
-      };
-
-      setSmoothScrollContainer(detectSmoothScrollContainer());
+      // Smooth scroll integration removed
 
       // Set initial global state
       window.__animationsEnabled = animationsEnabled && !prefersReducedMotion;
@@ -157,7 +137,7 @@ export function EntranceProvider({
       animationsEnabled,
       prefersReducedMotion: prefersReducedMotion || false,
       isMobile,
-      smoothScrollContainer,
+      smoothScrollContainer: null, // Removed smooth scroll integration
     },
     setAnimationsEnabled,
     toggleAnimations,

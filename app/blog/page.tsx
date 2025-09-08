@@ -21,15 +21,15 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen text-white">
       {/* Hero Section */}
-      <section className="px-6 py-20 text-white">
+      <section className="px-6 py-20 text-white w-full">
         <div className="max-w-4xl mx-auto text-center px-6">
           <HeroEntrance>
-            <h1 className="text-5xl font-bold mb-6 text-balance">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-balance">
               Insights & Resources
             </h1>
           </HeroEntrance>
           <HeroEntrance delay={0.2}>
-            <p className="text-xl mb-8 text-gray-200 dark:text-gray-200 max-w-2xl mx-auto">
+            <p className="text-xl mb-8 text-gray-200 max-w-3xl mx-auto text-pretty">
               Practical guides, industry thinking, and product updates to help
               you manage receivables, unlock liquidity, and reduce payment risk.
             </p>
@@ -54,7 +54,7 @@ export default function BlogPage() {
       </section>
 
       {/* Blog Posts Grid */}
-      <section className="py-16 px-6">
+      <section className="py-16 px-6 w-full">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-4 gap-8">
             {/* Left column - Posts list */}
@@ -62,7 +62,7 @@ export default function BlogPage() {
               <StaggerContainer stagger={0.2} className="space-y-8">
                 {/* Blog Post 1 */}
                 <SlideUp>
-                  <article className="bg-card/10 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden border border-white/20">
+                  <article className="bg-card/10 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border border-white/20">
                     <Image
                       src="/business-woman-working-on-laptop-in-modern-office.png"
                       alt="Small-business owner reviewing invoices while laptop shows a cashflow dashboard."
@@ -72,16 +72,16 @@ export default function BlogPage() {
                     />
                     <div className="p-6">
                       <div className="flex items-center text-sm text-muted-foreground mb-3 flex-wrap gap-2">
-                        <span className="bg-[#2F9A8A] text-white px-2 py-1 rounded text-xs">
+                        <span className="bg-[#2F9A8A] text-white px-3 py-1 rounded-full text-xs font-medium">
                           invoice-factoring
                         </span>
-                        <span className="bg-[#133B4F] text-white px-2 py-1 rounded text-xs">
+                        <span className="bg-[#133B4F] text-white px-3 py-1 rounded-full text-xs font-medium">
                           cashflow
                         </span>
-                        <span className="bg-[#071A33] text-white px-2 py-1 rounded text-xs">
+                        <span className="bg-[#071A33] text-white px-3 py-1 rounded-full text-xs font-medium">
                           SME
                         </span>
-                        <span className="bg-muted/500 text-white px-2 py-1 rounded text-xs">
+                        <span className="bg-white/20 text-white px-3 py-1 rounded-full text-xs font-medium">
                           finance
                         </span>
                       </div>
@@ -113,7 +113,7 @@ export default function BlogPage() {
 
                 {/* Blog Post 2 */}
                 <SlideUp>
-                  <article className="bg-card rounded-lg shadow-lg overflow-hidden">
+                  <article className="bg-card/10 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border border-white/20">
                     <Image
                       src="/business-professional-analyzing-data-on-computer-s.png"
                       alt="Data scientist analyzing charts on a laptop with invoices and receipts on the desk."
@@ -123,30 +123,30 @@ export default function BlogPage() {
                     />
                     <div className="p-6">
                       <div className="flex items-center text-sm text-muted-foreground mb-3 flex-wrap gap-2">
-                        <span className="bg-[#2F9A8A] text-white px-2 py-1 rounded text-xs">
+                        <span className="bg-[#2F9A8A] text-white px-3 py-1 rounded-full text-xs font-medium">
                           underwriting
                         </span>
-                        <span className="bg-[#133B4F] text-white px-2 py-1 rounded text-xs">
+                        <span className="bg-[#133B4F] text-white px-3 py-1 rounded-full text-xs font-medium">
                           alternativedata
                         </span>
-                        <span className="bg-[#071A33] text-white px-2 py-1 rounded text-xs">
+                        <span className="bg-[#071A33] text-white px-3 py-1 rounded-full text-xs font-medium">
                           credit-risk
                         </span>
-                        <span className="bg-muted/500 text-white px-2 py-1 rounded text-xs">
+                        <span className="bg-white/20 text-white px-3 py-1 rounded-full text-xs font-medium">
                           SME
                         </span>
                       </div>
-                      <h2 className="text-2xl font-bold text-foreground mb-3">
+                      <h2 className="text-2xl font-bold text-white mb-3">
                         Using alternative data to underwrite thin-file SMEs
                       </h2>
-                      <p className="text-muted-foreground mb-4">
+                      <p className="text-gray-300 mb-4">
                         When traditional credit scores don&apos;t exist,
                         alternative signals can reveal a business&apos;s real
                         ability to repay. Here&apos;s how lenders are using
                         transaction, marketplace and behavioral data to
                         underwrite SMEs.
                       </p>
-                      <div className="flex items-center text-sm text-muted-foreground mb-4">
+                      <div className="flex items-center text-sm text-gray-300 mb-4">
                         <span>
                           Dr. Alex Petros, Head of Risk & Data Science
                         </span>
@@ -172,26 +172,26 @@ export default function BlogPage() {
               <StaggerContainer stagger={0.15} className="space-y-6">
                 {/* Search */}
                 <FadeIn>
-                  <div className="backdrop-blur-xl bg-black/20 border border-white/10 rounded-2xl shadow-2xl p-6">
+                  <div className="backdrop-blur-xl bg-card/10 backdrop-blur-sm border border-white/20 rounded-2xl shadow-2xl p-6">
                     <Input
                       type="search"
                       placeholder="Search articles, tags, and authors"
-                      className="w-full"
+                      className="w-full bg-white/10 border-white/20 text-white placeholder:text-gray-300 focus:border-[#2F9A8A] focus:ring-[#2F9A8A]/30"
                     />
                   </div>
                 </FadeIn>
 
                 {/* Categories */}
                 <FadeIn>
-                  <div className="bg-card rounded-lg shadow-lg p-6">
-                    <h3 className="text-lg font-semibold text-foreground mb-4">
+                  <div className="bg-card/10 backdrop-blur-sm rounded-2xl shadow-2xl p-6 border border-white/20">
+                    <h3 className="text-lg font-semibold text-white mb-4">
                       Categories
                     </h3>
                     <ul className="space-y-2">
                       <li>
                         <Link
                           href="#"
-                          className="text-muted-foreground hover:text-[#2F9A8A]"
+                          className="text-gray-300 hover:text-[#2F9A8A] transition-colors"
                         >
                           Financing
                         </Link>
@@ -199,7 +199,7 @@ export default function BlogPage() {
                       <li>
                         <Link
                           href="#"
-                          className="text-muted-foreground hover:text-[#2F9A8A]"
+                          className="text-gray-300 hover:text-[#2F9A8A] transition-colors"
                         >
                           Underwriting
                         </Link>
@@ -207,7 +207,7 @@ export default function BlogPage() {
                       <li>
                         <Link
                           href="#"
-                          className="text-muted-foreground hover:text-[#2F9A8A]"
+                          className="text-gray-300 hover:text-[#2F9A8A] transition-colors"
                         >
                           Product Updates
                         </Link>
@@ -215,7 +215,7 @@ export default function BlogPage() {
                       <li>
                         <Link
                           href="#"
-                          className="text-muted-foreground hover:text-[#2F9A8A]"
+                          className="text-gray-300 hover:text-[#2F9A8A] transition-colors"
                         >
                           Case Studies
                         </Link>
@@ -223,7 +223,7 @@ export default function BlogPage() {
                       <li>
                         <Link
                           href="#"
-                          className="text-muted-foreground hover:text-[#2F9A8A]"
+                          className="text-gray-300 hover:text-[#2F9A8A] transition-colors"
                         >
                           Guides
                         </Link>
@@ -234,24 +234,24 @@ export default function BlogPage() {
 
                 {/* Popular Tags */}
                 <FadeIn>
-                  <div className="bg-card/20 backdrop-blur-sm rounded-lg shadow-lg p-6">
-                    <h3 className="text-lg font-semibold text-foreground mb-4">
+                  <div className="bg-card/10 backdrop-blur-sm rounded-2xl shadow-2xl p-6 border border-white/20">
+                    <h3 className="text-lg font-semibold text-white mb-4">
                       Popular Tags
                     </h3>
                     <div className="flex flex-wrap gap-2">
-                      <span className="bg-muted text-foreground px-3 py-1 rounded-full text-sm hover:bg-muted/80 cursor-pointer">
+                      <span className="bg-white/20 text-white px-3 py-1 rounded-full text-sm hover:bg-white/30 cursor-pointer transition-colors">
                         invoice-factoring
                       </span>
-                      <span className="bg-muted text-foreground px-3 py-1 rounded-full text-sm hover:bg-muted/80 cursor-pointer">
+                      <span className="bg-white/20 text-white px-3 py-1 rounded-full text-sm hover:bg-white/30 cursor-pointer transition-colors">
                         underwriting
                       </span>
-                      <span className="bg-muted text-foreground px-3 py-1 rounded-full text-sm hover:bg-muted/80 cursor-pointer">
+                      <span className="bg-white/20 text-white px-3 py-1 rounded-full text-sm hover:bg-white/30 cursor-pointer transition-colors">
                         SME
                       </span>
-                      <span className="bg-muted text-foreground px-3 py-1 rounded-full text-sm hover:bg-muted/80 cursor-pointer">
+                      <span className="bg-white/20 text-white px-3 py-1 rounded-full text-sm hover:bg-white/30 cursor-pointer transition-colors">
                         cashflow
                       </span>
-                      <span className="bg-muted text-foreground px-3 py-1 rounded-full text-sm hover:bg-muted/80 cursor-pointer">
+                      <span className="bg-white/20 text-white px-3 py-1 rounded-full text-sm hover:bg-white/30 cursor-pointer transition-colors">
                         insurance
                       </span>
                     </div>
@@ -260,11 +260,11 @@ export default function BlogPage() {
 
                 {/* Subscribe Form */}
                 <FadeIn>
-                  <div className="bg-card rounded-lg shadow-lg p-6">
-                    <h3 className="text-lg font-semibold text-foreground mb-4">
+                  <div className="bg-card/10 backdrop-blur-sm rounded-2xl shadow-2xl p-6 border border-white/20">
+                    <h3 className="text-lg font-semibold text-white mb-4">
                       Subscribe
                     </h3>
-                    <p className="text-sm text-muted-foreground mb-4">
+                    <p className="text-sm text-gray-300 mb-4">
                       Get monthly insights on financing, underwriting, and
                       product updates. No spam — unsubscribe anytime.
                     </p>
@@ -272,7 +272,7 @@ export default function BlogPage() {
                       <Input
                         type="email"
                         placeholder="Enter your email"
-                        className="w-full"
+                        className="w-full bg-white/10 border-white/20 text-white placeholder:text-gray-300 focus:border-[#2F9A8A] focus:ring-[#2F9A8A]/30"
                       />
                       <Button className="w-full rounded-full font-medium transition-all bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] text-white shadow-lg shadow-[#2F9A8A]/20 hover:shadow-[#2F9A8A]/30 hover:brightness-110">
                         Subscribe
@@ -283,11 +283,11 @@ export default function BlogPage() {
 
                 {/* CTA for Early Access */}
                 <FadeIn>
-                  <div className="backdrop-blur-xl bg-black/20 border border-white/10 rounded-2xl shadow-2xl p-6 text-white">
+                  <div className="backdrop-blur-xl bg-gradient-to-r from-[#2F9A8A]/20 to-[#133B4F]/20 border border-[#2F9A8A]/30 rounded-2xl shadow-2xl p-6 text-white">
                     <h3 className="text-lg font-semibold mb-2">
                       Get early access
                     </h3>
-                    <p className="text-sm text-gray-200 dark:text-gray-200 mb-4">
+                    <p className="text-sm text-gray-200 mb-4">
                       Join the waiting list for Factora&apos;s invoice factoring
                       platform.
                     </p>
@@ -306,15 +306,15 @@ export default function BlogPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="text-white py-16">
+      <section className="text-white py-16 w-full">
         <div className="max-w-4xl mx-auto text-center px-6">
           <SlideUp>
-            <h2 className="text-4xl font-bold mb-6">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-6">
               Get Early Access To Factora To Get Paid Faster
             </h2>
           </SlideUp>
           <SlideUp delay={0.2}>
-            <p className="text-xl mb-8 text-gray-200 dark:text-gray-200 max-w-2xl mx-auto">
+            <p className="text-xl mb-8 text-gray-200 max-w-3xl mx-auto text-pretty">
               With intelligent automation, predictive insights, and seamless
               integrations, Factora helps you get paid faster while simplifying
               your accounts receivable process.
@@ -337,15 +337,15 @@ export default function BlogPage() {
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-12 px-6">
+      <section className="py-12 px-6 w-full">
         <div className="max-w-4xl mx-auto">
           <SlideUp>
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               <div>
-                <h3 className="text-2xl font-bold text-foreground mb-2">
+                <h3 className="text-2xl font-bold text-white mb-2">
                   Sign Up For Our Newsletter And Get The Latest News
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-gray-300">
                   Stay informed about the latest trends in business finance and
                   invoice factoring.
                 </p>
@@ -354,9 +354,9 @@ export default function BlogPage() {
                 <Input
                   type="email"
                   placeholder="Enter your email address"
-                  className="flex-1"
+                  className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-gray-300 focus:border-[#2F9A8A] focus:ring-[#2F9A8A]/30"
                 />
-                <Button className="bg-[#2F9A8A] hover:bg-[#2F9A8A]/90 text-white px-6">
+                <Button className="bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] hover:brightness-110 text-white px-6 shadow-lg shadow-[#2F9A8A]/20">
                   Subscribe
                 </Button>
               </div>

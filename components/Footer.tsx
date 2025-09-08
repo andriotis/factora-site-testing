@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { useI18n } from "@/components/I18nProvider";
 
 export function Footer() {
+  const { t } = useI18n();
   return (
     <footer className="text-gray-900 px-6 py-12 bg-white">
       <div className="max-w-7xl mx-auto">
@@ -22,39 +24,49 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Company</h4>
+            <h4 className="font-semibold mb-4">{t.footer.company_title}</h4>
             <div className="space-y-2 text-sm text-gray-600">
               <div>
                 <Link href="/about" className="hover:text-[#2F9A8A]">
-                  About
+                  {t.nav.about}
+                </Link>
+              </div>
+              <div>
+                <Link href="/careers" className="hover:text-[#2F9A8A]">
+                  {t.nav.careers}
                 </Link>
               </div>
               <div>
                 <Link href="/contact" className="hover:text-[#2F9A8A]">
-                  Contact
+                  {t.nav.contact}
                 </Link>
               </div>
             </div>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Resources</h4>
+            <h4 className="font-semibold mb-4">{t.footer.solutions_title}</h4>
             <div className="space-y-2 text-sm text-gray-600">
               <div>
-                <Link href="/pricing" className="hover:text-[#2F9A8A]">
-                  Pricing
+                <Link href="/#core" className="hover:text-[#2F9A8A]">
+                  {t.nav.solutions_core}
                 </Link>
               </div>
               <div>
-                <Link href="/blog" className="hover:text-[#2F9A8A]">
-                  Blog
+                <Link href="/#smes" className="hover:text-[#2F9A8A]">
+                  {t.nav.solutions_smes}
+                </Link>
+              </div>
+              <div>
+                <Link href="/#banking" className="hover:text-[#2F9A8A]">
+                  {t.nav.solutions_banking}
                 </Link>
               </div>
             </div>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Legals</h4>
+            <h4 className="font-semibold mb-4">{t.footer.legals_title}</h4>
             <div className="space-y-2 text-sm text-gray-600">
               <div>
                 <Link href="/privacy" className="hover:text-[#2F9A8A]">
@@ -72,7 +84,7 @@ export function Footer() {
 
         <div className="border-t border-gray-200 pt-8 text-center">
           <p className="text-xs text-gray-500">
-            © {new Date().getFullYear()} Factora. All rights reserved.
+            © {new Date().getFullYear()} Factora. {t.footer.copyright}
           </p>
         </div>
       </div>

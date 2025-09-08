@@ -2,7 +2,7 @@
  * EntranceProvider - Entrance animations with Framer Motion
  *
  * A complete entrance animation system for React applications
- * with viewport detection, reduced motion support, and smooth scroll integration.
+ * with viewport detection, reduced motion support, and performance optimization.
  */
 
 // Core components

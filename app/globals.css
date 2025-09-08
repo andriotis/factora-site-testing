@@ -113,11 +113,25 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
-    transition-property: color, background-color, border-color,
-      text-decoration-color, fill, stroke;
+  }
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  /* Add transitions only where needed */
+  button,
+  a,
+  input,
+  textarea,
+  [role="button"] {
+    transition-property: color, background-color, border-color, opacity,
+      transform;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 200ms;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -129,5 +143,38 @@
 @layer utilities {
   .perspective-1000 {
     perspective: 1000px;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll 8s linear infinite;
+    will-change: transform;
+    min-width: max-content;
+  }
+
+  /* Fade effect for logos entering/leaving container */
+  .logo-fade {
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
   }
 }

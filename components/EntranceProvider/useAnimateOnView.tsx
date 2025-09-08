@@ -4,7 +4,7 @@
  * useAnimateOnView - Hook for viewport-triggered animations
  *
  * Features:
- * - Integrates with Lenis smooth scroll containers
+ * - Optimized for performance without smooth scroll dependencies
  * - Configurable intersection thresholds
  * - Stagger support for multiple elements
  * - Animation controls for complex sequences
@@ -48,9 +48,9 @@ export function useAnimateOnView(
     staggerDirection: "normal" as const,
   };
 
-  const state = entranceContext?.state || {
-    smoothScrollContainer: null,
-  };
+  // const state = entranceContext?.state || {
+  //   smoothScrollContainer: null,
+  // };
 
   const shouldAnimate = useMemo(
     () => entranceContext?.shouldAnimate || (() => false),
@@ -83,14 +83,11 @@ export function useAnimateOnView(
     ]
   );
 
-  // Use Framer Motion's useInView with proper root for smooth scroll integration
+  // Use Framer Motion's useInView with performance optimizations
   const isInView = useInView(ref, {
     amount: effectiveOptions.threshold,
     once: effectiveOptions.triggerOnce,
-    // Use smooth scroll container as root if available
-    root: state.smoothScrollContainer
-      ? { current: state.smoothScrollContainer }
-      : undefined,
+    margin: "50px 0px", // Start animation 50px before element enters viewport
   });
 
   // Set to visible immediately if no context available
