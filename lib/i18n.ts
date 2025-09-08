@@ -364,9 +364,9 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       apply_step1: "Send an email to:",
       apply_step2: "Subject:",
       apply_step3:
-        "Attach: CV/resume as PDF (plus portfolio/GitHub/LinkedIn if relevant)",
+        "Attach: CV/resume as PDF",
       apply_step4: "Include in the email body:",
-      apply_step4_1: "3–5 sentences on why Factora and this role",
+      apply_step4_1: "3–5 sentences on why the selection of this role",
       apply_step4_2: "Your location/time zone and earliest start date",
       apply_step4_3: "Any links (portfolio, GitHub, LinkedIn, case studies)",
       email_cv_button: "Email Your CV",
@@ -634,7 +634,7 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       apply_step3:
         "Επισυνάψτε: CV/βιογραφικό ως PDF",
       apply_step4: "Συμπεριλάβετε στο σώμα του email:",
-      apply_step4_1: "3–5 προτάσεις γιατί την Factora και αυτός ο ρόλος",
+      apply_step4_1: "3–5 προτάσεις για την επιλογή αυτού του ρόλου",
       apply_step4_2:
         "Την ζώνη ώρας σας και την επιθυμητή ημερομηνία έναρξης",
       apply_step4_3:
