@@ -24,29 +24,34 @@ export default function AboutPage() {
     <div className="min-h-screen text-white">
       {/* Our Founding Story */}
       <section className="px-6 py-16 md:py-24 w-full">
-        <div className="max-w-3xl mx-auto text-center">
-          <StaggerContainer stagger={0.1}>
-            <HeroEntrance translateY={24}>
-              <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                {t.about.why_started_title}
-              </h1>
-            </HeroEntrance>
-            <HeroEntrance translateY={20} delay={0.12}>
-              <p className="text-gray-300 mb-6 leading-relaxed">
-                {t.about.why_started_para1}
-              </p>
-            </HeroEntrance>
-            <HeroEntrance translateY={20} delay={0.2}>
-              <p className="text-gray-300 mb-6 leading-relaxed">
-                {t.about.why_started_para2}
-              </p>
-            </HeroEntrance>
-            <HeroEntrance translateY={20} delay={0.28}>
-              <p className="text-gray-300 leading-relaxed">
-                {t.about.why_started_para3}
-              </p>
-            </HeroEntrance>
-          </StaggerContainer>
+        <div className="max-w-4xl mx-auto">
+          {/* Left: Title and paragraphs */}
+          <div className="text-center">
+            <StaggerContainer stagger={0.1}>
+              <HeroEntrance translateY={24}>
+                <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+                  {t.about.why_started_title}
+                </h1>
+              </HeroEntrance>
+              <div className="rounded-2xl p-8 border bg-gradient-to-br from-black/30 to-black/10 border-white/10 backdrop-blur-xl backdrop-saturate-150">
+                <HeroEntrance translateY={20} delay={0.12}>
+                  <p className="text-gray-300 font-bold mb-6 leading-relaxed">
+                    {t.about.why_started_para1}
+                  </p>
+                </HeroEntrance>
+                <HeroEntrance translateY={20} delay={0.2}>
+                  <p className="text-gray-300 font-bold mb-6 leading-relaxed">
+                    {t.about.why_started_para2}
+                  </p>
+                </HeroEntrance>
+                <HeroEntrance translateY={20} delay={0.28}>
+                  <p className="text-gray-300 font-bold leading-relaxed">
+                    {t.about.why_started_para3}
+                  </p>
+                </HeroEntrance>
+              </div>
+            </StaggerContainer>
+          </div>
         </div>
       </section>
 
@@ -97,7 +102,7 @@ export default function AboutPage() {
                 <h3 className="text-xl font-semibold text-gray-900 mb-4 transition-colors duration-300 hover:text-[#2F9A8A]">
                   {t.about.fair_access_title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed text-left">
                   {t.about.fair_access_desc}
                 </p>
               </div>
@@ -128,7 +133,7 @@ export default function AboutPage() {
                 <h3 className="text-xl font-semibold text-gray-900 mb-4 transition-colors duration-300 hover:text-[#2F9A8A]">
                   {t.about.trust_title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed text-left">
                   {t.about.trust_desc}
                 </p>
               </div>
@@ -153,7 +158,7 @@ export default function AboutPage() {
                 <h3 className="text-xl font-semibold text-gray-900 mb-4 transition-colors duration-300 hover:text-[#2F9A8A]">
                   {t.about.simplicity_title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed text-left">
                   {t.about.simplicity_desc}
                 </p>
               </div>

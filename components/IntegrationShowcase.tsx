@@ -96,21 +96,33 @@ export default function IntegrationShowcase() {
   const integrations = useIntegrations();
   const [selectedIntegration, setSelectedIntegration] =
     useState<Integration | null>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentStep, setCurrentStep] = useState(0); // index into CCW_ORDER
   const [isUserInteracting, setIsUserInteracting] = useState(false);
   const [revealedBubbles, setRevealedBubbles] = useState<Set<string>>(
     new Set()
   );
+  const [isInView, setIsInView] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
-  const CYCLE_DURATION = 1000; // 2 seconds per integration
+  // Counter-clockwise order of icons around the center: TL(0) -> BL(1) -> BR(3) -> TR(2)
+  const CCW_ORDER = [0, 1, 3, 2];
+  const [fastCycleDone, setFastCycleDone] = useState(false);
 
   // Auto-cycling effect
   useEffect(() => {
-    if (!isUserInteracting) {
+    const stepCount = CCW_ORDER.length;
+    if (!isUserInteracting && isInView) {
+      const duration = fastCycleDone ? 1500 : 500; // 0.5s per icon for first loop, then 1.5s
       intervalRef.current = setInterval(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % integrations.length);
-      }, CYCLE_DURATION);
+        setCurrentStep((prev) => {
+          const next = (prev + 1) % stepCount;
+          if (!fastCycleDone && next === 0) {
+            setFastCycleDone(true);
+          }
+          return next;
+        });
+      }, duration);
     } else {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
@@ -123,14 +135,30 @@ export default function IntegrationShowcase() {
         clearInterval(intervalRef.current);
       }
     };
-  }, [isUserInteracting, integrations.length]);
+  }, [isUserInteracting, fastCycleDone, isInView]);
 
-  // Update selected integration based on current index
+  // Update selected integration based on current step (counter-clockwise order)
   useEffect(() => {
-    if (!isUserInteracting) {
-      setSelectedIntegration(integrations[currentIndex]);
+    if (!isUserInteracting && isInView) {
+      const integrationIndex = CCW_ORDER[currentStep];
+      setSelectedIntegration(integrations[integrationIndex]);
     }
-  }, [currentIndex, isUserInteracting, integrations]);
+  }, [currentStep, isUserInteracting, integrations, isInView]);
+
+  // Observe when the showcase enters the viewport
+  useEffect(() => {
+    const node = containerRef.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        setIsInView(entry.isIntersecting && entry.intersectionRatio > 0);
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
 
   // Mark the currently selected integration as revealed so its bubble stays visible
   useEffect(() => {
@@ -148,22 +176,28 @@ export default function IntegrationShowcase() {
     setIsUserInteracting(true);
     setSelectedIntegration(integration);
 
-    // Find the index of the hovered integration
+    // Find the index of the hovered integration and map to CCW order step
     const hoveredIndex = integrations.findIndex(
       (integ) => integ.id === integration.id
     );
-    setCurrentIndex(hoveredIndex);
+    const orderStep = CCW_ORDER.indexOf(hoveredIndex);
+    if (orderStep !== -1) {
+      setCurrentStep(orderStep);
+    }
   };
 
   // Resume auto-cycling after a delay when user stops interacting
   const handleMouseLeave = () => {
     setTimeout(() => {
       setIsUserInteracting(false);
-    }, 2000); // Resume after 2 seconds of no interaction
+    }, 1000); // Resume after 1 second of no interaction
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div
+      ref={containerRef}
+      className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+    >
       <div className="relative flex items-center justify-center min-h-[420px] sm:min-h-[520px]">
         {/* Center - Integration Showcase (Main focus) */}
         <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-lg">
@@ -273,7 +307,7 @@ export default function IntegrationShowcase() {
                   <h3 className="text-xl font-semibold text-gray-900 mb-3">
                     {selectedIntegration.name}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed text-sm">
+                  <p className="text-left text-gray-600 leading-relaxed text-sm">
                     {selectedIntegration.description}
                   </p>
                 </div>
@@ -320,7 +354,7 @@ export default function IntegrationShowcase() {
                         >
                           {integration.name}
                         </h3>
-                        <p className="text-gray-600 leading-relaxed text-sm">
+                        <p className="text-left text-gray-600 leading-relaxed text-sm">
                           {integration.description}
                         </p>
                       </div>
@@ -367,7 +401,7 @@ export default function IntegrationShowcase() {
                         >
                           {integration.name}
                         </h3>
-                        <p className="text-gray-600 leading-relaxed text-sm">
+                        <p className="text-left text-gray-600 leading-relaxed text-sm">
                           {integration.description}
                         </p>
                       </div>

@@ -59,6 +59,10 @@ export type TranslationDictionary = {
     form_role_placeholder: string;
     form_cta: string;
     form_disclaimer: string;
+    form_disclaimer_prefix?: string;
+    form_disclaimer_and?: string;
+    terms_label?: string;
+    privacy_label?: string;
   };
   integrations: {
     credit_scoring_name: string;
@@ -155,11 +159,38 @@ export type TranslationDictionary = {
     validation_privacy_required: string;
     validation_email_invalid: string;
   };
+  privacy: {
+    title: string;
+    subtitle: string;
+    info_collect_title: string;
+    info_collect_intro: string;
+    info_collect_items: string[];
+    use_title: string;
+    use_intro: string;
+    use_items: string[];
+    sharing_title: string;
+    sharing_body: string;
+    security_title: string;
+    security_body: string;
+    rights_title: string;
+    rights_intro: string;
+    rights_items: string[];
+    contact_title: string;
+    contact_body_prefix: string;
+    back_to_contact: string;
+  };
+  terms: {
+    title: string;
+    intro: string;
+    contact_prefix: string;
+  };
   footer: {
     company_title: string;
     solutions_title: string;
     legals_title: string;
     copyright: string;
+    terms_label?: string;
+    privacy_label?: string;
   };
 };
 
@@ -180,13 +211,14 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       book_demo: "Book a demo",
     },
     landing: {
-      hero_title: "Your Trusted AI Financial Copilot for Smarter B2B Payments",
+      hero_title:
+        "Your Trusted\nAI Financial Copilot\nfor Smarter B2B Payments",
       hero_subtitle:
         "<strong>Prevent</strong> risky buyers. <strong>Get paid</strong> faster. Increase <strong>conversion rates</strong> with safer credit.",
       hero_cta: "Book a demo",
       trusted_by: "SUPPORTED BY",
       integrations_title:
-        "The Plug-and-Play Working-Capital Management & Financing Platform",
+        "Plug-and-Play Working-Capital Management & Financing Platform",
       integrations_subtitle:
         "Factora integrates into the finance and accounting stack you use every day.",
       smes_chip: "For SMEs",
@@ -237,6 +269,11 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       form_cta: "Book a demo",
       form_disclaimer:
         "We'll only use your email for product updates. We won't share your data.",
+      form_disclaimer_prefix:
+        "By submitting this form, you consent to Factora processing your personal data as outlined in our",
+      form_disclaimer_and: "and",
+      terms_label: "Terms",
+      privacy_label: "Privacy Policy",
     },
     integrations: {
       credit_scoring_name: "Instant buyers credit scoring",
@@ -286,7 +323,7 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       values_subtitle: "What guides our work and relationships",
       fair_access_title: "Fair Access",
       fair_access_desc:
-        "Every viable SME deserves bank-backed working capital. We use transparent, data-driven underwriting based on reality—not bureaucracy or outdated methods—so every business is assessed fairly.",
+        "Every viable SME deserves bank-backed working capital. We use transparent, data-driven underwriting based on reality, not bureaucracy or outdated methods, so every business is assessed fairly.",
       trust_title: "Trust",
       trust_desc:
         "Security, privacy, and compliance are priorities. Your business financial data are handled with rigorous protection and responsibility. Credit decisions are explainable and auditable, so owners, accountants, and banking partners can rely on them.",
@@ -338,7 +375,7 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       meta_title: "Contact Factora — Get in Touch with Our Team",
       meta_description:
         "Have questions about our B2B payment solutions? Contact our team for personalized guidance and support. We're here to help your business grow.",
-      hero_title: "Let's Chat! We're Here to Help",
+      hero_title: "We're Here to Help",
       hero_subtitle:
         "Have questions about our solutions? Want to see how we can help your business? We'd love to hear from you and help you get started.",
       connect_title: "Connect With Us",
@@ -376,6 +413,52 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       solutions_title: "Solutions",
       legals_title: "Legals",
       copyright: "All rights reserved.",
+      terms_label: "Terms",
+      privacy_label: "Privacy Policy",
+    },
+    privacy: {
+      title: "Privacy Policy",
+      subtitle: "How we collect, use, and protect your information",
+      info_collect_title: "Information We Collect",
+      info_collect_intro:
+        "When you use our contact form, we collect the following information:",
+      info_collect_items: [
+        "Your name and contact information (email, phone)",
+        "The subject and content of your message",
+        "Your agreement to our privacy policy",
+      ],
+      use_title: "How We Use Your Information",
+      use_intro: "We use the information you provide to:",
+      use_items: [
+        "Respond to your inquiries and provide customer support",
+        "Send you information about our services",
+        "Improve our website and services",
+        "Comply with legal obligations",
+      ],
+      sharing_title: "Information Sharing",
+      sharing_body:
+        "We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy or as required by law.",
+      security_title: "Data Security",
+      security_body:
+        "We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.",
+      rights_title: "Your Rights",
+      rights_intro: "You have the right to:",
+      rights_items: [
+        "Access your personal information",
+        "Correct inaccurate information",
+        "Request deletion of your information",
+        "Withdraw consent for data processing",
+      ],
+      contact_title: "Contact Us",
+      contact_body_prefix:
+        "If you have any questions about this Privacy Policy or our data practices, please contact us at",
+      back_to_contact: "Back to Contact",
+    },
+    terms: {
+      title: "Terms & Conditions",
+      intro:
+        "This page will host our Terms & Conditions. For now, please contact us with any questions.",
+      contact_prefix: "For any questions, email",
     },
   },
   el: {
@@ -395,14 +478,13 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       book_demo: "Κλείστε demo",
     },
     landing: {
-      hero_title:
-        "Ο έμπιστος AI Οικονομικός Βοηθός σας για έξυπνες B2B πληρωμές",
+      hero_title: "Ο έμπιστος\nAI Οικονομικός Βοηθός\nγια έξυπνες B2B πληρωμές",
       hero_subtitle:
         "Προστατευτείτε από <strong>κακοπληρωτές</strong>. <strong>Εισπράξτε</strong> πιο γρήγορα. Αυξήστε τις εμπορικές <strong>συμφωνίες</strong> σας με ασφαλή πίστωση.",
       hero_cta: "Κλείστε demo",
       trusted_by: "ΜΕ ΤΗΝ ΥΠΟΣΤΗΡΙΞΗ ΤΩΝ",
       integrations_title:
-        "Η «όλα-σε-ένα» πλατφόρμα για διαχείριση & χρηματοδότηση κεφαλαίου κίνησης",
+        "Ολοκλήρωμένη πλατφόρμα για διαχείριση & χρηματοδότηση κεφαλαίου κίνησης",
       integrations_subtitle:
         "Η Factora ενσωματώνεται εύκολα στα υφιστάμενα λογιστικά και συναλλακτικά εργαλεία που χρησιμοποιείτε καθημερινά.",
       smes_chip: "Για Μικρομεσαίες Επιχειρήσεις",
@@ -455,6 +537,11 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       form_cta: "Κλείστε demo",
       form_disclaimer:
         "Θα χρησιμοποιήσουμε το email μόνο για ενημερώσεις προϊόντος. Δεν θα μοιραστούμε τα δεδομένα σας.",
+      form_disclaimer_prefix:
+        "Υποβάλλοντας αυτή τη φόρμα, συναινείτε στην επεξεργασία των προσωπικών σας δεδομένων από τη Factora, όπως περιγράφεται στην",
+      form_disclaimer_and: "και την",
+      terms_label: "Όρους Χρήσης",
+      privacy_label: "Πολιτική Απορρήτου",
     },
     integrations: {
       credit_scoring_name: "Άμεση πιστοληπτική αξιολόγηση των πελατών σας",
@@ -558,7 +645,7 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       meta_title: "Επικοινωνία με το Factora — Επικοινωνήστε με την Ομάδα μας",
       meta_description:
         "Έχετε ερωτήσεις για τις λύσεις B2B πληρωμών μας; Επικοινωνήστε με την ομάδα μας για εξατομικευμένη καθοδήγηση και υποστήριξη. Είμαστε εδώ για να βοηθήσουμε την επιχείρησή σας να αναπτυχθεί.",
-      hero_title: "Ας Συζητήσουμε! Είμαστε Εδώ για να Βοηθήσουμε",
+      hero_title: "Είμαστε Εδώ για να Βοηθήσουμε",
       hero_subtitle:
         "Έχετε ερωτήσεις για τις λύσεις μας; Θέλετε να δείτε πώς μπορούμε να βοηθήσουμε την επιχείρησή σας; Θα χαρούμε να ακούσουμε από εσάς και να σας βοηθήσουμε να ξεκινήσετε.",
       connect_title: "Συνδεθείτε μαζί μας",
@@ -599,6 +686,53 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       solutions_title: "Λύσεις",
       legals_title: "Νομικά",
       copyright: "Όλα τα δικαιώματα διατηρούνται.",
+      terms_label: "Όροι Χρήσης",
+      privacy_label: "Πολιτική Απορρήτου",
+    },
+    privacy: {
+      title: "Πολιτική Απορρήτου",
+      subtitle:
+        "Πώς συλλέγουμε, χρησιμοποιούμε και προστατεύουμε τις πληροφορίες σας",
+      info_collect_title: "Πληροφορίες που Συλλέγουμε",
+      info_collect_intro:
+        "Όταν χρησιμοποιείτε τη φόρμα επικοινωνίας, συλλέγουμε τις ακόλουθες πληροφορίες:",
+      info_collect_items: [
+        "Το όνομά σας και στοιχεία επικοινωνίας (email, τηλέφωνο)",
+        "Το θέμα και το περιεχόμενο του μηνύματός σας",
+        "Τη συμφωνία σας με την Πολιτική Απορρήτου",
+      ],
+      use_title: "Πώς Χρησιμοποιούμε τις Πληροφορίες σας",
+      use_intro: "Χρησιμοποιούμε τις πληροφορίες που παρέχετε για να:",
+      use_items: [
+        "Απαντήσουμε στα αιτήματά σας και να παρέχουμε υποστήριξη",
+        "Σας στέλνουμε ενημερώσεις σχετικά με τις υπηρεσίες μας",
+        "Βελτιώνουμε τον ιστότοπο και τις υπηρεσίες μας",
+        "Συμμορφωνόμαστε με νομικές υποχρεώσεις",
+      ],
+      sharing_title: "Κοινοποίηση Πληροφοριών",
+      sharing_body:
+        "Δεν πουλάμε, δεν εμπορευόμαστε και δεν μεταβιβάζουμε τα προσωπικά σας δεδομένα σε τρίτους χωρίς τη συγκατάθεσή σας, εκτός όπως περιγράφεται στην παρούσα πολιτική ή όπως απαιτείται από τον νόμο.",
+      security_title: "Ασφάλεια Δεδομένων",
+      security_body:
+        "Εφαρμόζουμε κατάλληλα μέτρα ασφαλείας για την προστασία των προσωπικών σας δεδομένων από μη εξουσιοδοτημένη πρόσβαση, αλλοίωση, γνωστοποίηση ή καταστροφή.",
+      rights_title: "Τα Δικαιώματά σας",
+      rights_intro: "Διατηρείτε το δικαίωμα να:",
+      rights_items: [
+        "Έχετε πρόσβαση στα προσωπικά σας δεδομένα",
+        "Διορθώσετε ανακριβείς πληροφορίες",
+        "Ζητήσετε τη διαγραφή των δεδομένων σας",
+        "Ανακαλέσετε τη συγκατάθεσή σας για επεξεργασία",
+      ],
+      contact_title: "Επικοινωνήστε μαζί μας",
+      contact_body_prefix:
+        "Αν έχετε ερωτήσεις σχετικά με την Πολιτική Απορρήτου ή τις πρακτικές μας, επικοινωνήστε στο",
+      back_to_contact: "Επιστροφή στην Επικοινωνία",
+    },
+    terms: {
+      title: "Όροι Χρήσης",
+      intro:
+        "Η σελίδα αυτή θα φιλοξενεί τους Όρους Χρήσης μας. Προς το παρόν, επικοινωνήστε μαζί μας για οποιαδήποτε απορία.",
+      contact_prefix: "Για απορίες, στείλτε email στο",
     },
   },
 };

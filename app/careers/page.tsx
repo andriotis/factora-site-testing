@@ -41,7 +41,7 @@ export default function CareersPage() {
             <HeroEntrance translateY={20} delay={0.28}>
               <div className="mt-8 flex justify-center">
                 <a
-                  href="mailto:careers@factora.com?subject=Application%20%E2%80%94%20%5BRole%5D%20%E2%80%94%20%5BYour%20Name%5D"
+                  href="mailto:info@factora.eu?subject=Application%20%E2%80%94%20%5BRole%5D%20%E2%80%94%20%5BYour%20Name%5D"
                   className="inline-block"
                 >
                   <Button className="px-8 py-3 rounded-full font-medium transition-all backdrop-blur-md bg-white/10 text-white border border-white/20 hover:bg-white/15 hover:border-white/30 shadow-lg shadow-black/10">
@@ -170,7 +170,7 @@ export default function CareersPage() {
 
               <div className="mt-8">
                 <a
-                  href="mailto:careers@factora.com?subject=Application%20%E2%80%94%20%5BRole%5D%20%E2%80%94%20%5BYour%20Name%5D"
+                  href="mailto:info@factora.eu?subject=Application%20%E2%80%94%20%5BRole%5D%20%E2%80%94%20%5BYour%20Name%5D"
                   className="inline-block"
                 >
                   <Button className="px-8 py-3 rounded-full font-medium transition-all bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] text-white shadow-lg shadow-[#2F9A8A]/20 hover:shadow-[#2F9A8A]/30 hover:brightness-110">

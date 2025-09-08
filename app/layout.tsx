@@ -9,6 +9,11 @@ import { I18nProvider } from "@/components/I18nProvider";
 export const metadata: Metadata = {
   title: "Factora",
   description: "Your Trusted AI Financial Assistant for Smarter B2B Payments",
+  icons: {
+    icon: "/logo-light.svg",
+    shortcut: "/logo-light.svg",
+    apple: "/logo-light.svg",
+  },
 };
 
 export default function RootLayout({

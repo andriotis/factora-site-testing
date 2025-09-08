@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   ShieldCheck,
@@ -50,11 +51,12 @@ export default function FactoraPage() {
   };
 
   const validateForm = () => {
-    if (!formData.name.trim()) return "Name is required";
-    if (!formData.email.trim()) return "Email is required";
+    if (!formData.name.trim()) return t.contact.validation_name_required;
+    if (!formData.email.trim()) return t.contact.validation_email_required;
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) return "Invalid email format";
+    if (!emailRegex.test(formData.email))
+      return t.contact.validation_email_invalid;
 
     return null;
   };
@@ -86,7 +88,7 @@ export default function FactoraPage() {
       if (response.ok) {
         setSubmitStatus({
           type: "success",
-          message: "Thank you! We'll be in touch soon.",
+          message: t.contact.success_message,
         });
         setFormData({
           name: "",
@@ -100,7 +102,7 @@ export default function FactoraPage() {
     } catch {
       setSubmitStatus({
         type: "error",
-        message: "Something went wrong. Please try again.",
+        message: t.contact.error_message,
       });
     } finally {
       setIsSubmitting(false);
@@ -108,22 +110,26 @@ export default function FactoraPage() {
   };
   const AnimatedHeadline = () => {
     const text = t.landing.hero_title;
-    const words = text.split(" ");
+    const lines = text.split("\n");
     return (
       <h1
         className="text-5xl md:text-6xl font-bold mb-6 text-balance"
         aria-label={text}
       >
-        {words.map((word, index) => (
-          <HeroEntrance
-            as="span"
-            key={`${word}-${index}`}
-            delay={0.1 + Math.floor(index / 3) * 0.15} // Group words in threes
-            translateY={32} // Reduced from 48
-            className="inline-block will-change-transform"
-          >
-            {word}&nbsp;
-          </HeroEntrance>
+        {lines.map((line, lineIdx) => (
+          <span key={`line-${lineIdx}`} className="block">
+            {Array.from(line).map((char, charIdx) => (
+              <HeroEntrance
+                as="span"
+                key={`${lineIdx}-char-${charIdx}`}
+                delay={0.06 * charIdx}
+                translateY={32}
+                className="inline-block will-change-transform"
+              >
+                {char === " " ? "\u00A0" : char}
+              </HeroEntrance>
+            ))}
+          </span>
         ))}
       </h1>
     );
@@ -131,13 +137,13 @@ export default function FactoraPage() {
   return (
     <div className="min-h-screen text-white">
       {/* Hero Section */}
-      <section className=" px-6 py-20 text-white overflow-hidden">
+      <section className=" px-6 pt-28 pb-24 md:pt-32 md:pb-28 text-white overflow-hidden">
         <div className="max-w-4xl mx-auto text-center px-6">
           <StaggerContainer stagger={0.25} delay={0.2}>
             <AnimatedHeadline />
             <HeroEntrance translateY={20} delay={0.4}>
               <p
-                className="text-xl mb-8 text-gray-200 max-w-3xl mx-auto text-pretty"
+                className="text-xl md:text-[1.35rem] leading-relaxed md:leading-8 mb-10 md:mb-12 text-gray-200 max-w-3xl mx-auto text-pretty"
                 dangerouslySetInnerHTML={{ __html: t.landing.hero_subtitle }}
               />
             </HeroEntrance>
@@ -155,9 +161,9 @@ export default function FactoraPage() {
         </div>
 
         {/* Hero Mockup: Video Player with BorderBeam */}
-        <div className="max-w-6xl mx-auto mt-16 px-6">
+        <div className="max-w-6xl mx-auto mt-16 md:mt-20 px-6">
           <MotionWrapper preset="vivid" scale={0.98} delay={0.5}>
-            <div className="relative backdrop-blur-sm rounded-2xl shadow-2xl border border-white/20 overflow-hidden will-change-transform transform-gpu [mask-image:linear-gradient(to_bottom,black_60%,transparent_90%)] [-webkit-mask-image:linear-gradient(to_bottom,black_60%,transparent_90%)]">
+            <div className="relative backdrop-blur-sm rounded-3xl md:rounded-[2rem] shadow-2xl border border-white/20 overflow-hidden will-change-transform transform-gpu [mask-image:linear-gradient(to_bottom,black_60%,transparent_90%)] [-webkit-mask-image:linear-gradient(to_bottom,black_60%,transparent_90%)]">
               <video
                 src="/hero-dashboard.mp4"
                 autoPlay
@@ -183,9 +189,9 @@ export default function FactoraPage() {
         </div>
       </section>
       {/* Trusted By Section */}
-      <section className="py-16 mb-20 md:mb-28">
+      <section className="py-16 md:py-24">
         <div className="max-w-6xl mx-auto text-center px-6">
-          <SlideUp className="mb-12">
+          <SlideUp className="mb-8 md:mb-12">
             <h4 className="text-xl font-bold text-white mb-4">
               {t.landing.trusted_by}
             </h4>
@@ -227,47 +233,49 @@ export default function FactoraPage() {
       {/* Section Divider */}
       {/* Integrations Beam Section (before Banking) */}
       <div id="core" className="relative -top-24 h-0" aria-hidden="true" />
-      <section className="px-6 py-20 bg-white">
+      <section className="px-6 pt-24 pb-28 bg-white">
         <div className="max-w-5xl mx-auto text-center">
-          <SlideUp className="mb-10">
+          <SlideUp className="mb-8 md:mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-gray-900">
               {t.landing.integrations_title}
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               {t.landing.integrations_subtitle}
             </p>
           </SlideUp>
-          <IntegrationShowcase />
+          <div className="mt-10 md:mt-14">
+            <IntegrationShowcase />
+          </div>
         </div>
       </section>
       {/* SMEs Section */}
       <div id="smes" className="relative -top-24 h-0" aria-hidden="true" />
-      <section className="px-6 py-20 text-white">
+      <section className="px-6 pt-24 pb-28 text-white">
         <div className="max-w-7xl mx-auto">
           {/* SMEs Section Header */}
-          <div className="mb-16">
+          <div className="mb-14 md:mb-16">
             <UnblurIn className="text-center">
               <div className="inline-block bg-[#2F9A8A]/20 text-[#2F9A8A] px-4 py-2 rounded-full text-sm font-semibold mb-6 uppercase tracking-wide">
                 {t.landing.smes_chip}
               </div>
-              <h2 className="text-3xl lg:text-4xl font-bold mb-6">
+              <h2 className="text-3xl lg:text-4xl font-bold mb-4 md:mb-6">
                 {t.landing.smes_title}
               </h2>
-              <p className="text-xl text-gray-300 mb-6 max-w-4xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-300 mb-8 md:mb-10 max-w-4xl mx-auto leading-relaxed">
                 {t.landing.smes_subtitle}
               </p>
             </UnblurIn>
           </div>
 
           {/* SME Solutions Section 1 - Turn Invoices Into Cash */}
-          <div className="mb-20">
+          <div className="mb-20 md:mb-24">
             <StaggerContainer
-              className="grid lg:grid-cols-2 gap-12 items-center"
+              className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center"
               stagger={0.18}
             >
               <MotionWrapper translateX={-48} duration={1.2} delay={0.3}>
                 <div className="relative will-change-transform transform-gpu">
-                  <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+                  <div className="bg-white rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden">
                     <Image
                       src="/sme-section.png"
                       alt="Invoice management dashboard showing one-click funding, status tracking, filtering options, and automated factoring guidance"
@@ -286,14 +294,14 @@ export default function FactoraPage() {
                 <div className="space-y-6">
                   <HeroEntrance translateY={20} delay={0.24}>
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] rounded-full flex items-center justify-center flex-shrink-0">
-                        <Zap className="w-6 h-6 text-white" />
+                      <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-md text-black transition-all hover:brightness-95">
+                        <Zap className="w-6 h-6 text-black" />
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold mb-2 text-white">
+                        <h4 className="text-xl md:text-2xl font-bold mb-2 text-white">
                           {t.landing.smes_point_1_title}
                         </h4>
-                        <p className="text-lg font-medium text-gray-300">
+                        <p className="text-base md:text-lg font-medium text-gray-300 leading-relaxed">
                           {t.landing.smes_point_1_desc}
                         </p>
                       </div>
@@ -302,14 +310,14 @@ export default function FactoraPage() {
 
                   <HeroEntrance translateY={20} delay={0.36}>
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] rounded-full flex items-center justify-center flex-shrink-0">
-                        <ShieldCheck className="w-6 h-6 text-white" />
+                      <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-md text-black transition-all hover:brightness-95">
+                        <ShieldCheck className="w-6 h-6 text-black" />
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold mb-2 text-white">
+                        <h4 className="text-xl md:text-2xl font-bold mb-2 text-white">
                           {t.landing.smes_point_2_title}
                         </h4>
-                        <p className="text-lg font-medium text-gray-300">
+                        <p className="text-base md:text-lg font-medium text-gray-300 leading-relaxed">
                           {t.landing.smes_point_2_desc}
                         </p>
                       </div>
@@ -318,14 +326,14 @@ export default function FactoraPage() {
 
                   <HeroEntrance translateY={20} delay={0.48}>
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] rounded-full flex items-center justify-center flex-shrink-0">
-                        <Plug className="w-6 h-6 text-white" />
+                      <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-md text-black transition-all hover:brightness-95">
+                        <Plug className="w-6 h-6 text-black" />
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold mb-2 text-white">
+                        <h4 className="text-xl md:text-2xl font-bold mb-2 text-white">
                           {t.landing.smes_point_3_title}
                         </h4>
-                        <p className="text-lg font-medium text-gray-300">
+                        <p className="text-base md:text-lg font-medium text-gray-300 leading-relaxed">
                           {t.landing.smes_point_3_desc}
                         </p>
                       </div>
@@ -345,10 +353,10 @@ export default function FactoraPage() {
 
       {/* Banking Section */}
       <div id="banking" className="relative -top-24 h-0" aria-hidden="true" />
-      <section className="px-6 py-20 text-white">
+      <section className="px-6 pt-24 pb-28 text-white">
         <div className="max-w-7xl mx-auto">
           {/* Banking Section Header */}
-          <div className="mb-16">
+          <div className="mb-14 md:mb-16">
             <UnblurIn className="text-center">
               <div className="inline-block bg-[#2F9A8A]/20 text-[#2F9A8A] px-4 py-2 rounded-full text-sm font-semibold mb-6 uppercase tracking-wide">
                 {t.landing.bankers_chip}
@@ -356,30 +364,30 @@ export default function FactoraPage() {
               <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
                 {t.landing.bankers_title}
               </h2>
-              <p className="text-xl text-gray-300 mb-6 max-w-4xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-300 mb-8 md:mb-10 max-w-4xl mx-auto leading-relaxed">
                 {t.landing.bankers_subtitle}
               </p>
             </UnblurIn>
           </div>
 
           {/* Banking Solutions Section 1 - Risk and Profitability */}
-          <div className="mb-20">
+          <div className="mb-20 md:mb-24">
             <StaggerContainer
-              className="grid lg:grid-cols-2 gap-12 items-center"
+              className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center"
               stagger={0.18}
             >
               <div className="space-y-8">
                 <div className="space-y-6">
                   <HeroEntrance translateY={20} delay={0.24}>
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] rounded-full flex items-center justify-center flex-shrink-0">
-                        <BadgeDollarSign className="w-6 h-6 text-white" />
+                      <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-md text-black transition-all hover:brightness-95">
+                        <BadgeDollarSign className="w-6 h-6 text-black" />
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold mb-2 text-white">
+                        <h4 className="text-xl md:text-2xl font-bold mb-2 text-white">
                           {t.landing.bankers_point_1_title}
                         </h4>
-                        <p className="text-lg font-medium text-gray-300">
+                        <p className="text-base md:text-lg font-medium text-gray-300 leading-relaxed">
                           {t.landing.bankers_point_1_desc}
                         </p>
                       </div>
@@ -388,14 +396,14 @@ export default function FactoraPage() {
 
                   <HeroEntrance translateY={20} delay={0.36}>
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] rounded-full flex items-center justify-center flex-shrink-0">
-                        <Target className="w-6 h-6 text-white" />
+                      <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-md text-black transition-all hover:brightness-95">
+                        <Target className="w-6 h-6 text-black" />
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold mb-2 text-white">
+                        <h4 className="text-xl md:text-2xl font-bold mb-2 text-white">
                           {t.landing.bankers_point_2_title}
                         </h4>
-                        <p className="text-lg font-medium text-gray-300">
+                        <p className="text-base md:text-lg font-medium text-gray-300 leading-relaxed">
                           {t.landing.bankers_point_2_desc}
                         </p>
                       </div>
@@ -404,14 +412,14 @@ export default function FactoraPage() {
 
                   <HeroEntrance translateY={20} delay={0.48}>
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-[#2F9A8A] to-[#1a5d57] rounded-full flex items-center justify-center flex-shrink-0">
-                        <FileCheck2 className="w-6 h-6 text-white" />
+                      <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-md text-black transition-all hover:brightness-95">
+                        <FileCheck2 className="w-6 h-6 text-black" />
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold mb-2 text-white">
+                        <h4 className="text-xl md:text-2xl font-bold mb-2 text-white">
                           {t.landing.bankers_point_3_title}
                         </h4>
-                        <p className="text-lg font-medium text-gray-300">
+                        <p className="text-base md:text-lg font-medium text-gray-300 leading-relaxed">
                           {t.landing.bankers_point_3_desc}
                         </p>
                       </div>
@@ -422,7 +430,7 @@ export default function FactoraPage() {
 
               <MotionWrapper translateX={48} duration={1.2} delay={0.3}>
                 <div className="relative will-change-transform transform-gpu">
-                  <div className="bg-card/10 backdrop-blur-sm rounded-2xl shadow-2xl border border-white/20 overflow-hidden">
+                  <div className="bg-card/10 backdrop-blur-sm rounded-2xl md:rounded-3xl shadow-2xl border border-white/20 overflow-hidden">
                     <Image
                       src="/financials-section.png"
                       alt="Banking dashboard showing portfolio performance with total advances, net revenue, invoices, DSO tracking, and default rate monitoring"
@@ -442,16 +450,16 @@ export default function FactoraPage() {
       </section>
 
       {/* Early Access / Waiting List */}
-      <section id="early-access" className="px-6 py-16 bg-white">
+      <section id="early-access" className="px-6 pt-24 pb-28 bg-white">
         <div className="max-w-3xl mx-auto">
-          <SlideUp className="text-center mb-12">
+          <SlideUp className="text-center mb-10 md:mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
               {t.landing.early_title}
             </h2>
           </SlideUp>
 
           <MotionWrapper preset="scale" scale={0.95} delay={0.2}>
-            <div className="rounded-2xl p-8 bg-gray-50 border border-gray-200 shadow-2xl shadow-gray-200/50 will-change-transform transform-gpu">
+            <div className="rounded-2xl md:rounded-3xl p-8 md:p-10 bg-gray-50 border border-gray-200 shadow-2xl shadow-gray-200/50 will-change-transform transform-gpu">
               {submitStatus.type && (
                 <div
                   className={`p-4 rounded-lg mb-6 ${
@@ -534,7 +542,14 @@ export default function FactoraPage() {
                 </Button>
 
                 <p className="text-xs text-gray-500 text-center">
-                  {t.landing.form_disclaimer}
+                  {t.landing.form_disclaimer_prefix}{" "}
+                  <Link
+                    href="/privacy"
+                    className="text-[#2F9A8A] font-semibold underline underline-offset-2 hover:text-[#1a5d57]"
+                  >
+                    {t.landing.privacy_label}
+                  </Link>
+                  .
                 </p>
               </form>
             </div>

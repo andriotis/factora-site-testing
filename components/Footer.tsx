@@ -20,6 +20,27 @@ export function Footer() {
                   info@factora.eu
                 </a>
               </div>
+              <div>
+                <a
+                  href="https://www.linkedin.com/company/factoraeu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Factora on LinkedIn"
+                  className="inline-flex items-center gap-2 text-gray-600 hover:text-[#2F9A8A]"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="40"
+                    height="40"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003zM7.052 20.452H3.999V9h3.053v11.452zM5.525 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM20.447 20.452h-3.554v-5.569c0-1.328-.027-3.036-1.849-3.036-1.851 0-2.133 1.445-2.133 2.939v5.666H9.356V9h3.414v1.561h.049c.476-.9 1.637-1.848 3.369-1.848 3.6 0 4.267 2.37 4.267 5.455v6.284z" />
+                  </svg>
+                  <span className="sr-only">LinkedIn</span>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -70,12 +91,12 @@ export function Footer() {
             <div className="space-y-2 text-sm text-gray-600">
               <div>
                 <Link href="/privacy" className="hover:text-[#2F9A8A]">
-                  Privacy & Policy
+                  {t.footer.privacy_label}
                 </Link>
               </div>
               <div>
                 <Link href="/terms" className="hover:text-[#2F9A8A]">
-                  Terms
+                  {t.footer.terms_label}
                 </Link>
               </div>
             </div>
