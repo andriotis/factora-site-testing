@@ -113,11 +113,11 @@ export default function FactoraPage() {
     const lines = text.split("\n");
     return (
       <h1
-        className="text-5xl md:text-6xl font-bold mb-6 text-balance"
+        className="font-bold mb-6 leading-[1.1] text-[clamp(1.5rem,6vw,3rem)] md:text-[clamp(2.25rem,5vw,4rem)]"
         aria-label={text}
       >
         {lines.map((line, lineIdx) => (
-          <span key={`line-${lineIdx}`} className="block">
+          <span key={`line-${lineIdx}`} className="block whitespace-nowrap">
             {Array.from(line).map((char, charIdx) => (
               <HeroEntrance
                 as="span"

@@ -225,7 +225,7 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       smes_title:
         "We help businesses offer safer credit terms and get paid earlier",
       smes_subtitle:
-        "Optimize your cash flow with instant financing, smart credit decisions, and seamless integrations.",
+        "",
       smes_problem_title: "Problem we solve:",
       smes_problem_text: "Late B2B payments choke growth and burn ops time.",
       smes_point_1_title: "Get paid faster",
@@ -384,7 +384,7 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       form_email_label: "Email",
       form_title: "Send Us a Message",
       form_subtitle:
-        "Drop us a line below and we'll get back to you as soon as possible. No question is too small!",
+        "Drop us a line below and we'll get back to you as soon as possible!",
       name_label: "Your Name*",
       name_placeholder: "Enter your name",
       email_placeholder: "Enter your email",
@@ -489,9 +489,9 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
         "Η Factora ενσωματώνεται εύκολα στα υφιστάμενα λογιστικά και συναλλακτικά εργαλεία που χρησιμοποιείτε καθημερινά.",
       smes_chip: "Για Μικρομεσαίες Επιχειρήσεις",
       smes_title:
-        "Βοηθάμε τις επιχειρήσεις να προσφέρουν ασφαλέστερους όρους πίστωσης και να εισπράττουν νωρίτερα",
+        "Βοηθάμε επιχειρήσεις για ασφαλέστερους όρους πίστωσης και γρήγορες εισπράξεις",
       smes_subtitle:
-        "Βελτιστοποιήστε τη ρευστότητά σας με άμεση χρηματοδότηση, έξυπνες αποφάσεις παροχής πίστωσης στους πελάτες σας και εύκολες διασυνδέσεις με τα υφιστάμενα συστήματά σας.",
+        "",
       smes_problem_title: "Το πρόβλημα που λύνουμε:",
       smes_problem_text:
         "Οι καθυστερημένες B2B πληρωμές πνίγουν την ανάπτυξη και καίνε χρόνο λειτουργιών.",
@@ -507,7 +507,7 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       bankers_chip: "Για Χρηματοπιστωτικά Ιδρύματα",
       bankers_title: "Λανσάρετε χρηματοδότηση επιχειρήσεων, γρήγορα",
       bankers_subtitle:
-        "White-label, πλήρως ψηφιακή και αυτοματοποιημένη πλατφόρμα προεξόφλησης τιμολογίων με διαφανή/ελέγξιμα μοντέλα, δικλείδες επιπέδου τράπεζας και άμεση διασύνδεση με τα συστήματά σας.",
+        "White-label, πλήρως ψηφιακή και αυτοματοποιημένη πλατφόρμα προεξόφλησης τιμολογίων με άμεση διασύνδεση με τα συστήματά σας.",
       bankers_problem_title: "Το πρόβλημα που λύνουμε:",
       bankers_problem_text:
         "Οι μικρές συναλλαγές ΜΜΕ είναι ασύμφορες σε παλαιά συστήματα.",
@@ -553,14 +553,14 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       ],
       get_paid_name: "Εισπράξτε πιο γρήγορα",
       get_paid_desc:
-        "Δυναμικές εκπτώσεις ανοικτών τιμολογίων για έγκαιρη πληρωμή (dynamic invoice discounting) και άμεση προεξόφλησης τιμολογίων με ένα κλικ.",
+        "Δυναμικές εκπτώσεις ανοικτών τιμολογίων για έγκαιρη πληρωμή (dynamic invoice discounting) και άμεση προεξόφληση τιμολογίων με ένα κλικ.",
       get_paid_benefits: [
         "Δυναμικές εκπτώσεις τιμολογίων",
         "Προεξόφληση τιμολογίων με ένα κλικ",
       ],
       copilot_name: "AI Copilot",
       copilot_desc:
-        "Ο έμπιστος καθημερινός βοηθός σας για  πιο έξυπνες συναλλαγές, εμπορικές συμφωνίες και διαχείριση του κεφαλαίου κίνησης σας.",
+        "Ο έμπιστος καθημερινός βοηθός σας για έξυπνες συναλλαγές, εμπορικές συμφωνίες και διαχείριση του κεφαλαίου κίνησης σας.",
       copilot_benefits: [
         "Έξυπνες συναλλαγές",
         "Καλύτερες συμφωνίες πελατών",
@@ -608,7 +608,7 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       send_cv_button: "Στείλε το βιογραφικό σου",
       join_team_title: "Γίνε μέλος της ομάδας μας",
       join_team_desc:
-        "Είμαστε πάντα ανοιχτοί να συνεργαστούμε και να ακούσουμε  παθιασμένους για την καινοτομία, σκληρά εργαζόμενους και ταλαντούχους ανθρώπους. Αν σου αρέσει η δημιουργική σκέψη, η εργασία σε ένα ταχέως εξελισσόμενο περιβάλλον, η επίτευξη δύσκολων στόχων και η δημιουργία λύσεων τεχνολογίας για την αναδιαμόρφωση των B2B πληρωμών και προϊότνων πίστωσης, θα χαρούμε να ακούσουμε από σένα.",
+        "Είμαστε ανοιχτοί για παθιασμένους, σκληρά εργαζόμενους και ταλαντούχους ανθρώπους. Αν σου αρέσει η δημιουργική σκέψη, η εργασία σε ένα ταχέως εξελισσόμενο περιβάλλον και η επίτευξη υψηλών στόχων θα χαρούμε να ακούσουμε από σένα.",
       ml_engineer_title: "Machine Learning Engineer",
       ml_engineer_desc:
         "Σχεδίασε μοντέλα αιχμής που τροφοδοτούν πιο έξυπνες αποφάσεις πίστωσης.",
@@ -654,7 +654,7 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       form_email_label: "Email",
       form_title: "Στείλτε μας ένα Μήνυμα",
       form_subtitle:
-        "Γράψτε μας παρακάτω και θα σας απαντήσουμε το συντομότερο δυνατό. Κανένα ερώτημα δεν είναι μικρό!",
+        "Γράψτε μας παρακάτω και θα σας απαντήσουμε το συντομότερο δυνατό!",
       name_label: "Το Όνομά σας*",
       name_placeholder: "Εισάγετε το όνομά σας",
       email_placeholder: "Εισάγετε το email σας",
