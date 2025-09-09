@@ -245,7 +245,7 @@ export function Navigation() {
             {/* Desktop Action Buttons */}
             <div className="hidden md:flex items-center gap-4">
               <Link
-                href="#early-access"
+                href="/#early-access"
                 className="bg-white text-black hover:brightness-95 px-6 py-3 rounded-lg font-medium text-base transition-all shadow-md"
               >
                 {t.nav.book_demo}
@@ -342,7 +342,7 @@ export function Navigation() {
           {/* Mobile Action Buttons */}
           <div className="mt-6 pt-6 border-t border-white/10 space-y-4">
             <Link
-              href="#early-access"
+              href="#/early-access"
               className="block w-full bg-white text-black hover:brightness-95 px-6 py-3 rounded-lg font-medium text-lg text-center transition-all shadow-md"
               onClick={() => setIsMobileMenuOpen(false)}
             >

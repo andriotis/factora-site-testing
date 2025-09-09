@@ -202,7 +202,7 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
     },
     nav: {
       solutions: "Solutions",
-      solutions_core: "Core",
+      solutions_core: "Platform",
       solutions_smes: "For SMEs",
       solutions_banking: "For Financial Institutions",
       about: "About",
@@ -385,8 +385,8 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       form_title: "Send Us a Message",
       form_subtitle:
         "Drop us a line below and we'll get back to you as soon as possible!",
-      name_label: "Your Name*",
-      name_placeholder: "Enter your name",
+      name_label: "Your Fullname*",
+      name_placeholder: "Enter your fullname",
       email_placeholder: "Enter your email",
       phone_label: "Phone",
       phone_placeholder: "Enter your phone number",
@@ -423,7 +423,7 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       info_collect_intro:
         "When you use our contact form, we collect the following information:",
       info_collect_items: [
-        "Your name and contact information (email, phone)",
+        "Your fullname and contact information (email, phone)",
         "The subject and content of your message",
         "Your agreement to our privacy policy",
       ],
@@ -655,8 +655,8 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       form_title: "Στείλτε μας ένα Μήνυμα",
       form_subtitle:
         "Γράψτε μας παρακάτω και θα σας απαντήσουμε το συντομότερο δυνατό!",
-      name_label: "Το Όνομά σας*",
-      name_placeholder: "Εισάγετε το όνομά σας",
+      name_label: "Το Ονοματεπώνυμό σας*",
+      name_placeholder: "Εισάγετε το ονοματεπώνυμό σας",
       email_placeholder: "Εισάγετε το email σας",
       phone_label: "Τηλέφωνο",
       phone_placeholder: "Εισάγετε τον αριθμό τηλεφώνου σας",
@@ -672,7 +672,7 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
         "Το μήνυμα στάλθηκε επιτυχώς! Θα επικοινωνήσουμε μαζί σας σύντομα.",
       error_message:
         "Αποτυχία αποστολής μηνύματος. Παρακαλώ δοκιμάστε ξανά αργότερα.",
-      validation_name_required: "Το όνομα είναι υποχρεωτικό",
+      validation_name_required: "Το ονοματεπώνυμο είναι υποχρεωτικό",
       validation_email_required: "Το email είναι υποχρεωτικό",
       validation_phone_required: "Το τηλέφωνο είναι υποχρεωτικό",
       validation_subject_required: "Το θέμα είναι υποχρεωτικό",
@@ -697,7 +697,7 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       info_collect_intro:
         "Όταν χρησιμοποιείτε τη φόρμα επικοινωνίας, συλλέγουμε τις ακόλουθες πληροφορίες:",
       info_collect_items: [
-        "Το όνομά σας και στοιχεία επικοινωνίας (email, τηλέφωνο)",
+        "Το ονοματεπώνυμό σας και στοιχεία επικοινωνίας (email, τηλέφωνο)",
         "Το θέμα και το περιεχόμενο του μηνύματός σας",
         "Τη συμφωνία σας με την Πολιτική Απορρήτου",
       ],
