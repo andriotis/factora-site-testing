@@ -6,6 +6,7 @@ import { Navigation } from "@/components/Navigation";
 import { Plasma } from "@/components/plasma";
 import { Footer } from "@/components/Footer";
 import { I18nProvider } from "@/components/I18nProvider";
+import { Analytics } from "@vercel/analytics/next"
 export const metadata: Metadata = {
   title: "Factora",
   description: "Your Trusted AI Financial Assistant for Smarter B2B Payments",
