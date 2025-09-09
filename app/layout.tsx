@@ -55,6 +55,7 @@ export default function RootLayout({
             </I18nProvider>
           </ThemeProvider>
         </div>
+        <Analytics />
       </body>
     </html>
   );
