@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Factora",
     description: "Your Trusted AI Financial Assistant for Smarter B2B Payments",
-    images: ["/logo-light.svg"],
+    images: ["/logo.png"],
   },
   icons: {
     icon: "/logo-light.svg",
