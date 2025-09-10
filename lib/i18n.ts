@@ -162,6 +162,7 @@ export type TranslationDictionary = {
   privacy: {
     title: string;
     subtitle: string;
+    html?: string;
     info_collect_title: string;
     info_collect_intro: string;
     info_collect_items: string[];
@@ -224,8 +225,7 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       smes_chip: "For SMEs",
       smes_title:
         "We help businesses offer safer credit terms and get paid earlier",
-      smes_subtitle:
-        "",
+      smes_subtitle: "",
       smes_problem_title: "Problem we solve:",
       smes_problem_text: "Late B2B payments choke growth and burn ops time.",
       smes_point_1_title: "Get paid faster",
@@ -363,8 +363,7 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       how_to_apply_subtitle: "",
       apply_step1: "Send an email to:",
       apply_step2: "Subject:",
-      apply_step3:
-        "Attach: CV/resume as PDF",
+      apply_step3: "Attach: CV/resume as PDF",
       apply_step4: "Include in the email body:",
       apply_step4_1: "3–5 sentences on why the selection of this role",
       apply_step4_2: "Your location/time zone and earliest start date",
@@ -419,6 +418,142 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
     privacy: {
       title: "Privacy Policy",
       subtitle: "How we collect, use, and protect your information",
+      html: `<h1 class="text-3xl font-bold mb-4">Privacy Policy<\/h1>
+<p class="mb-8">Effective Date: [09\/09\/2025]<\/p>
+<p class="mb-6">Factora (“Factora,” “we,” “us,” “our”) values your privacy and is committed to protecting the personal data you provide when interacting with our website and our services. This Privacy Policy explains how we collect, use, disclose, and safeguard your information, in accordance with the General Data Protection Regulation (EU) 2016\/679 (“GDPR”).<\/p>
+
+<h2 class="text-2xl font-semibold mb-4 text-[#2F9A8A]">1. Data We Collect<\/h2>
+<p class="mb-2">Demo form (required fields):<\/p>
+<ul class="list-disc pl-6 mb-6 space-y-2">
+  <li>Full name<\/li>
+  <li>Business email<\/li>
+  <li>Company name<\/li>
+  <li>Role<\/li>
+<\/ul>
+<p class="mb-2">Contact form:<\/p>
+<ul class="list-disc pl-6 mb-6 space-y-2">
+  <li>Full name (required)<\/li>
+  <li>Email (required)<\/li>
+  <li>Phone number (optional)<\/li>
+  <li>Subject and message<\/li>
+<\/ul>
+<p class="mb-2">Automatically collected (online identifiers):<\/p>
+<ul class="list-disc pl-6 mb-6 space-y-2">
+  <li>IP address<\/li>
+  <li>Device\/browser information<\/li>
+  <li>Timestamp<\/li>
+  <li>Referral URL<\/li>
+  <li>Cookie identifiers (see Cookies section)<\/li>
+<\/ul>
+<p class="mb-2">Marketing (optional):<\/p>
+<ul class="list-disc pl-6 mb-6 space-y-2">
+  <li>Your explicit consent to receive product updates.<\/li>
+<\/ul>
+<p class="mb-6">⚠️ Please avoid including sensitive or confidential information (e.g., financial, health, government ID data) in free-text message fields.<\/p>
+
+<h2 class="text-2xl font-semibold mb-4 text-[#2F9A8A]">2. Purposes & Legal Bases (GDPR, Art. 6)<\/h2>
+<p class="mb-4">Demo form — to arrange, confirm, and run your demo (emails, scheduling, follow-ups): Contractual necessity \/ pre-contract steps (Art. 6(1)(b)).<\/p>
+<p class="mb-4">Contact form — to respond to your inquiry: Contractual necessity \/ pre-contract steps (Art. 6(1)(b)).<\/p>
+<p class="mb-4">Security, abuse prevention, logging — monitoring system integrity and fraud prevention: Legitimate interests (Art. 6(1)(f)).<\/p>
+<p class="mb-4">Optional product updates\/marketing — only with your explicit consent: Consent (Art. 6(1)(a)). You may withdraw at any time.<\/p>
+<p class="mb-6">Legal obligations — e.g., record-keeping, regulatory requests: Legal obligation (Art. 6(1)(c)).<\/p>
+<p class="mb-6">We do not use these forms for automated decision-making that produces legal or similarly significant effects.<\/p>
+
+<h2 class="text-2xl font-semibold mb-4 text-[#2F9A8A]">3. How We Use Your Information<\/h2>
+<p class="mb-4">We process your personal data only where there is a lawful basis under GDPR. We use your information for the following purposes:<\/p>
+<ul class="list-disc pl-6 mb-6 space-y-2">
+  <li>To respond to your inquiries and messages.<\/li>
+  <li>To schedule and manage demo calls or meetings.<\/li>
+  <li>To communicate with you regarding our services and partnerships.<\/li>
+  <li>To provide information about potential financing opportunities through our partner institutions (upon request).<\/li>
+  <li>To improve our Website functionality and user experience.<\/li>
+  <li>To comply with legal obligations and regulatory requirements.<\/li>
+<\/ul>
+<p class="mb-6">The lawful bases for processing include performance of a contract, legitimate interest, compliance with legal obligations, and your explicit consent (where required).<\/p>
+
+<h2 class="text-2xl font-semibold mb-4 text-[#2F9A8A]">4. Sharing of Information<\/h2>
+<p class="mb-4">As part of order processing in accordance with Art. 28 GDPR, we pass on your data to service providers who support us in the operation of our websites and the associated processes. Our service providers are strictly bound by instructions to us and are contractually bound accordingly. These are service providers of the following categories:<\/p>
+<p class="mb-4"> We may share your information with:<\/p>
+<ul class="list-disc pl-6 mb-6 space-y-2">
+  <li>Cloud hosting and IT infrastructure providers,<\/li>
+  <li>Website analytics services,<\/li>
+  <li>Email communication and scheduling tools,<\/li>
+  <li>Professional advisers (legal, compliance, and audit), and<\/li>
+  <li>Dunning & collection agencies (registered) for dunning and collection services in the context of overdue receivables<\/li>
+<\/ul>
+<p class="mb-4">All third parties are required to process your data securely and in compliance with applicable data protection laws.<\/p>
+<p class="mb-4">Where our service providers process data outside the European Economic Area (EEA), we ensure that appropriate safeguards are in place, such as the European Commission’s Standard Contractual Clauses (SCCs) or an adequacy decision, to guarantee an adequate level of protection.<\/p>
+<p class="mb-6">We do not sell or rent your personal data. We do not share your form data with financing partners unless you explicitly ask us to or it is necessary to progress your request (e.g., you ask for an introduction).<\/p>
+
+<h2 class="text-2xl font-semibold mb-4 text-[#2F9A8A]">5. International Transfers<\/h2>
+<p class="mb-2">Some providers may process or store data outside the EEA\/UK. Where this occurs, we implement:<\/p>
+<ul class="list-disc pl-6 mb-6 space-y-2">
+  <li>EU Standard Contractual Clauses (SCCs)<\/li>
+  <li>Transfer Impact Assessments (TIAs)<\/li>
+  <li>Technical\/organisational safeguards (e.g., encryption, access restrictions).<\/li>
+<\/ul>
+
+<h2 class="text-2xl font-semibold mb-4 text-[#2F9A8A]">6. Retention<\/h2>
+<p class="mb-4">We retain your personal data only for as long as necessary to fulfill the purposes outlined in this Privacy Policy, and in line with legal and regulatory requirements. Specifically:<\/p>
+<ul class="list-disc pl-6 mb-6 space-y-2">
+  <li>Demo leads & contact inquiries: up to 24 months from last interaction (to allow reasonable follow-ups and pipeline analytics).<\/li>
+  <li>Marketing contacts (consent): until withdrawal or 24 months of inactivity.<\/li>
+  <li>Security logs: typically 12 months (longer if required for security investigations).<\/li>
+  <li>Legal claims\/compliance: specific records may be retained longer if required by law or necessary to establish\/defend claims.<\/li>
+<\/ul>
+
+<h2 class="text-2xl font-semibold mb-4 text-[#2F9A8A]">7. Cookies and Tracking<\/h2>
+<p class="mb-4">You can manage your cookie preferences through your browser settings. Essential cookies cannot be disabled, as they are necessary for Website operation.<\/p>
+<p class="mb-4">Our Website uses cookies and similar technologies to:<\/p>
+<ul class="list-disc pl-6 mb-6 space-y-2">
+  <li>Ensure Website functionality.<\/li>
+  <li>Improve your browsing experience.<\/li>
+  <li>Collect anonymized analytics data.<\/li>
+<\/ul>
+<p class="mb-6">You can set your browser to inform you about the placement of cookies. This makes the use of cookies transparent to you. You can also delete cookies at any time via the corresponding browser setting and prevent the setting of new cookies. Please note that our websites may then not be displayed and some functions may no longer be technically available.<\/p>
+
+<h2 class="text-2xl font-semibold mb-4 text-[#2F9A8A]">8. Security<\/h2>
+<p class="mb-4">We implement appropriate technical and organizational measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction. These include:<\/p>
+<ul class="list-disc pl-6 mb-6 space-y-2">
+  <li>Encryption (in transit and at rest where applicable)<\/li>
+  <li>Access controls and least-privilege policies<\/li>
+  <li>Regular security monitoring and logging<\/li>
+  <li>Vendor due diligence and contractual safeguards.<\/li>
+  <li>Incident detection and response processes<\/li>
+<\/ul>
+<p class="mb-6">Despite our safeguards, no system is fully secure, but we strive to maintain a level of security appropriate to the risks.<\/p>
+
+<h2 class="text-2xl font-semibold mb-4 text-[#2F9A8A]">9. Your Rights<\/h2>
+<p class="mb-4">Under GDPR, you have the following rights:<\/p>
+<p class="mb-4"><strong>Right to information (Article 15 GDPR):<\/strong><\/p>
+<p class="mb-4">You have the right to request confirmation as to whether personal data concerning you is being processed; if this is the case, you have a right to information about this personal data and to the information listed in detail in Art. 15 GDPR.<\/p>
+<p class="mb-4"><strong>Right to Rectification (Article 16 GDPR):<\/strong><\/p>
+<p class="mb-4">You have the right to request the correction of inaccurate personal data concerning you and, if necessary, the completion of incomplete data without undue delay.<\/p>
+<p class="mb-4"><strong>Right to Erasure (“Right to be Forgotten”) (Article 17 GDPR):<\/strong><\/p>
+<p class="mb-4">You have the right to request that personal data concerning you be deleted without undue delay if one of the reasons listed in detail in Article 17 GDPR applies.<\/p>
+<p class="mb-4"><strong>Right to Restrict Processing (Article 18 GDPR): <\/strong><\/p>
+<p class="mb-4">You have the right to request the restriction of processing if one of the conditions listed in Art. 18 GDPR is met, e.B. if you have objected to the processing, for the duration of the examination by the controller.<\/p>
+<p class="mb-4"><strong>Right to Data Portability (Article 20 GDPR): <\/strong><\/p>
+<p class="mb-4">In certain cases, which are listed in detail in Art. 20 GDPR, you have the right to receive the personal data concerning you in a structured, commonly used and machine-readable format or to request the transmission of this data to a third party.<\/p>
+<p class="mb-4"><strong>Right to Object (Article 21 GDPR): <\/strong><\/p>
+<p class="mb-4">You can object at any time to processing of your data based on legitimate interests, including profiling, unless we demonstrate compelling legitimate grounds. You also have the right to object to processing for direct marketing purposes.<\/p>
+<p class="mb-4"><strong>Right Not to Be Subject to Automated Decision-Making (Article 22 GDPR):<\/strong><\/p>
+<p class="mb-4">You have the right not to be subject to decisions based solely on automated processing, including profiling, which produces legal effects or significantly affects you, unless such processing is:<\/p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+  <li>necessary for entering into or performing a contract,<\/li>
+  <li>authorized by law, or<\/li>
+  <li>based on your explicit consent.<\/li>
+<\/ul>
+<p class="mb-4"><strong>Right to Withdraw Consent (Articles 6(1)(a) and 7(3) GDPR):<\/strong><\/p>
+<p class="mb-4">Where processing is based on consent, you have the right to withdraw consent at any time, without affecting the lawfulness of processing based on consent before its withdrawal.<\/p>
+<p class="mb-4"><strong>Right to lodge a complaint with a supervisory authority (Art. 77 GDPR):<\/strong><\/p>
+<p class="mb-6">In accordance with Article 77 GDPR, you have the right to lodge a complaint with a supervisory authority if you believe that the processing of your data violates data protection regulations. In particular, the right to lodge a complaint may be asserted with a supervisory authority in the EU Member State or UK jurisdiction of your habitual residence, place of work or where an alleged infringement has occurred.<\/p>
+
+<h2 class="text-2xl font-semibold mb-4 text-[#2F9A8A]">10. Children’s Data<\/h2>
+<p class="mb-6">Our Website and services are directed exclusively to businesses. We do not knowingly collect data from individuals under the age of 18. If we become aware that we have collected such data, we will delete it immediately.<\/p>
+
+<h2 class="text-2xl font-semibold mb-4 text-[#2F9A8A]">11. Updates to This Privacy Policy<\/h2>
+<p class="mb-6">We may update this Privacy Policy from time to time to reflect legal, technical, or business changes. The “Last Updated” date at the top will indicate the latest revision. We encourage you to review this Policy regularly.<\/p>`,
       info_collect_title: "Information We Collect",
       info_collect_intro:
         "When you use our contact form, we collect the following information:",
@@ -490,8 +625,7 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       smes_chip: "Για Μικρομεσαίες Επιχειρήσεις",
       smes_title:
         "Βοηθάμε επιχειρήσεις για ασφαλέστερους όρους πίστωσης και γρήγορες εισπράξεις",
-      smes_subtitle:
-        "",
+      smes_subtitle: "",
       smes_problem_title: "Το πρόβλημα που λύνουμε:",
       smes_problem_text:
         "Οι καθυστερημένες B2B πληρωμές πνίγουν την ανάπτυξη και καίνε χρόνο λειτουργιών.",
@@ -631,12 +765,10 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       how_to_apply_subtitle: "",
       apply_step1: "Στείλτε email στο:",
       apply_step2: "Θέμα:",
-      apply_step3:
-        "Επισυνάψτε: CV/βιογραφικό ως PDF",
+      apply_step3: "Επισυνάψτε: CV/βιογραφικό ως PDF",
       apply_step4: "Συμπεριλάβετε στο σώμα του email:",
       apply_step4_1: "3–5 προτάσεις για την επιλογή αυτού του ρόλου",
-      apply_step4_2:
-        "Την ζώνη ώρας σας και την επιθυμητή ημερομηνία έναρξης",
+      apply_step4_2: "Την ζώνη ώρας σας και την επιθυμητή ημερομηνία έναρξης",
       apply_step4_3:
         "Οποιουσδήποτε συνδέσμους (portfolio, GitHub, LinkedIn, μελέτες)",
       email_cv_button: "Email το CV σας",
@@ -693,6 +825,128 @@ export const dictionaries: Record<SupportedLocale, TranslationDictionary> = {
       title: "Πολιτική Απορρήτου",
       subtitle:
         "Πώς συλλέγουμε, χρησιμοποιούμε και προστατεύουμε τις πληροφορίες σας",
+      html: `<h1 class="text-3xl font-bold mb-4">Πολιτική Απορρήτου<\/h1>
+<p class="mb-8">Ημερομηνία έναρξης ισχύος: [09\/09\/2025]<\/p>
+<p class="mb-6">Η Factora («Factora», «εμείς», «μας», «η εταιρεία μας») σέβεται το απόρρητό σας και δεσμεύεται να προστατεύει τα προσωπικά δεδομένα που παρέχετε όταν αλληλεπιδράτε με τον ιστότοπό μας και τις υπηρεσίες μας. Η παρούσα Πολιτική Απορρήτου εξηγεί πώς συλλέγουμε, χρησιμοποιούμε, κοινοποιούμε και προστατεύουμε τις πληροφορίες σας, σύμφωνα με τον Γενικό Κανονισμό για την Προστασία Δεδομένων (ΕΕ) 2016\/679 («ΓΚΠΔ»).<\/p>
+
+<h2 class="text-2xl font-semibold mb-4 text-[#2F9A8A]">1. Δεδομένα που συλλέγουμε<\/h2>
+<p class="mb-2">Φόρμα demo (υποχρεωτικά πεδία):<\/p>
+<ul class="list-disc pl-6 mb-6 space-y-2">
+  <li>Ονοματεπώνυμο<\/li>
+  <li>Επαγγελματικό email<\/li>
+  <li>Επωνυμία εταιρείας<\/li>
+  <li>Ρόλος<\/li>
+<\/ul>
+<p class="mb-2">Φόρμα επικοινωνίας:<\/p>
+<ul class="list-disc pl-6 mb-6 space-y-2">
+  <li>Ονοματεπώνυμο (υποχρεωτικό)<\/li>
+  <li>Email (υποχρεωτικό)<\/li>
+  <li>Τηλέφωνο (προαιρετικό)<\/li>
+  <li>Θέμα και μήνυμα (πεδίο κειμένου)<\/li>
+<\/ul>
+<p class="mb-2">Αυτόματα συλλεγόμενα (διαδικτυακοί δείκτες):<\/p>
+<ul class="list-disc pl-6 mb-6 space-y-2">
+  <li>Διεύθυνση IP<\/li>
+  <li>Πληροφορίες συσκευής\/προγράμματος περιήγησης<\/li>
+  <li>Χρόνος\/χρονική σήμανση (timestamp)<\/li>
+  <li>Αναφερόμενη διεύθυνση URL (referral URL)<\/li>
+  <li>Αναγνωριστικά cookies (βλ. ενότητα Cookies)<\/li>
+<\/ul>
+<p class="mb-2">Μάρκετινγκ (προαιρετικό):<\/p>
+<ul class="list-disc pl-6 mb-6 space-y-2">
+  <li>Η ρητή συγκατάθεσή σας για να λαμβάνετε ενημερώσεις προϊόντων.<\/li>
+<\/ul>
+<p class="mb-6">⚠️ Παρακαλούμε αποφύγετε την εισαγωγή ευαίσθητων ή εμπιστευτικών πληροφοριών (π.χ. οικονομικά δεδομένα, δεδομένα υγείας, αριθμοί ταυτότητας\/διαβατηρίου) στα πεδία ελεύθερου κειμένου.<\/p>
+
+<h2 class="text-2xl font-semibold mb-4 text-[#2F9A8A]">2. Σκοποί & Νομικές Βάσεις (ΓΚΠΔ, Άρθρ. 6)<\/h2>
+<p class="mb-4">Φόρμα demo — για τη διευθέτηση, επιβεβαίωση και εκτέλεση της επίδειξης (email, προγραμματισμός, follow-ups): Ανάγκη για εκτέλεση προ-συμβατικών μέτρων \/ εκτέλεση σύμβασης (Άρθρο 6(1)(b)).<\/p>
+<p class="mb-4">Φόρμα επικοινωνίας — για την απάντηση στο αίτημά σας: Ανάγκη για εκτέλεση προ-συμβατικών μέτρων \/ εκτέλεση σύμβασης (Άρθρο 6(1)(b)).<\/p>
+<p class="mb-4">Ασφάλεια, πρόληψη κατάχρησης, logging — παρακολούθηση ακεραιότητας συστημάτων και πρόληψη απάτης: Νόμιμο έννομο συμφέρον (Άρθρο 6(1)(f)).<\/p>
+<p class="mb-4">Προαιρετικές ενημερώσεις προϊόντων\/μάρκετινγκ — μόνο μετά από ρητή συγκατάθεσή σας: Συγκατάθεση (Άρθρο 6(1)(a)). Μπορείτε να την ανακαλέσετε οποιαδήποτε στιγμή.<\/p>
+<p class="mb-6">Νομικές υποχρεώσεις — π.χ. τήρηση αρχείων, απαντήσεις σε ρυθμιστικά αιτήματα: Νομική υποχρέωση (Άρθρο 6(1)(c)).<\/p>
+<p class="mb-6">Δεν χρησιμοποιούμε αυτές τις φόρμες για αυτοματοποιημένες αποφάσεις που παράγουν νομικά ή ανάλογα σημαντικά αποτελέσματα.<\/p>
+
+<h2 class="text-2xl font-semibold mb-4 text-[#2F9A8A]">3. Πώς χρησιμοποιούμε τις πληροφορίες σας<\/h2>
+<p class="mb-4">Επεξεργαζόμαστε τα προσωπικά σας δεδομένα μόνο όταν υπάρχει νόμιμη βάση σύμφωνα με τον ΓΚΠΔ. Χρησιμοποιούμε τις πληροφορίες σας για τους εξής σκοπούς:<\/p>
+<ul class="list-disc pl-6 mb-6 space-y-2">
+  <li>Να απαντήσουμε σε ερωτήματα και μηνύματά σας.<\/li>
+  <li>Να προγραμματίσουμε και να διαχειριστούμε κλήσεις\/συναντήσεις demo.<\/li>
+  <li>Να επικοινωνήσουμε μαζί σας σχετικά με τις υπηρεσίες και συνεργασίες μας.<\/li>
+  <li>Να παρέχουμε πληροφορίες σχετικά με ενδεχόμενες χρηματοδοτικές ευκαιρίες μέσω συνεργαζόμενων ιδρυμάτων (κατά αίτημα).<\/li>
+  <li>Να βελτιώσουμε τη λειτουργικότητα και την εμπειρία χρήσης του ιστότοπου.<\/li>
+  <li>Να συμμορφωνόμαστε με νομικές και κανονιστικές απαιτήσεις.<\/li>
+<\/ul>
+<p class="mb-6">Οι νόμιμες βάσεις επεξεργασίας περιλαμβάνουν την εκτέλεση συμβάσεων, το νόμιμο συμφέρον, τη συμμόρφωση προς νομικές υποχρεώσεις και τη ρητή συγκατάθεσή σας όπου απαιτείται.<\/p>
+
+<h2 class="text-2xl font-semibold mb-4 text-[#2F9A8A]">4. Κοινοποίηση πληροφοριών<\/h2>
+<p class="mb-4">Στο πλαίσιο της εκτέλεσης υπηρεσιών και σύμφωνα με το Άρθρο 28 ΓΚΠΔ, ενδέχεται να μεταβιβάζουμε τα δεδομένα σας σε προμηθευτές υπηρεσιών που μας υποστηρίζουν στη λειτουργία του ιστότοπου και των σχετικών διαδικασιών. Οι προμηθευτές αυτοί δεσμεύονται αυστηρά από οδηγίες και συμβατικές υποχρεώσεις. Οι κατηγορίες υπηρεσιών περιλαμβάνουν, μεταξύ άλλων:<\/p>
+<p class="mb-4">Μπορεί να κοινοποιήσουμε τις πληροφορίες σας σε:<\/p>
+<ul class="list-disc pl-6 mb-6 space-y-2">
+  <li>Παρόχους φιλοξενίας στο cloud και υποδομής IT,<\/li>
+  <li>Υπηρεσίες ανάλυσης ιστότοπου (analytics),<\/li>
+  <li>Εργαλεία ηλεκτρονικής αλληλογραφίας και προγραμματισμού ραντεβού,<\/li>
+  <li>Επαγγελματικούς συμβούλους (νομικούς, συμμόρφωσης, ελεγκτές),<\/li>
+  <li>Εταιρείες διαχείρισης απαιτήσεων \/ είσπραξης (εγγεγραμμένες) για υπηρεσίες υπερημερίας και είσπραξης σε περίπτωση ληξιπρόθεσμων απαιτήσεων.<\/li>
+<\/ul>
+<p class="mb-4">Όλοι οι τρίτοι υποχρεούνται να επεξεργάζονται τα δεδομένα σας με ασφάλεια και σύμφωνα με την ισχύουσα νομοθεσία περί προστασίας δεδομένων. Όταν οι προμηθευτές μας επεξεργάζονται δεδομένα εκτός του Ευρωπαϊκού Οικονομικού Χώρου (ΕΟΧ), διασφαλίζουμε την ύπαρξη κατάλληλων εγγυήσεων, όπως οι Τυποποιημένοι Όροι Σύμβασης της Ευρωπαϊκής Επιτροπής (Standard Contractual Clauses — SCCs) ή απόφαση επάρκειας.<\/p>
+<p class="mb-6">Δεν πουλάμε ούτε ενοικιάζουμε τα προσωπικά σας δεδομένα. Δεν κοινοποιούμε τα δεδομένα φόρμας σε χρηματοδοτικούς εταίρους εκτός εάν το ζητήσετε ρητά ή είναι απαραίτητο για την προώθηση του αιτήματός σας (π.χ. εάν ζητήσετε σύσταση).<\/p>
+
+<h2 class="text-2xl font-semibold mb-4 text-[#2F9A8A]">5. Διεθνείς μεταφορές<\/h2>
+<p class="mb-2">Ορισμένοι πάροχοι ενδέχεται να επεξεργάζονται ή να αποθηκεύουν δεδομένα εκτός του ΕΟΧ\/ΗΒ. Σε αυτές τις περιπτώσεις εφαρμόζουμε:<\/p>
+<ul class="list-disc pl-6 mb-6 space-y-2">
+  <li>Τυποποιημένους Όρους Σύμβασης της ΕΕ (SCCs),<\/li>
+  <li>Αξιολογήσεις Επιπτώσεων Μεταφοράς (Transfer Impact Assessments — TIAs),<\/li>
+  <li>Τεχνικά και οργανωτικά μέτρα προστασίας (π.χ. κρυπτογράφηση, περιορισμοί πρόσβασης).<\/li>
+<\/ul>
+
+<h2 class="text-2xl font-semibold mb-4 text-[#2F9A8A]">6. Διάρκεια τήρησης (Retention)<\/h2>
+<p class="mb-4">Διατηρούμε τα προσωπικά σας δεδομένα μόνο για όσο χρόνο είναι αναγκαίο για την εκπλήρωση των σκοπών που περιγράφονται στην παρούσα Πολιτική και σύμφωνα με νομικές\/ρυθμιστικές απαιτήσεις. Συγκεκριμένα:<\/p>
+<ul class="list-disc pl-6 mb-6 space-y-2">
+  <li>Leads από demo & ερωτήματα επικοινωνίας: έως και 24 μήνες από την τελευταία αλληλεπίδραση (για εύλογη παρακολούθηση και αναλυτικά στοιχεία pipeline).<\/li>
+  <li>Επαφές μάρκετινγκ (με συγκατάθεση): έως ανάκληση της συγκατάθεσης ή 24 μήνες αδράνειας.<\/li>
+  <li>Αρχεία ασφαλείας (security logs): συνήθως 12 μήνες (ή περισσότερο εφόσον απαιτείται για έρευνες ασφαλείας).<\/li>
+  <li>Νομικές αξιώσεις\/συμμόρφωση: συγκεκριμένα αρχεία μπορεί να τηρούνται για μεγαλύτερο διάστημα εφόσον απαιτείται από το νόμο ή για την απόδειξη\/υπεράσπιση αξιώσεων.<\/li>
+<\/ul>
+
+<h2 class="text-2xl font-semibold mb-4 text-[#2F9A8A]">7. Cookies και Παρακολούθηση<\/h2>
+<p class="mb-4">Μπορείτε να διαχειριστείτε τις προτιμήσεις σας σχετικά με τα cookies μέσω των ρυθμίσεων του προγράμματος περιήγησής σας. Τα αναγκαία (essential) cookies δεν μπορούν να απενεργοποιηθούν, καθώς είναι απαραίτητα για τη λειτουργία του ιστότοπου.<\/p>
+<p class="mb-4">Ο ιστότοπός μας χρησιμοποιεί cookies και παρόμοιες τεχνολογίες για:<\/p>
+<ul class="list-disc pl-6 mb-6 space-y-2">
+  <li>Να διασφαλίσει τη λειτουργικότητα του ιστότοπου,<\/li>
+  <li>Να βελτιώσει την εμπειρία περιήγησης,<\/li>
+  <li>Να συλλέξει ανωνυμοποιημένα δεδομένα ανάλυσης.<\/li>
+<\/ul>
+<p class="mb-6">Μπορείτε να ρυθμίσετε το πρόγραμμα περιήγησής σας ώστε να σας ενημερώνει για την απόθεση cookies και να διαγράψετε cookies ανά πάσα στιγμή. Σημειώστε ότι κάποιες σελίδες ή λειτουργίες του ιστότοπου ενδέχεται να μην εμφανίζονται ή να μην λειτουργούν σωστά εάν απενεργοποιήσετε τα cookies.<\/p>
+
+<h2 class="text-2xl font-semibold mb-4 text-[#2F9A8A]">8. Ασφάλεια<\/h2>
+<p class="mb-4">Λαμβάνουμε κατάλληλα τεχνικά και οργανωτικά μέτρα για την προστασία των προσωπικών σας δεδομένων από μη εξουσιοδοτημένη πρόσβαση, αλλοίωση, αποκάλυψη ή καταστροφή. Αυτά περιλαμβάνουν, όπου εφαρμόζεται:<\/p>
+<ul class="list-disc pl-6 mb-6 space-y-2">
+  <li>Κρυπτογράφηση (σε μεταφορά και αποθήκευση),<\/li>
+  <li>Έλεγχο πρόσβασης και πολιτικές «ελάχιστων δικαιωμάτων»,<\/li>
+  <li>Τακτική παρακολούθηση ασφαλείας και logging,<\/li>
+  <li>Δέουσα επιμέλεια προμηθευτών και συμβατικές εγγυήσεις,<\/li>
+  <li>Διαδικασίες ανίχνευσης περιστατικών και αντίδρασης.<\/li>
+<\/ul>
+<p class="mb-6">Παρόλο που εφαρμόζουμε μέτρα ασφαλείας, κανένα σύστημα δεν είναι απόλυτα ασφαλές· προβαίνουμε όμως στις ενδεδειγμένες ενέργειες για τη μείωση των κινδύνων.<\/p>
+
+<h2 class="text-2xl font-semibold mb-4 text-[#2F9A8A]">9. Τα Δικαιώματά σας<\/h2>
+<p class="mb-4">Σύμφωνα με τον ΓΚΠΔ, έχετε τα ακόλουθα δικαιώματα:<\/p>
+<p class="mb-4">Δικαίωμα πρόσβασης (Άρθρο 15 ΓΚΠΔ): Δικαίωμα να ζητήσετε επιβεβαίωση εάν δεδομένα προσωπικού χαρακτήρα που σας αφορούν υποβάλλονται σε επεξεργασία και, εάν ναι, να λάβετε πληροφορίες σχετικά με αυτά και τις προβλεπόμενες πληροφορίες του Άρθρου 15.<\/p>
+<p class="mb-4">Δικαίωμα διόρθωσης (Άρθρο 16 ΓΚΠΔ): Δικαίωμα να ζητήσετε τη διόρθωση ανακριβών δεδομένων και τη συμπλήρωση ελλιπών δεδομένων.<\/p>
+<p class="mb-4">Δικαίωμα διαγραφής («δικαίωμα στη λήθη») (Άρθρο 17 ΓΚΠΔ): Δικαίωμα να ζητήσετε τη διαγραφή προσωπικών δεδομένων υπό τους όρους που ορίζονται στο Άρθρο 17.<\/p>
+<p class="mb-4">Δικαίωμα περιορισμού επεξεργασίας (Άρθρο 18 ΓΚΠΔ): Δικαίωμα να ζητήσετε τον περιορισμό της επεξεργασίας όταν ισχύουν οι σχετικοί όροι.<\/p>
+<p class="mb-4">Δικαίωμα φορητότητας δεδομένων (Άρθρο 20 ΓΚΠΔ): Σε ορισμένες περιπτώσεις, δικαίωμα να λάβετε τα δεδομένα που σας αφορούν σε δομημένη, συνήθως χρησιμοποιούμενη και μηχανο-αναγνώσιμη μορφή και να ζητήσετε τη μετάδοσή τους σε άλλο υπεύθυνο επεξεργασίας.<\/p>
+<p class="mb-4">Δικαίωμα αντίρρησης (Άρθρο 21 ΓΚΠΔ): Δικαίωμα να αντιταχθείτε οποιαδήποτε στιγμή στην επεξεργασία βάσει νόμιμου συμφέροντος, συμπεριλαμβανομένης της προφίλινγκ, εκτός αν υπάρχουν επιτακτικοί νόμιμοι λόγοι. Δικαίωμα να αντιταχθείτε στην επεξεργασία για σκοπούς άμεσου μάρκετινγκ.<\/p>
+<p class="mb-4">Δικαίωμα να μην υπόκειται σε αυτοματοποιημένες αποφάσεις (Άρθρο 22 ΓΚΠΔ): Δικαίωμα να μην υπόκειται σε αποφάσεις αποκλειστικά βάσει αυτοματοποιημένης επεξεργασίας, συμπεριλαμβανομένης της προφίλινγκ, που παράγουν νομικά ή ανάλογα σημαντικά αποτελέσματα, εκτός εάν ισχύουν εξαιρέσεις (π.χ. αναγκαίο για σύναψη\/εκτέλεση σύμβασης, εξουσιοδοτημένο από νόμο, ή με τη ρητή συγκατάθεσή σας).<\/p>
+<p class="mb-4">Δικαίωμα ανάκλησης συγκατάθεσης (Άρθρα 6(1)(a) & 7(3) ΓΚΠΔ): Όταν η επεξεργασία βασίζεται στη συγκατάθεσή σας, έχετε το δικαίωμα να την ανακαλέσετε οποιαδήποτε στιγμή, χωρίς να επηρεάζεται η νομιμότητα της επεξεργασίας που έγινε πριν από την ανάκληση.<\/p>
+<p class="mb-4">Δικαίωμα υποβολής καταγγελίας σε εποπτική αρχή (Άρθρο 77 ΓΚΠΔ): Έχετε το δικαίωμα να υποβάλετε καταγγελία σε αρμόδια εποπτική αρχή αν θεωρείτε ότι η επεξεργασία των δεδομένων σας παραβιάζει τους κανόνες προστασίας δεδομένων. Η καταγγελία μπορεί να υποβληθεί στην αρμόδια αρχή του κράτους μέλους όπου έχετε τη συνήθη διαμονή σας, τον τόπο εργασίας σας ή όπου έχει συμβεί η φερόμενη παράβαση.<\/p>
+<p class="mb-6">Για την άσκηση οποιουδήποτε από τα παραπάνω δικαιώματα, μπορείτε να επικοινωνήσετε μαζί μας (παρακάτω παρέχονται τα στοιχεία επικοινωνίας).<\/p>
+
+<h2 class="text-2xl font-semibold mb-4 text-[#2F9A8A]">10. Δεδομένα παιδιών<\/h2>
+<p class="mb-6">Οι υπηρεσίες και ο ιστότοπός μας απευθύνονται αποκλειστικά σε επιχειρήσεις. Δεν συλλέγουμε γνωστικά δεδομένα από άτομα κάτω των 18 ετών. Εάν μας γίνει γνωστό ότι έχουμε συλλέξει δεδομένα τέτοιων προσώπων, θα τα διαγράψουμε άμεσα.<\/p>
+
+<h2 class="text-2xl font-semibold mb-4 text-[#2F9A8A]">11. Ενημερώσεις της Πολιτικής Απορρήτου<\/h2>
+<p class="mb-6">Ενδέχεται να επικαιροποιούμε την παρούσα Πολιτική Απορρήτου περιοδικά για να αντικατοπτρίζει νομικές, τεχνικές ή επιχειρηματικές αλλαγές. Η «Ημερομηνία έναρξης ισχύος» στην αρχή θα δείχνει την τελευταία αναθεώρηση. Σας συνιστούμε να ελέγχετε τακτικά την Πολιτική για τυχόν ενημερώσεις.<\/p>`,
       info_collect_title: "Πληροφορίες που Συλλέγουμε",
       info_collect_intro:
         "Όταν χρησιμοποιείτε τη φόρμα επικοινωνίας, συλλέγουμε τις ακόλουθες πληροφορίες:",
