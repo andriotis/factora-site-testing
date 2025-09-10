@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/logo-light.svg",
+        url: "/logo.png",
         alt: "Factora logo",
       },
     ],
