@@ -6,14 +6,38 @@ import { Navigation } from "@/components/Navigation";
 import { Plasma } from "@/components/plasma";
 import { Footer } from "@/components/Footer";
 import { I18nProvider } from "@/components/I18nProvider";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://factora.eu"),
   title: "Factora",
   description: "Your Trusted AI Financial Assistant for Smarter B2B Payments",
+  openGraph: {
+    title: "Factora",
+    description: "Your Trusted AI Financial Assistant for Smarter B2B Payments",
+    url: "/",
+    siteName: "Factora",
+    type: "website",
+    images: [
+      {
+        url: "/logo-light.svg",
+        alt: "Factora logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Factora",
+    description: "Your Trusted AI Financial Assistant for Smarter B2B Payments",
+    images: ["/logo-light.svg"],
+  },
   icons: {
     icon: "/logo-light.svg",
     shortcut: "/logo-light.svg",
     apple: "/logo-light.svg",
+  },
+  alternates: {
+    canonical: "https://factora.eu",
   },
 };
 
