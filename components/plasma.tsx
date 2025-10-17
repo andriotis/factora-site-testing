@@ -142,14 +142,19 @@ export const Plasma: React.FC<PlasmaProps> = ({
     // Lower DPR on mobile/iOS
     const renderer = new Renderer({
       webgl: 2,
-      alpha: true,
+      alpha: false, // opaque canvas for proper capture without transparency
       antialias: false,
       dpr:
         Math.min(window.devicePixelRatio || 1, 2) *
         (isIOS || isMobile ? 0.5 : 1),
+      // keep the rendered frame available for toDataURL/download
+      preserveDrawingBuffer: true,
     });
     const gl = renderer.gl;
     const canvas = gl.canvas as HTMLCanvasElement;
+    // ensure an opaque black background before any draws
+    gl.clearColor(0, 0, 0, 1);
+    gl.clear(gl.COLOR_BUFFER_BIT);
     canvas.style.display = "block";
     canvas.style.width = "100%";
     canvas.style.height = "100%";

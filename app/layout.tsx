@@ -6,6 +6,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { I18nProvider } from "@/components/I18nProvider";
 import { Analytics } from "@vercel/analytics/next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://factora.eu"),
@@ -48,7 +49,29 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body className="antialiased overflow-x-hidden">
-        <div className="fixed inset-0 z-0 bg-black" />
+        <div className="fixed inset-0 z-0 bg-black">
+          {/* Mobile background */}
+          <div className="absolute inset-0 md:hidden">
+            <Image
+              src="/plasma-mobile.svg"
+              alt=""
+              fill
+              priority
+              className="object-cover"
+            />
+          </div>
+          {/* Desktop background */}
+          <div className="absolute inset-0 hidden md:block">
+            <Image
+              src="/plasma-desktop.svg"
+              alt=""
+              fill
+              priority
+              className="object-cover"
+            />
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-800/10 via-transparent to-gray-700/15 pointer-events-none" />
+        </div>
         <div className="relative z-10 overflow-x-hidden">
           <ThemeProvider defaultTheme="dark" storageKey="site-theme">
             <I18nProvider>
