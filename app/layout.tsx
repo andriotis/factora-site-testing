@@ -47,9 +47,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" className="dark">
       <body className="antialiased overflow-x-hidden">
-        <div className="fixed inset-0 z-0 bg-black">
+        <div className="fixed inset-0 z-0">
           {/* Mobile background */}
           <div className="absolute inset-0 md:hidden">
             <Image

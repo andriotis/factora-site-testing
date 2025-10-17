@@ -133,10 +133,29 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    /* Prevent mobile viewport jumping */
+    height: 100%;
+    height: 100lvh;
+    overflow-x: hidden;
+    position: relative;
+    background: transparent; /* Let sections define their own backgrounds */
   }
   html {
     scroll-behavior: smooth;
+    /* Fix mobile viewport issues */
+    height: 100%;
+    height: 100lvh; /* Large viewport height */
+    overflow-x: hidden;
+  }
+
+  /* Fix for mobile browsers */
+  @supports (-webkit-touch-callout: none) {
+    html,
+    body {
+      height: 100vh;
+      height: -webkit-fill-available;
+    }
   }
 }
 
