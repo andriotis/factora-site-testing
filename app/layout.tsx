@@ -77,9 +77,9 @@ export default function RootLayout({
             <I18nProvider>
               <EntranceProvider
                 config={{
-                  preset: "subtle",
-                  duration: 0.8, // Reduced from 1.2 for better performance
-                  stagger: 0.08, // Reduced from 0.12 for less layout thrashing
+                  preset: "vivid",
+                  duration: 1.2, // Reduced from 1.2 for better performance
+                  stagger: 0.12, // Reduced from 0.12 for less layout thrashing
                   rootMargin: "0px 0px -5% 0px",
                   disableOnMobileWidth: 0, // Enable animations on all devices including mobile
                 }}

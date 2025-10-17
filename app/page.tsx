@@ -432,7 +432,7 @@ export default function FactoraPage() {
                 <div className="relative will-change-transform transform-gpu">
                   <div className="bg-card/10 backdrop-blur-sm rounded-2xl md:rounded-3xl shadow-2xl border border-white/20 overflow-hidden">
                     <Image
-                      src="/financials-section.png"
+                      src="/institution-section.png"
                       alt="Banking dashboard showing portfolio performance with total advances, net revenue, invoices, DSO tracking, and default rate monitoring"
                       width={800}
                       height={600}
