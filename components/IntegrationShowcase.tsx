@@ -106,7 +106,7 @@ export default function IntegrationShowcase() {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   // Counter-clockwise order of icons around the center: TL(0) -> BL(1) -> BR(3) -> TR(2)
-  const CCW_ORDER = [0, 1, 3, 2];
+  const CCW_ORDER = useMemo(() => [0, 1, 3, 2], []);
   const [fastCycleDone, setFastCycleDone] = useState(false);
 
   // Auto-cycling effect
@@ -135,7 +135,7 @@ export default function IntegrationShowcase() {
         clearInterval(intervalRef.current);
       }
     };
-  }, [isUserInteracting, fastCycleDone, isInView]);
+  }, [isUserInteracting, fastCycleDone, isInView, CCW_ORDER.length]);
 
   // Update selected integration based on current step (counter-clockwise order)
   useEffect(() => {
@@ -143,7 +143,7 @@ export default function IntegrationShowcase() {
       const integrationIndex = CCW_ORDER[currentStep];
       setSelectedIntegration(integrations[integrationIndex]);
     }
-  }, [currentStep, isUserInteracting, integrations, isInView]);
+  }, [currentStep, isUserInteracting, integrations, isInView, CCW_ORDER]);
 
   // Observe when the showcase enters the viewport
   useEffect(() => {

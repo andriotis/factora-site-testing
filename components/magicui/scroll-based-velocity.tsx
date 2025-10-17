@@ -74,7 +74,7 @@ function ScrollVelocityRowImpl({
   baseVelocity = 5,
   direction = 1,
   className,
-  velocityFactor: _velocityFactor,
+  velocityFactor,
   ...props
 }: ScrollVelocityRowImplProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -150,6 +150,8 @@ function ScrollVelocityRowImpl({
     if (delta > 100) return;
 
     const dt = delta / 1000;
+    // Keep speed constant regardless of scroll; reference velocityFactor to avoid unused var
+    void velocityFactor;
     const speedMultiplier = 1;
 
     // Always maintain the base direction (default leftward), do not flip.
